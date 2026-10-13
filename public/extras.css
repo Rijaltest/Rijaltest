@@ -1,0 +1,75 @@
+/* ===== Rijal Store extras: announcement bar, combos, how-to-use, back-to-top, scroll reveal (add AFTER style.css) ===== */
+section[id]{scroll-margin-top:68px}
+
+/* announcement bar */
+.ann{background:var(--amber);color:var(--ink);font-size:.9rem;font-weight:700;position:relative}
+.ann [hidden]{display:none!important}
+.ann-in{max-width:1080px;margin:0 auto;padding:9px 46px;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;text-align:center;min-height:40px}
+#annTxt{transition:opacity .3s,transform .3s}
+#annTxt.out{opacity:0;transform:translateY(-6px)}
+#annLink{color:var(--ink);text-decoration:underline;text-underline-offset:3px;font-weight:800;white-space:nowrap}
+#annX{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:30px;height:30px;border:0;border-radius:50%;background:transparent;color:var(--ink);font-size:1.3rem;line-height:1;cursor:pointer}
+#annX:hover{background:rgba(0,0,0,.12)}
+
+/* combos */
+.cb{background:var(--white)}
+.cb[hidden]{display:none}
+.cb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px}
+.cb-card{display:grid;grid-template-columns:42% 1fr;background:var(--sage);border-radius:20px;overflow:hidden;border:1px solid #d5ddd3;transition:transform .3s,box-shadow .3s}
+.cb-card:hover{transform:translateY(-5px);box-shadow:0 22px 40px -22px rgba(18,59,47,.55)}
+.cb-pic{position:relative;background:var(--leaf);min-height:270px;color:var(--sage)}
+.cb-pic>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cb-col{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:3px;background:var(--forest)}
+.cb-col img{width:100%;height:100%;object-fit:cover;min-height:0}
+.cb-col.n3 img:first-child{grid-row:span 2}
+.cb-ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:16px;font-weight:800;font-size:1.2rem}
+.cb-badge{position:absolute;z-index:2;top:12px;left:12px;background:var(--amber);color:var(--ink);font-weight:800;font-size:.8rem;padding:5px 12px;border-radius:99px;box-shadow:0 4px 10px rgba(0,0,0,.25)}
+.cb-body{padding:22px;display:flex;flex-direction:column;gap:10px}
+.cb-body h3{font-size:1.3rem;line-height:1.15}
+.cb-body p{color:var(--mute);font-size:.95rem;flex:1}
+.cb-inc{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.cb-inc li{background:var(--white);border:1px solid #d5ddd3;border-radius:99px;padding:3px 11px;font-size:.8rem;font-weight:600}
+.cb-inc li::before{content:"\2713";color:var(--leaf);margin-right:5px;font-weight:800}
+.cb-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px}
+.cb-price b{font-size:1.6rem;font-weight:800}
+.cb-price s{color:var(--mute);margin-left:8px;font-size:1rem}
+@media(max-width:560px){.cb-card{grid-template-columns:1fr}.cb-pic{min-height:230px}}
+
+/* how to use */
+.ht{background:var(--sage)}
+.ht-steps{list-style:none;padding:18px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px 20px}
+.ht-step{position:relative;background:var(--white);border-radius:var(--r);padding:34px 22px 24px}
+.ht-n{position:absolute;top:-16px;left:20px;width:36px;height:36px;border-radius:50%;background:var(--amber);color:var(--ink);font-weight:800;display:grid;place-items:center;box-shadow:0 4px 10px rgba(217,150,31,.4)}
+.ht-step svg{width:38px;height:38px;stroke:var(--forest);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}
+.ht-step h3{font-size:1.15rem;margin-bottom:6px}
+.ht-step p{color:var(--mute);font-size:.95rem}
+.ht-note{margin-top:26px;text-align:center;color:var(--mute);font-size:.9rem}
+
+/* back to top */
+.totop{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:15;width:50px;height:50px;border:0;padding:0;border-radius:50%;cursor:pointer;background:conic-gradient(var(--amber) calc(var(--p,0)*1%),rgba(18,59,47,.25) 0);box-shadow:0 8px 20px rgba(0,0,0,.3);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s,transform .3s,visibility .3s}
+.totop.show{opacity:1;visibility:visible;transform:none}
+.totop span{position:absolute;inset:4px;border-radius:50%;background:var(--forest);display:grid;place-items:center;transition:background .2s}
+.totop:hover span{background:var(--leaf)}
+.totop svg{width:20px;height:20px;stroke:var(--sage);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* subtle scroll reveal (only active when JS adds .js-sr) */
+.js-sr .sr{opacity:0;translate:0 26px;transition:opacity .75s ease,translate .75s ease}
+.js-sr .sr.in{opacity:1;translate:none}
+.js-sr .cb-card.sr{transition:opacity .75s ease,translate .75s ease,transform .3s,box-shadow .3s}
+@media(prefers-reduced-motion:reduce){.js-sr .sr{opacity:1;translate:none;transition:none}.totop{transition:none}}
+
+/* bulk order strip (very top) */
+.bulk{background:#0d2c23;color:var(--sage);font-size:.8rem}
+.bulk .wrap{display:flex;justify-content:flex-end;align-items:center;gap:10px;min-height:34px;padding-top:4px;padding-bottom:4px}
+.bulk-badge{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;border:1px solid rgba(230,236,228,.35);background:rgba(255,255,255,.07);border-radius:99px;padding:4px 14px 4px 10px;transition:background .2s,border-color .2s}
+.bulk-badge:hover{background:rgba(217,150,31,.22);border-color:var(--amber)}
+.bulk-badge svg{width:17px;height:17px;fill:none;stroke:#25D366;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.bulk-badge b{color:var(--amber);font-weight:800}
+@media(max-width:600px){.bulk .wrap{justify-content:center}}
+
+/* Why Rijal Store: rounded cards like the combo cards */
+.why li{background:var(--sage);border:1px solid #d5ddd3;border-radius:20px;padding:26px 24px;transition:transform .3s,box-shadow .3s}
+.why li:hover{transform:translateY(-5px);box-shadow:0 22px 40px -22px rgba(18,59,47,.55)}
+.why li .wi{width:48px;height:48px;border-radius:50%;background:var(--forest);display:grid;place-items:center;margin-bottom:14px}
+.why li .wi svg{width:24px;height:24px;stroke:var(--amber);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.why li strong{font-size:1.15rem;margin-bottom:4px}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Admin | Rijal Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+.bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:18px 0}
+.tab{background:var(--white);border:2px solid var(--forest);color:var(--forest);border-radius:99px;padding:8px 18px;font:inherit;font-weight:700;cursor:pointer}
+.tab.on{background:var(--forest);color:var(--sage)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:16px}
+.stat{background:var(--white);border-radius:var(--r);padding:12px;text-align:center}.stat b{display:block;font-size:1.6rem}
+.oc,.pc{background:var(--white);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.badge{border-radius:99px;padding:3px 12px;font-size:.8rem;font-weight:700;background:#e3e8e2}
+.badge.paid{background:#ffe9b8}.badge.delivered{background:#c8ecd4}.badge.cancelled,.badge.refunded{background:#f4cfcb}.badge.pending{background:#eee;color:#777}
+.oc small,.pc small{color:var(--mute)}
+.grow{display:grid;grid-template-columns:1fr 1fr auto;gap:8px;margin-top:10px}
+textarea{width:100%;padding:11px;border:1px solid #bfcac3;border-radius:10px;font:inherit}
+.hide{display:none!important}.login{max-width:380px;margin:60px auto;background:var(--white);padding:26px;border-radius:var(--r)}
+@media(max-width:600px){.grow{grid-template-columns:1fr}}
+</style></head><body>
+<header><div class="wrap"><span class="logo">RIJAL<span>_</span>STORE admin</span><nav><a href="index.html">View shop</a><button class="cartbtn hide" id="out">Log out</button></nav></div></header>
+
+<div class="login" id="login"><h2 style="font-size:1.5rem">Owner login</h2>
+<form id="lf"><label>Email<input name="e" type="email" autocomplete="username" required></label>
+<label>Password<input name="p" type="password" autocomplete="current-password" required></label>
+<div class="err" id="lerr" role="alert"></div><button class="btn" style="width:100%;margin-top:8px">Log in</button></form></div>
+
+<main class="wrap hide" id="app">
+ <div class="bar"><button class="tab on" data-t="orders">Orders</button><button class="tab" data-t="products">Products</button><button class="tab" id="refresh">↻ Refresh</button></div>
+ <div id="orders"><div class="stats" id="stats"></div>
+  <div class="bar"><select id="flt" style="max-width:220px;padding:10px;border-radius:10px"></select><button class="tab" id="csv">Download CSV</button></div><div id="olist"></div></div>
+ <div id="products" class="hide"><p class="sub">Change a price or text, then Save. Untick “Show on shop” to hide a product. Old orders keep the price they were bought at.</p><div id="plist"></div></div>
+ <div class="err" id="gerr" role="alert"></div>
+</main>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+<script>
+// PASTE your Firebase web app config here (Firebase > Project settings > Your apps > Web app)
+const FIREBASE_CONFIG={apiKey:"PASTE_API_KEY",authDomain:"PASTE_PROJECT_ID.firebaseapp.com",projectId:"PASTE_PROJECT_ID"};
+
+const LABEL={pending:'Unpaid / abandoned',paid:'New (paid)',packed:'Packed',dispatched:'Dispatched',out_for_delivery:'Out for delivery',delivered:'Delivered',cancelled:'Cancelled',refunded:'Refunded'};
+const $=s=>document.querySelector(s), esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const rs=n=>'₹'+Number(n).toLocaleString('en-IN');
+firebase.initializeApp(FIREBASE_CONFIG);const auth=firebase.auth();
+let ORDERS=[],PRODS=[];
+
+async function api(action,data={}){
+  const t=await auth.currentUser.getIdToken();
+  const r=await fetch('/.netlify/functions/admin',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+t},body:JSON.stringify({action,...data})});
+  const j=await r.json().catch(()=>({}));
+  if(!r.ok)throw new Error(r.status===403?'This login is not the shop owner account.':(j.error||'Something went wrong'));
+  return j;
+}
+auth.onAuthStateChanged(u=>{$('#login').classList.toggle('hide',!!u);$('#app').classList.toggle('hide',!u);$('#out').classList.toggle('hide',!u);if(u)loadAll()});
+$('#lf').onsubmit=async e=>{e.preventDefault();$('#lerr').textContent='';const f=e.target;
+  try{await auth.signInWithEmailAndPassword(f.e.value,f.p.value)}catch(x){$('#lerr').textContent='Wrong email or password.'}};
+$('#out').onclick=()=>auth.signOut();
+$('#refresh').onclick=()=>loadAll();
+document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-t]').forEach(x=>x.classList.toggle('on',x===b));$('#orders').classList.toggle('hide',b.dataset.t!=='orders');$('#products').classList.toggle('hide',b.dataset.t!=='products')});
+
+async function loadAll(){
+  $('#gerr').textContent='';
+  try{[ORDERS,PRODS]=await Promise.all([api('orders'),api('products')]);renderOrders();renderProducts()}
+  catch(x){$('#gerr').textContent=x.message}
+}
+
+/* ---------- ORDERS ---------- */
+$('#flt').innerHTML='<option value="active">Needs attention (paid → out for delivery)</option><option value="all">All orders</option>'+Object.entries(LABEL).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');
+$('#flt').onchange=renderOrders;
+function renderOrders(){
+  const c=k=>ORDERS.filter(o=>o.status===k).length;
+  $('#stats').innerHTML=['paid','packed','dispatched','out_for_delivery','delivered'].map(k=>`<div class="stat"><b>${c(k)}</b>${LABEL[k]}</div>`).join('');
+  const f=$('#flt').value, act=['paid','packed','dispatched','out_for_delivery'];
+  const list=ORDERS.filter(o=>f==='all'||(f==='active'?act.includes(o.status):o.status===f));
+  $('#olist').innerHTML=list.map(o=>{const cu=o.customer||{};return `<div class="oc" data-id="${esc(o.id)}">
+   <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><strong>${esc(o.id)}</strong><span class="badge ${esc(o.status)}">${esc(LABEL[o.status]||o.status)}</span></div>
+   <small>${o.createdAt?new Date(o.createdAt).toLocaleString('en-IN'):''}</small>
+   <p style="margin-top:8px">${(o.items||[]).map(i=>`${esc(i.qty)} × ${esc(i.name)}`).join(', ')} &nbsp;|&nbsp; <strong>${rs(o.total)}</strong> <small>(incl. shipping ${rs(o.shipping||0)})</small></p>
+   <p><strong>${esc(cu.name)}</strong> · <a href="tel:${esc(cu.phone)}">${esc(cu.phone)}</a> · <a href="https://wa.me/91${esc(cu.phone)}" target="_blank" rel="noopener">WhatsApp</a> · ${esc(cu.email)}<br>
+   ${esc(cu.address)}, ${esc(cu.city)}, ${esc(cu.state)} - ${esc(cu.pincode)}</p>
+   <div class="grow"><select class="st">${Object.entries(LABEL).map(([k,v])=>`<option value="${k}"${k===o.status?' selected':''}>${v}</option>`).join('')}</select>
+   <input class="nt" placeholder="Note / courier / tracking no. (only you see this)" value="${esc(o.note||'')}"><button class="btn sv">Save</button></div></div>`}).join('')||'<p class="sub">No orders here yet.</p>';
+}
+$('#olist').onclick=async e=>{
+  if(!e.target.classList.contains('sv'))return;
+  const card=e.target.closest('.oc');e.target.disabled=true;e.target.textContent='Saving…';
+  try{await api('setStatus',{id:card.dataset.id,status:card.querySelector('.st').value,note:card.querySelector('.nt').value});await loadAll()}
+  catch(x){$('#gerr').textContent=x.message;e.target.disabled=false;e.target.textContent='Save'}
+};
+$('#csv').onclick=()=>{
+  const q=v=>'"'+String(v??'').replace(/"/g,'""')+'"';
+  const rows=[['Order ID','Date','Status','Items','Total','Name','Phone','Email','Address','City','State','Pincode','Note']].concat(ORDERS.map(o=>{const c=o.customer||{};return [o.id,o.createdAt?new Date(o.createdAt).toLocaleString('en-IN'):'',o.status,(o.items||[]).map(i=>i.qty+'x '+i.name).join('; '),o.total,c.name,c.phone,c.email,c.address,c.city,c.state,c.pincode,o.note||'']}));
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([rows.map(r=>r.map(q).join(',')).join('\n')],{type:'text/csv'}));a.download='rijal-orders.csv';a.click();
+};
+
+/* ---------- PRODUCTS ---------- */
+function pcard(p){return `<div class="pc" data-id="${esc(p.id||'')}">
+  <strong>${p.id?esc(p.name):'Add a new product'}</strong>
+  <div class="two"><label>Name<input class="f-name" value="${esc(p.name||'')}"></label><label>Price in ₹ (whole number)<input class="f-price" inputmode="numeric" value="${esc(p.price||'')}"></label></div>
+  <label>Description<textarea class="f-desc" rows="2">${esc(p.desc||'')}</textarea></label>
+  <label>Photo links (one per line, the first is the main photo)<textarea class="f-imgs" rows="2">${esc((p.imgs&&p.imgs.length?p.imgs:(p.img?[p.img]:[])).join('\n'))}</textarea></label>
+  <label>Stock (leave empty for unlimited)<input class="f-stock" inputmode="numeric" value="${esc(p.stock??'')}"></label>
+  <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" class="f-act" style="width:auto"${p.active!==false?' checked':''}> Show on shop</label>
+  <div style="display:flex;gap:10px;margin-top:10px"><button class="btn ps">${p.id?'Save':'Add product'}</button>${p.id?'<button class="btn ghost pd">Delete</button>':''}</div></div>`}
+function renderProducts(){$('#plist').innerHTML=PRODS.map(pcard).join('')+pcard({})}
+$('#plist').onclick=async e=>{
+  const card=e.target.closest('.pc');if(!card)return;const id=card.dataset.id;
+  try{
+    if(e.target.classList.contains('ps')){
+      const price=Number(card.querySelector('.f-price').value);
+      if(!card.querySelector('.f-name').value.trim()||!Number.isInteger(price)||price<1)throw new Error('Enter a name and a whole-number price.');
+      const old=PRODS.find(p=>p.id===id)||{};
+      await api('saveProduct',{id,name:card.querySelector('.f-name').value.trim(),price,desc:card.querySelector('.f-desc').value,imgs:card.querySelector('.f-imgs').value,stock:card.querySelector('.f-stock').value.trim(),active:card.querySelector('.f-act').checked,order:old.order||(PRODS.length+1)});
+      await loadAll();
+    }else if(e.target.classList.contains('pd')){
+      if(confirm('Delete this product permanently? (Tip: untick "Show on shop" to just hide it.)')){await api('deleteProduct',{id});await loadAll()}
+    }
+  }catch(x){$('#gerr').textContent=x.message}
+};
+</script><script src="admin-announce.js"></script>
+</body></html>

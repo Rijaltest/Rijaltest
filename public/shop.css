@@ -1,0 +1,348 @@
+/* ===== Rijal Store shop.css: Amazon-style product cards, quantity stepper, glass cart popup, cart upsell (add AFTER theme.css) ===== */
+:root{--star:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z'/%3E%3C/svg%3E")}
+
+/* product card details */
+.card .body{gap:7px}
+.chip{display:inline-block;width:fit-content;background:#EFE6D6;color:var(--ink);border-radius:6px;padding:2px 9px;font-size:.82rem}
+.card .body p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;flex:none}
+.rate{display:flex;align-items:center;gap:6px;font-size:.95rem}
+.rate b{font-weight:600}
+.rate span:last-child{color:var(--mute)}
+.stars{display:inline-block;width:5em;height:1em;font-size:1.05rem;background:linear-gradient(90deg,#F08804 var(--f),#D8CDBA var(--f));-webkit-mask:var(--star) repeat-x 0 0/1em 1em;mask:var(--star) repeat-x 0 0/1em 1em}
+.bought{color:var(--mute);font-size:.92rem}
+.fest{display:inline-block;width:fit-content;background:linear-gradient(90deg,#C62828,#8E1F33);color:#fff;font-weight:700;font-size:.85rem;padding:3px 10px;border-radius:5px}
+.pchoice{position:absolute;z-index:2;top:10px;left:10px;background:#16110E;color:#fff;font-weight:700;font-size:.78rem;padding:5px 10px;border-radius:8px}
+.pr{display:flex;align-items:baseline;flex-wrap:wrap;gap:2px 8px}
+.pr .price{font-size:1.6rem;line-height:1.1}
+.mrp{color:var(--mute);font-size:.85rem}
+.off{font-size:.9rem}
+.dl{font-size:.88rem}
+.act{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.act .btn{width:100%;padding:12px 14px;font-size:.95rem;text-align:center}
+.btn.buy{background:var(--forest);color:#F5EEE2}
+.btn.buy:hover{background:#000}
+
+/* quantity stepper in the cream colour of the comb */
+.stp{display:flex;align-items:center;justify-content:space-between;background:linear-gradient(180deg,#F5E4BC,#E8CB8E);border:1px solid #D6B669;border-radius:99px;padding:3px;box-shadow:inset 0 1px 0 rgba(255,255,255,.6)}
+.stp button{width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.6);color:var(--ink);font-size:1.25rem;font-weight:700;line-height:1;cursor:pointer;display:grid;place-items:center;padding:0}
+.stp button:hover{background:#fff}
+.stp input{width:3.4em;flex:1;min-width:0;text-align:center;border:0;background:transparent;font:inherit;font-weight:800;font-size:1.05rem;color:var(--ink);padding:0}
+.stp input:focus{outline:2px solid var(--amber);border-radius:8px}
+
+/* mobile: horizontal Amazon-style rows */
+@media(max-width:700px){
+  #grid.grid{grid-template-columns:1fr;gap:14px}
+  .card{display:grid;grid-template-columns:40% 1fr;border-radius:16px}
+  .card .pic{aspect-ratio:auto;min-height:240px;height:100%}
+  .card .pic{background:#F1E6D2}
+  .card .pic>img{object-fit:contain}
+  .card .body{padding:14px 14px 16px}
+  .card h3{font-size:1.05rem;line-height:1.25}
+  .pr .price{font-size:1.5rem}
+}
+
+/* glass popup at the top */
+.gl{position:fixed;z-index:35;top:calc(10px + env(safe-area-inset-top,0px));left:50%;width:min(470px,calc(100% - 24px));transform:translate(-50%,-150%);opacity:0;pointer-events:none;display:flex;align-items:center;gap:12px;padding:10px 10px 10px 12px;border-radius:20px;color:#fff;
+  background:linear-gradient(135deg,rgba(92,26,34,.55),rgba(24,15,11,.62));
+  -webkit-backdrop-filter:blur(18px) saturate(170%);backdrop-filter:blur(18px) saturate(170%);
+  border:1px solid rgba(255,255,255,.3);box-shadow:0 20px 44px -14px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.28);
+  transition:transform .45s cubic-bezier(.2,.9,.3,1.15),opacity .3s}
+.gl.show{transform:translate(-50%,0);opacity:1;pointer-events:auto}
+.gl-i{width:46px;height:46px;border-radius:12px;overflow:hidden;flex:none;background:rgba(255,255,255,.16)}
+.gl-i img{width:100%;height:100%;object-fit:cover;display:block}
+.gl-t{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.25}
+.gl-t b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.95rem}
+.gl-t small{color:rgba(255,255,255,.82);font-size:.84rem}
+.gl-go{border:0;border-radius:99px;padding:11px 18px;font:inherit;font-weight:800;color:#fff;cursor:pointer;white-space:nowrap;background:linear-gradient(135deg,#E53935 0%,#B3202F 48%,#6B1F2E 100%);box-shadow:0 8px 18px -6px rgba(229,57,53,.75)}
+.gl-go[hidden]{display:none}
+.gl-x{border:0;background:rgba(255,255,255,.14);color:#fff;width:30px;height:30px;border-radius:50%;font-size:1.1rem;line-height:1;cursor:pointer;flex:none}
+
+/* cart rows + upsell strip */
+.row .ci{display:flex;flex-direction:column;gap:2px}
+.row .ci span{color:var(--mute);font-size:.9rem}
+.rmv{all:unset;cursor:pointer;color:#b3261e;font-size:.82rem;text-decoration:underline;width:fit-content}
+.drawer .stp{width:132px;flex:none}
+.drawer .stp button{width:32px;height:32px}
+.rec{margin:16px -22px 10px;padding:14px 0 12px;background:var(--sage);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.rec-t{padding:0 22px 10px;font-weight:800;font-size:.95rem}
+.rec-v{overflow:hidden}
+.rec-tr{display:flex;width:max-content;animation:recm linear infinite}
+.rec-v:hover .rec-tr,.rec-v:active .rec-tr{animation-play-state:paused}
+@keyframes recm{to{transform:translateX(-50%)}}
+.rc{flex:none;width:132px;margin-right:12px;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:8px;display:flex;flex-direction:column;gap:5px;font-size:.85rem}
+.rc img,.rph{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:10px;background:#f0e2c8}
+.rph{display:grid;place-items:center;text-align:center;padding:6px;font-weight:700;font-size:.8rem}
+.rc b{font-size:.85rem;line-height:1.2;min-height:2.4em}
+.rc .btn{padding:7px 10px;font-size:.82rem;width:100%}
+@media(prefers-reduced-motion:reduce){.rec-v{overflow-x:auto}.rec-tr{animation:none}.gl{transition:none}}
+.cb-btns{display:flex;gap:8px;flex-wrap:wrap}
+.cb-btns .btn{padding:11px 18px}
+
+/* mobile header: keep logo + cart on one line (the extra menu links caused sideways scrolling on phones) */
+@media(max-width:700px){nav{gap:14px;font-size:.9rem}#navCombo,#navRev,nav a[href="#contact"],nav a[href="blog.html"]{display:none}}
+@media(max-width:400px){nav a:not(.cartbtn){display:none}}
+
+/* popup stays until Checkout is clicked; Checkout has a bag icon + arrow */
+.gl-go{display:inline-flex;align-items:center;gap:8px;animation:glpulse 2.2s ease-in-out infinite}
+.gl-go svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.gl-go .ar{width:16px;height:16px;transition:transform .2s}
+.gl-go:hover .ar{transform:translateX(3px)}
+@keyframes glpulse{0%,100%{box-shadow:0 8px 18px -6px rgba(229,57,53,.75),0 0 0 0 rgba(229,57,53,.45)}50%{box-shadow:0 8px 18px -6px rgba(229,57,53,.75),0 0 0 8px rgba(229,57,53,0)}}
+@media(prefers-reduced-motion:reduce){.gl-go{animation:none}}
+@media(max-width:400px){.gl-go{padding:11px 14px;gap:6px}.gl-go .ar{display:none}}
+
+/* ===== top strip: track order + bulk order ===== */
+.bulk .wrap{justify-content:space-between}
+.bulk-badge svg.tk{fill:none;stroke:var(--amber)}
+@media(max-width:480px){.bulk-badge .lg{display:none}.bulk-badge{padding:4px 12px 4px 9px}}
+
+/* cart icon on the Cart buttons */
+.cartbtn{display:inline-flex;align-items:center;gap:7px}
+.cartbtn svg,.drawer h2 svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.drawer h2{display:flex;align-items:center;gap:8px}
+
+/* ===== Trusted across India (tile map) ===== */
+.tm{background:var(--forest);color:var(--sage);padding:64px 0 72px;position:relative;overflow:hidden;isolation:isolate;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px)}
+.tm::before{content:"";position:absolute;z-index:-1;width:560px;height:560px;right:-200px;top:-220px;border-radius:50%;background:radial-gradient(circle,rgba(217,150,31,.22),transparent 65%)}
+.tm h2{color:var(--sage)}
+.tm h2 em{font-style:italic;color:var(--amber)}
+.tm-line{display:flex;align-items:center;gap:10px;font-size:1.12rem;max-width:40em;margin:10px 0 30px;color:#eadfce}
+.tm-line svg{width:22px;height:22px;flex:none;fill:var(--amber)}
+.tm-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+.tm-grid{display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(8,auto);gap:6px;max-width:560px}
+.tm-t{aspect-ratio:1;border-radius:12px;border:0;padding:0;cursor:pointer;font:inherit;font-weight:800;font-size:.8rem;letter-spacing:.02em;background:var(--bg,rgba(255,255,255,.07));color:var(--fg,rgba(255,255,255,.5));display:grid;place-items:center;opacity:0;transform:scale(.55)}
+.tm-t.nd{background:rgba(255,255,255,.05);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16);font-weight:600}
+.tm.in .tm-t{opacity:1;transform:none;transition:opacity .5s var(--d),transform .55s cubic-bezier(.2,1.4,.4,1) var(--d)}
+.tm.tmd .tm-t{transition:transform .18s,box-shadow .18s}
+.tm.tmd .tm-t:hover{transform:scale(1.12);z-index:2}
+.tm-t.on{box-shadow:0 0 0 2px #fff;transform:scale(1.1)!important;z-index:2}
+.tm-t:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.tm-leg{display:flex;align-items:center;gap:10px;font-size:.8rem;color:#cdbfae;margin-top:16px}
+.tm-leg i{width:120px;height:8px;border-radius:99px;background:linear-gradient(90deg,rgb(240,176,176),rgb(166,10,28))}
+.tm-note{font-size:.8rem;color:#b9aa98;margin-top:8px;max-width:34em}
+.tm-info{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:20px;padding:20px;min-height:150px}
+.tm-n{display:block;font-family:'Playfair Display',Georgia,serif;font-size:1.4rem;margin-bottom:10px}
+.tm-r{display:grid;grid-template-columns:78px 1fr;align-items:center;gap:10px;font-size:.88rem;margin:8px 0;color:#eadfce}
+.tm-r div{height:10px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}
+.tm-r i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#E8606E,#A80F20);animation:tmgrow .8s ease both}
+.tm-r i.dv{background:linear-gradient(90deg,#9BD3A6,#4FB07A)}
+.tm-info p{margin-top:12px;color:#d9c9b8;font-size:.92rem}
+@keyframes tmgrow{from{width:0}}
+@media(max-width:860px){.tm-wrap{grid-template-columns:1fr;gap:28px}.tm-grid{max-width:100%}.tm-t{font-size:.7rem;border-radius:9px}}
+@media(prefers-reduced-motion:reduce){.tm-t{opacity:1;transform:none}.tm-r i{animation:none}}
+
+/* ===== Contact: rounded and smooth ===== */
+#contact .ct-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:6px}
+.ct{display:flex;flex-direction:column;gap:3px;background:var(--white);border:1px solid var(--line);border-radius:24px;padding:22px;text-decoration:none;color:var(--ink);transition:transform .3s,box-shadow .3s}
+.ct:hover{transform:translateY(-5px);box-shadow:0 22px 40px -22px rgba(0,0,0,.45)}
+.ct-i{width:50px;height:50px;border-radius:50%;background:var(--forest);display:grid;place-items:center;margin-bottom:12px}
+.ct-i svg{width:24px;height:24px;stroke:var(--amber);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ct b{font-family:'Playfair Display',Georgia,serif;font-size:1.1rem}
+.ct small{color:var(--mute);font-size:.92rem;word-break:break-word}
+
+/* ===== footer social icons ===== */
+.soc{display:flex;gap:10px;margin-top:14px}
+.soc a{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.28);color:#F5EEE2;transition:background .2s,border-color .2s,transform .2s;margin:0}
+.soc a:hover{background:var(--amber);border-color:var(--amber);color:var(--ink);transform:translateY(-3px)}
+.soc svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.soc svg.fill{fill:currentColor;stroke:none}
+
+/* contact: wide Bulk order card + vertical centring of the map info card */
+.tm-wrap{align-items:center}
+.ct-bulk{grid-column:1/-1;flex-direction:row;align-items:center;gap:18px;background:linear-gradient(135deg,#FBF1DC,#F3DFB0);border-color:#E7CD8E}
+.ct-bulk .ct-i{margin:0;flex:none}
+.ct-bulk div{flex:1;min-width:0}
+.ct-bulk small{display:block;margin-top:2px}
+.ct-go{flex:none;background:var(--forest);color:#F5EEE2;border-radius:99px;padding:11px 20px;font-weight:800;font-size:.92rem;transition:background .2s}
+.ct-bulk:hover .ct-go{background:#000}
+#contact .ct{min-width:0}
+@media(max-width:640px){.ct-bulk{flex-direction:column;align-items:flex-start}.ct-go{width:100%;text-align:center}}
+
+/* ===== floating WhatsApp button (always visible, bottom right) ===== */
+.wa{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:16;display:flex;align-items:center;text-decoration:none}
+.wa-i{position:relative;z-index:1;width:50px;height:50px;border-radius:50%;flex:none;display:grid;place-items:center;background:linear-gradient(145deg,#33E873,#128C4A);box-shadow:0 0 0 2px #16110E,0 0 0 4px var(--amber),0 14px 26px -8px rgba(0,0,0,.65);transition:transform .25s}
+.wa-i::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--amber);opacity:0;animation:wapulse 2.4s ease-out infinite}
+.wa-i svg{width:27px;height:27px;fill:#fff}
+.wa:hover .wa-i{transform:scale(1.08) rotate(-6deg)}
+.wa-t{max-width:0;opacity:0;overflow:hidden;white-space:nowrap;height:38px;display:flex;align-items:center;padding:0;margin-right:0;border-radius:99px;font-weight:800;font-size:.85rem;color:#F6E7B8;
+  background:var(--velvet);box-shadow:inset 0 0 0 1px rgba(217,150,31,.6),0 10px 22px -10px rgba(0,0,0,.7);transition:max-width .45s ease,opacity .3s,padding .45s,margin .45s}
+.wa:hover .wa-t,.wa.open .wa-t{max-width:240px;opacity:1;padding:0 30px 0 16px;margin-right:-24px}
+@keyframes wapulse{0%{transform:scale(.88);opacity:.85}100%{transform:scale(1.55);opacity:0}}
+@media(prefers-reduced-motion:reduce){.wa-i::before{animation:none}.wa-t{transition:none}}
+.totop{right:16px;bottom:calc(78px + env(safe-area-inset-bottom,0px))}
+
+/* Instagram review cards: red velvet cover until you add a cover picture */
+.vr-ig{background:linear-gradient(rgba(14,4,6,.2),rgba(14,4,6,.5)),var(--velvet)}
+.vr-igb{position:absolute;z-index:2;top:20%;left:0;right:0;display:flex;flex-direction:column;align-items:center;gap:8px;color:#F6E7B8;text-align:center;font-size:.9rem}
+.vr-igb svg{width:34px;height:34px;fill:none;stroke:var(--amber);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.vr-open{position:absolute;z-index:3;left:12px;bottom:12px;background:var(--amber);color:var(--ink);font-weight:800;font-size:.82rem;padding:8px 14px;border-radius:99px;text-decoration:none}
+
+/* ===== logo from the Rijal logo file ===== */
+.logo{display:inline-flex;align-items:center;gap:10px;letter-spacing:0}
+.lg-mark{height:34px;width:auto;aspect-ratio:156/146;fill:currentColor;flex:none}
+.lg-col{display:flex;flex-direction:column;gap:4px}
+.lg-word{height:17px;width:auto;aspect-ratio:376/79;fill:currentColor;display:block}
+.lg-store{font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:.6rem;font-weight:700;letter-spacing:.46em;color:var(--amber);line-height:1;padding-left:1px}
+footer .flogo{display:inline-flex;margin-bottom:6px;color:#F5EEE2}
+footer .flogo .lg-mark{height:30px}
+
+/* ===== product cards: matching parts on the same level ===== */
+.card .body p{min-height:calc(2 * 1.55em)}
+.sp{display:block}
+.sp.sz{height:26px}.sp.rt{height:24px}.sp.bt{height:22px}.sp.bg{height:26px}.sp.lw{height:17px}
+.pr.two{min-height:3.1rem;align-content:flex-start}
+.act{margin-top:auto;padding-top:8px}
+.act .btn{height:48px;padding:0 14px;display:flex;align-items:center;justify-content:center}
+.act .stp{height:48px}
+.act .stp button{width:38px;height:38px}
+@media(max-width:700px){.sp{display:none}.pr.two{min-height:0}.card .body p{min-height:0}}
+/* fixed row heights so cards line up to the pixel */
+.chip{height:26px;display:inline-flex;align-items:center}
+.rate{height:24px}
+.bought{height:22px;line-height:22px}
+.fest{height:26px;display:inline-flex;align-items:center}
+.card .body>small{display:block;height:17px;line-height:17px}
+@media(max-width:700px){.bought{height:auto;line-height:1.4}}
+.logo .lg-col{color:inherit}
+.logo .lg-store{color:var(--amber)}
+.lg-mark{height:38px}
+.lg-word{height:19px}
+footer .flogo .lg-mark{height:32px}
+.vr-grid{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+
+/* ===== red velvet drawn in code (no image to download) ===== */
+:root{--velvet:
+  radial-gradient(circle at 18% 30%,rgba(255,232,185,.95) 0,rgba(255,232,185,.95) 1.1px,transparent 1.7px) 0 0/59px 61px,
+  radial-gradient(circle at 72% 40%,rgba(255,220,160,.9) 0,rgba(255,220,160,.9) .9px,transparent 1.5px) 0 0/83px 57px,
+  radial-gradient(circle at 42% 78%,rgba(255,244,214,.95) 0,rgba(255,244,214,.95) 1.4px,transparent 2px) 0 0/97px 89px,
+  radial-gradient(circle at 86% 74%,rgba(255,220,160,.85) 0,rgba(255,220,160,.85) .9px,transparent 1.5px) 0 0/53px 71px,
+  radial-gradient(circle at 30% 12%,rgba(255,232,185,.8) 0,rgba(255,232,185,.8) .8px,transparent 1.4px) 0 0/41px 47px,
+  radial-gradient(circle at 60% 60%,rgba(255,236,196,.85) 0,rgba(255,236,196,.85) 1px,transparent 1.6px) 0 0/73px 43px,
+  repeating-linear-gradient(90deg,rgba(0,0,0,.2) 0 1px,transparent 1px 3px),
+  radial-gradient(ellipse 70% 55% at 22% 18%,rgba(176,26,40,.6),transparent),
+  radial-gradient(ellipse 60% 50% at 82% 88%,rgba(150,20,32,.55),transparent),
+  linear-gradient(165deg,#470b12,#1f0609 58%,#110304)}
+.wa-t{text-shadow:0 1px 2px rgba(0,0,0,.6)}
+
+/* ===== logo: RIJAL only ===== */
+.lg-word{height:22px}
+
+/* ===== discount % in maroon ===== */
+.off{color:var(--maroon);font-weight:700}
+
+/* ===== contact icons: warm gold bubbles ===== */
+.ct-i{background:linear-gradient(145deg,#F8D98A,#D9961F);box-shadow:0 10px 20px -10px rgba(217,150,31,.9),inset 0 1px 0 rgba(255,255,255,.55)}
+.ct-i svg{stroke:#3A2410}
+.ct-bulk .ct-i{background:linear-gradient(145deg,#4A0F18,#16110E);box-shadow:0 10px 20px -10px rgba(74,15,24,.8),inset 0 1px 0 rgba(255,255,255,.18)}
+.ct-bulk .ct-i svg{stroke:var(--amber)}
+
+/* ===== share your review box ===== */
+.rv-form{background:var(--white);color:var(--ink);border-radius:24px;padding:26px;margin-top:30px;max-width:720px}
+.rv-form h3{font-family:'Playfair Display',Georgia,serif;font-size:1.4rem}
+.rv-sub{color:var(--mute);margin:4px 0 6px}
+.rv-hp{position:absolute!important;left:-9999px!important;width:1px!important;height:1px!important;opacity:0}
+.rv-st{display:flex;align-items:center;gap:4px;margin:14px 0 2px}
+.rv-st span{font-weight:600;font-size:.88rem;margin-right:8px}
+.rv-st button{border:0;background:none;font-size:1.7rem;line-height:1;color:#D8CDBA;cursor:pointer;padding:2px;transition:transform .15s,color .15s}
+.rv-st button:hover{transform:scale(1.15)}
+.rv-st button.on{color:#F08804}
+.rv-form textarea{width:100%;padding:11px;border:1px solid #d8c8b4;border-radius:10px;font:inherit;background:#fffdf9;resize:vertical}
+.rv-form .btn{margin-top:12px}
+.rv-ok{text-align:center;padding:18px 6px}
+.rv-ok svg{width:54px;height:54px;fill:none;stroke:#2E9E5B;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.rv-ok b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:1.5rem;margin:8px 0 4px}
+.rv-ok p{color:var(--mute)}
+
+/* photo slider fallback (only used if your main stylesheet has no slider rules) */
+:where(.pic .sl){display:flex;overflow-x:auto;scroll-snap-type:x mandatory;width:100%;height:100%;scrollbar-width:none}
+:where(.pic .sl img){flex:none;width:100%;height:100%;object-fit:cover;scroll-snap-align:center}
+:where(.pic .arr){position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:34px;height:34px;border-radius:50%;border:0;background:rgba(22,17,14,.7);color:#F5EEE2;font-size:1.3rem;line-height:1;cursor:pointer}
+:where(.pic .arr.l){left:8px}
+:where(.pic .arr.r){right:8px}
+:where(.pic .dots){position:absolute;bottom:8px;left:0;right:0;display:flex;justify-content:center;gap:6px;z-index:2}
+:where(.pic .dots i){width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.6)}
+:where(.pic .dots i.on){background:var(--amber)}
+
+.why ul{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+
+/* ===== compact review box ===== */
+.rv-form{padding:14px 16px;margin-top:20px;max-width:none;border-radius:20px}
+.rv-h{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.rv-form h3{font-size:1.1rem}
+.rv-st{margin:0;gap:2px}
+.rv-st span{display:none}
+.rv-st button{font-size:1.4rem}
+.rv-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.rv-form input:not(.rv-hp),.rv-form textarea{padding:9px 11px;font-size:.95rem;border:1px solid #d8c8b4;border-radius:10px;background:#fffdf9;width:100%;font-family:inherit}
+.rv-form textarea{margin-top:8px;resize:vertical;min-height:0}
+.rv-note{font-size:.8rem;color:var(--mute);margin-top:6px}
+.rv-act{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px}
+.rv-act .err{margin:0;min-height:0;font-size:.85rem;flex:1}
+.rv-form .btn{margin:0;padding:9px 26px}
+.rv-ok{padding:8px 4px}
+.rv-ok svg{width:38px;height:38px}
+.rv-ok b{font-size:1.2rem;margin:4px 0 2px}
+@media(max-width:600px){.rv-row{grid-template-columns:1fr 1fr}.rv-row input[name=phone]{grid-column:1/-1}}
+
+/* ===== order notification, bottom left ===== */
+.pn{position:fixed;left:14px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:14;width:min(310px,calc(100vw - 96px));display:flex;align-items:center;gap:10px;padding:10px 12px 10px 10px;background:var(--white);color:var(--ink);border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:16px;box-shadow:0 16px 34px -14px rgba(0,0,0,.55);transform:translateX(-130%);opacity:0;transition:transform .5s cubic-bezier(.2,.9,.3,1.1),opacity .4s}
+.pn[hidden]{display:none}
+.pn.show{transform:none;opacity:1}
+.pn-i{width:38px;height:38px;border-radius:50%;flex:none;display:grid;place-items:center;background:linear-gradient(145deg,#F8D98A,#D9961F)}
+.pn-i svg{width:20px;height:20px;fill:none;stroke:#3A2410;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pn-t{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3}
+.pn-t b{font-size:.86rem}
+.pn-t small{color:var(--mute);font-size:.76rem}
+.pn-x{border:0;background:none;color:var(--mute);font-size:1.2rem;line-height:1;cursor:pointer;align-self:flex-start;padding:0 2px}
+@media(prefers-reduced-motion:reduce){.pn{transition:none}}
+
+/* ===== written reviews float right to left ===== */
+.vr-grid{display:block}
+.vr-mq{overflow:hidden;margin:0 -20px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 36px,#000 calc(100% - 36px),transparent);mask-image:linear-gradient(90deg,transparent,#000 36px,#000 calc(100% - 36px),transparent)}
+.vr-mqt{display:flex;width:max-content;animation:vrm linear infinite;padding:4px 0}
+.vr-mq:hover .vr-mqt,.vr-mq:active .vr-mqt{animation-play-state:paused}
+@keyframes vrm{to{transform:translateX(-50%)}}
+.vr-mqt .vr-rev{width:290px;flex:none;margin-right:16px}
+@media(prefers-reduced-motion:reduce){.vr-mq{overflow-x:auto}.vr-mqt{animation:none}}
+
+/* ===== Why RIJAL: one outline, short points ===== */
+.why-box{list-style:none;padding:22px 28px;margin-top:20px;background:var(--white);border:2px solid var(--amber);border-radius:32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px 30px}
+.why .why-box li{background:none;border:0;padding:0;box-shadow:none;transform:none;border-radius:0;display:flex;align-items:center;gap:12px}
+.why .why-box li:hover{box-shadow:none;transform:none}
+.why-box svg{width:26px;height:26px;flex:none;fill:none;stroke:var(--maroon);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.why-box b{font-weight:700;font-size:1rem;line-height:1.3;color:var(--ink)}
+
+/* ===== Trusted across India: heading + line keep their colours, deep blood-red grading starts below the line ===== */
+.tm{padding:0}
+.tm-top{padding:64px 0 6px;position:relative}
+.tm-body{padding:34px 0 72px}
+
+.tm-body{position:relative;overflow:hidden}
+.tm-body .wrap{position:relative}
+.tm-line{margin-bottom:12px}
+
+/* ===== premium scrolling tagline above the products ===== */
+.tk{margin-top:34px;overflow:hidden;padding:14px 0;background:linear-gradient(90deg,#4A0710,#7D0E1D 50%,#4A0710);border-top:1px solid rgba(217,150,31,.65);border-bottom:1px solid rgba(217,150,31,.65);box-shadow:0 14px 30px -18px rgba(74,7,16,.9)}
+.tk-tr{display:flex;align-items:center;width:max-content;animation:tkm linear infinite}
+.tk:hover .tk-tr{animation-play-state:paused}
+.tk-tr span{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-weight:700;font-size:1.02rem;letter-spacing:.14em;text-transform:uppercase;color:#F6E7C8;white-space:nowrap;padding:0 28px}
+.tk-tr i{font-style:normal;color:var(--amber);font-size:.9rem}
+@keyframes tkm{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.tk{overflow-x:auto}.tk-tr{animation:none}}
+@media(max-width:600px){.tk{margin-top:26px;padding:11px 0}.tk-tr span{font-size:.88rem;padding:0 20px}}
+
+/* ===== Track your order: proper badge ===== */
+.bulk-badge.trk{padding:3px 14px 3px 4px;gap:8px}
+.bulk-badge.trk .ti{width:26px;height:26px;border-radius:50%;flex:none;display:grid;place-items:center;background:linear-gradient(145deg,#F8D98A,#D9961F);box-shadow:0 4px 10px -4px rgba(217,150,31,.9),inset 0 1px 0 rgba(255,255,255,.5)}
+.bulk-badge.trk .ti svg{width:15px;height:15px;stroke:#3A2410;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bulk-badge.trk b{color:#F6E7C8}
+.bulk-badge.trk:hover b{color:var(--amber)}
+
+/* ===== Why RIJAL: same outline and look as the Bulk order card ===== */
+.why .why-box{list-style:none;padding:0;margin-top:20px;background:none;border:0;border-radius:0;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.why .why-box li{display:flex;align-items:center;gap:16px;padding:18px 22px;background:linear-gradient(135deg,#FBF1DC,#F3DFB0);border:1px solid #E7CD8E;border-radius:24px;box-shadow:none;transform:none;transition:transform .3s,box-shadow .3s}
+.why .why-box li:hover{transform:translateY(-4px);box-shadow:0 22px 40px -22px rgba(0,0,0,.45)}
+.why .why-box .wb-i{width:50px;height:50px;border-radius:50%;flex:none;display:grid;place-items:center;background:linear-gradient(145deg,#4A0F18,#16110E);box-shadow:0 10px 20px -10px rgba(74,15,24,.8),inset 0 1px 0 rgba(255,255,255,.18)}
+.why .why-box .wb-i svg{width:24px;height:24px;stroke:var(--amber);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.why .why-box b{font-family:'Playfair Display',Georgia,serif;font-weight:700;font-size:1.1rem;line-height:1.25;color:var(--ink)}
+@media(max-width:700px){.why .why-box{grid-template-columns:1fr}.why .why-box li{padding:16px 18px}}

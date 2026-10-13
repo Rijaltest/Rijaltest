@@ -1,0 +1,50 @@
+/* ===== Rijal Store: reviews section (add AFTER style.css) ===== */
+.vr [hidden]{display:none!important}
+.vr{position:relative;background:var(--forest);color:var(--sage);padding:64px 0 72px;overflow:hidden;isolation:isolate}
+.vr::before{content:"";position:absolute;z-index:-1;width:620px;height:620px;left:-240px;top:-260px;border-radius:50%;background:radial-gradient(circle,rgba(217,150,31,.18),transparent 65%)}
+.vr h2{color:var(--sage)}
+.vr .sub{color:#c9d6cf}
+.vr h2 em{font-style:normal;color:var(--amber)}
+.vr-h3{font-size:1.15rem;font-weight:800;margin:46px 0 16px;letter-spacing:.02em;color:var(--sage)}
+
+/* video carousel */
+.vr-videos{position:relative;margin-top:8px}
+.vr-track{display:flex;gap:18px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:8px 0 14px;touch-action:pan-x pan-y}
+.vr-track::-webkit-scrollbar{display:none}
+.vr-card{position:relative;flex:none;width:clamp(170px,19vw,235px);aspect-ratio:9/16;border:0;padding:0;border-radius:22px;overflow:hidden;cursor:pointer;background:var(--leaf);box-shadow:0 18px 36px -18px rgba(0,0,0,.6);transition:transform .25s,box-shadow .25s;font:inherit;color:#fff;text-align:left}
+.vr-card:hover{transform:translateY(-6px);box-shadow:0 26px 44px -18px rgba(0,0,0,.7)}
+.vr-card img,.vr-card video{width:100%;height:100%;object-fit:cover;display:block;pointer-events:none}
+.vr-card::after{content:"";position:absolute;inset:auto 0 0 0;height:45%;background:linear-gradient(to top,rgba(10,24,19,.9),transparent);pointer-events:none}
+.vr-play{position:absolute;z-index:2;top:50%;left:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:var(--amber);display:grid;place-items:center;box-shadow:0 0 0 8px rgba(217,150,31,.28);transition:transform .25s}
+.vr-card:hover .vr-play{transform:scale(1.12)}
+.vr-play svg{width:24px;height:24px;fill:var(--ink);margin-left:3px}
+.vr-name{position:absolute;z-index:2;left:14px;right:14px;bottom:14px;font-weight:700;font-size:.95rem;line-height:1.2}
+.vr-arr{position:absolute;z-index:3;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:rgba(230,236,228,.92);color:var(--forest);font-size:1.5rem;line-height:1;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.35);transition:background .2s}
+.vr-arr:hover{background:var(--amber)}
+.vr-arr.l{left:10px}.vr-arr.r{right:10px}
+@media(hover:none){.vr-arr{display:none}}
+.vr-videos::before,.vr-videos::after{content:"";position:absolute;z-index:2;top:0;bottom:0;width:48px;pointer-events:none}
+.vr-videos::before{left:0;background:linear-gradient(to right,var(--forest),transparent)}
+.vr-videos::after{right:0;background:linear-gradient(to left,var(--forest),transparent)}
+
+/* video modal */
+.vr-modal{position:fixed;inset:0;z-index:40;background:rgba(6,14,11,.88);display:none;align-items:center;justify-content:center;padding:20px}
+.vr-modal.open{display:flex}
+.vr-box{position:relative;height:min(86vh,760px);aspect-ratio:9/16;max-width:100%;background:#000;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.vr-box video,.vr-box iframe{width:100%;height:100%;border:0;display:block;object-fit:contain;background:#000}
+.vr-x{position:absolute;top:14px;right:16px;z-index:2;width:44px;height:44px;border-radius:50%;border:0;background:var(--amber);color:var(--ink);font-size:1.6rem;line-height:1;cursor:pointer}
+
+/* written reviews */
+.vr-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:20px}
+.vr-rev{background:var(--white);color:var(--ink);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:12px;transition:transform .25s}
+.vr-rev:hover{transform:translateY(-4px)}
+.vr-stars{color:var(--amber);font-size:1.15rem;letter-spacing:2px}
+.vr-stars s{text-decoration:none;color:#d3d9d4}
+.vr-rev p{flex:1;color:var(--ink);font-size:.98rem}
+.vr-who{display:flex;align-items:center;gap:12px;border-top:1px solid #e3e8e2;padding-top:14px}
+.vr-av{width:40px;height:40px;border-radius:50%;background:var(--forest);color:var(--amber);display:grid;place-items:center;font-weight:800;flex:none}
+.vr-who b{display:block;line-height:1.2}
+.vr-who small{color:var(--mute)}
+.vr-tag{margin-left:auto;font-size:.75rem;font-weight:700;background:var(--sage);color:var(--forest);border-radius:99px;padding:4px 10px;white-space:nowrap}
+
+@media(max-width:600px){.vr{padding:48px 0 56px}.vr-videos::before,.vr-videos::after{width:22px}}

@@ -1,0 +1,118 @@
+/* ===== Rijal Store theme v3 (add LAST, after extras.css) =====
+   Three palettes, all keeping your amber/yellow. Default = "Noir & Gold".
+   To switch, add data-theme to the <html> tag in index.html:
+   <html lang="en" data-theme="green">   (Heritage Green & Gold)
+   <html lang="en" data-theme="cream">   (Cream & Gold, the light one)
+   Leave it off for Noir & Gold. */
+
+/* ---- Noir & Gold (default): matte black like your bottle, gold like your logo ---- */
+:root{
+  --forest:#16110E; --leaf:#2C211B; --deep:#0C0807;
+  --sage:#F5EEE2; --white:#FFFCF6; --ink:#201813; --mute:#7A6A5C; --line:#E8DCC8;
+  --amber:#D9961F; --gold:#B8780F; --maroon:#6B1F2E; --wood:#C8914A;
+  --em:var(--amber);
+  --hdr-bg:rgba(20,15,12,.96); --hdr-fg:#F5EEE2; --hdr-line:var(--amber);
+  --hero-bg:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px),linear-gradient(160deg,#241A15 0%,#120D0A 100%);
+  --hero-fg:#F5EEE2; --hero-mute:#cdbfae; --chip-bg:rgba(255,255,255,.06); --chip-bd:rgba(245,238,226,.22);
+  --glow1:rgba(217,150,31,.30); --glow2:rgba(107,31,46,.45);
+}
+/* ---- Heritage Green & Gold: your original green, polished ---- */
+[data-theme="green"]{
+  --forest:#123B2F; --leaf:#1F5A47; --deep:#0C2A21;
+  --sage:#F0EFE3; --white:#FFFDF8; --ink:#14201C; --mute:#5E6B63; --line:#DDE1D2;
+  --hdr-bg:rgba(18,59,47,.97); --hdr-fg:#EEF1E6;
+  --hero-bg:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px),linear-gradient(135deg,#123B2F 0%,#1B5340 100%);
+  --hero-fg:#EEF1E6; --hero-mute:#c3d1c8; --glow2:rgba(31,90,71,.9);
+}
+/* ---- Cream & Gold: light and airy ---- */
+[data-theme="cream"]{
+  --forest:#2B1D17; --leaf:#4A3228; --deep:#20150F;
+  --sage:#F6EFE3; --white:#FFFDF9; --ink:#2A1A14; --mute:#7A6657; --line:#E9DCC8;
+  --em:var(--gold);
+  --hdr-bg:rgba(255,253,249,.94); --hdr-fg:#2A1A14; --hdr-line:#E9DCC8;
+  --hero-bg:linear-gradient(180deg,#FAF3E7 0%,#F2E4CC 100%);
+  --hero-fg:#2A1A14; --hero-mute:#7A6657; --chip-bg:#FFFDF9; --chip-bd:#E9DCC8;
+  --glow1:rgba(217,150,31,.30); --glow2:rgba(200,145,74,.22);
+}
+
+::selection{background:var(--amber);color:var(--ink)}
+body{background:var(--sage);color:var(--ink)}
+
+/* serif display type for headings (the RIJAL_STORE logo keeps its original font) */
+h1,h2,.card h3,.cb-body h3{font-family:'Playfair Display',Georgia,'Times New Roman',serif}
+h2{font-weight:700}
+.card h3,.cb-body h3{font-weight:700}
+
+/* header */
+header{background:var(--hdr-bg);color:var(--hdr-fg);border-bottom:2px solid var(--hdr-line);box-shadow:0 8px 24px -16px rgba(0,0,0,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+nav a:not(.cartbtn){position:relative;padding:4px 0}
+nav a:not(.cartbtn)::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+nav a:not(.cartbtn):hover::after{transform:scaleX(1)}
+.bulk{background:var(--deep)}
+
+/* hero */
+.lp{background:var(--hero-bg);color:var(--hero-fg)}
+.lp::before{background:radial-gradient(circle,var(--glow1),transparent 65%)}
+.lp::after{background:radial-gradient(circle,var(--glow2),transparent 65%)}
+.lp .wrap{padding-bottom:112px}
+.lp-eyebrow{color:var(--hero-fg);background:var(--chip-bg);border-color:var(--chip-bd)}
+.lp h1{color:var(--hero-fg);font-weight:700;font-size:clamp(2.3rem,5.4vw,4.2rem);line-height:1.08;letter-spacing:-.01em;max-width:11em}
+.lp h1 em{font-style:italic;color:var(--em)}
+.lp-lead,.lp-trust{color:var(--hero-mute)}
+.lp-trust svg{stroke:var(--em)}
+.lp .btn.ghost{border-color:var(--hero-fg);color:var(--hero-fg)}
+.lp .btn.ghost:hover{background:rgba(128,128,128,.14)}
+.lp-car{box-shadow:0 30px 60px -24px rgba(0,0,0,.65)}
+.lp-arr{background:rgba(20,14,10,.72);color:#F5EEE2}
+.lp-s::after{background:linear-gradient(to top,rgba(20,12,8,.92),transparent)}
+.lp-s .ph{background:linear-gradient(145deg,#f1dfc2,#dcc09a);color:#2A1A14}
+.lp-ribbon{display:none}
+@media(max-width:860px){.lp .wrap{padding-bottom:96px}}
+
+/* floating feature strip overlapping the hero */
+.feat{position:relative;z-index:3;margin-top:-52px;padding:0 20px}
+.feat ul{max-width:1040px;margin:0 auto;list-style:none;display:grid;grid-template-columns:repeat(4,1fr);background:var(--white);border:1px solid var(--line);border-radius:24px;box-shadow:0 24px 50px -26px rgba(0,0,0,.5);padding:20px 8px}
+.feat li{display:flex;align-items:center;gap:12px;padding:6px 18px}
+.feat li+li{border-left:1px dashed #dccbb0}
+.feat .fi{width:44px;height:44px;border-radius:50%;flex:none;background:#FBF1DC;border:1px solid #F0DDB5;display:grid;place-items:center}
+.feat .fi svg{width:22px;height:22px;stroke:var(--maroon);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.feat b{display:block;font-size:.98rem;line-height:1.2;font-family:'Playfair Display',Georgia,serif}
+.feat small{color:var(--mute);font-size:.82rem}
+@media(max-width:860px){.feat{margin-top:-44px}.feat ul{grid-template-columns:1fr 1fr;gap:14px 0}.feat li:nth-child(3){border-left:0}.feat li{padding:6px 12px}}
+@media(max-width:420px){.feat li{flex-direction:column;align-items:flex-start;gap:8px}.feat li+li{border-left:0}.feat ul{gap:18px 0}}
+
+/* product cards */
+.card{border:1px solid var(--line);border-radius:20px;background:var(--white);transition:box-shadow .3s}
+.card:hover{box-shadow:0 22px 40px -22px rgba(0,0,0,.45)}
+.card .pic{background:linear-gradient(160deg,#f6e8d2,#e7cfaa);color:var(--ink)}
+.card .pic{aspect-ratio:1/1;padding:0;position:relative;overflow:hidden}
+.card .pic>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card .pic:not(:has(img)){padding:16px}
+.price{color:var(--ink);font-family:'Playfair Display',Georgia,serif}
+.card p{color:var(--mute)}
+
+/* sections */
+.cb{background:var(--white)}
+.cb-card{background:var(--sage);border-color:var(--line)}
+.cb-card:hover,.why li:hover{box-shadow:0 22px 40px -22px rgba(0,0,0,.45)}
+.cb-inc li{border-color:var(--line)}
+.why li{border-color:var(--line)}
+.why li .wi{background:var(--maroon)}
+.ht-step{border:1px solid var(--line)}
+.ht-step svg{stroke:var(--maroon)}
+.sub{color:var(--mute)}
+
+/* reviews: dark band */
+.vr{background-color:var(--forest);background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px),repeating-linear-gradient(90deg,rgba(255,255,255,.02) 0 1px,transparent 1px 3px)}
+.vr .sub{color:#d9c9b8}
+.vr-stars s{color:#e5d9c8}
+.vr-who{border-top-color:var(--line)}
+.vr-card::after{background:linear-gradient(to top,rgba(20,12,8,.9),transparent)}
+.vr-modal{background:rgba(12,8,6,.92)}
+
+/* footer + misc */
+footer{background:var(--forest);color:#d9c9b8}
+.row{border-bottom-color:var(--line)}
+form input,form select{border-color:#d8c8b4;background:#fffdf9}
+.drawer{background:var(--white)}
+.totop{background:conic-gradient(var(--amber) calc(var(--p,0)*1%),rgba(128,128,128,.3) 0)}
