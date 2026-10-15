@@ -1,5 +1,5 @@
 // Customer reviews with approval: public GET (approved reviews) + public POST submit (goes to "pending") + admin-only actions.
-const { db, requireAdmin, json } = require('./_lib');
+const { db, requireAdmin, json, adminMsg } = require('./_lib');
 const COL = () => db.collection('reviews');
 const clean = (v, n) => String(v || '').replace(/\s+/g, ' ').trim().slice(0, n);
 
@@ -34,7 +34,7 @@ exports.handler = async (event) => {
   }
 
   // ---- admin only ----
-  try { await requireAdmin(event); } catch (e) { return json(403, { error: 'Not allowed' }); }
+  try { await requireAdmin(event); } catch (e) { return json(403, { error: adminMsg(e) }); }
   try {
     if (b.action === 'list') {
       const s = await COL().orderBy('createdAt', 'desc').limit(200).get();

@@ -17,8 +17,11 @@
 textarea{width:100%;padding:11px;border:1px solid #bfcac3;border-radius:10px;font:inherit}
 .hide{display:none!important}.login{max-width:380px;margin:60px auto;background:var(--white);padding:26px;border-radius:var(--r)}
 @media(max-width:600px){.grow{grid-template-columns:1fr}}
+.pc label{display:block;font-weight:600;font-size:.88rem;margin:10px 0 4px}
+.pc input:not([type=checkbox]){width:100%;padding:11px;border:1px solid #bfcac3;border-radius:10px;font:inherit}
+.pdet{border:1px solid #e3e8e2;border-radius:12px;padding:12px;margin:12px 0}
 </style></head><body>
-<header><div class="wrap"><span class="logo">RIJAL<span>_</span>STORE admin</span><nav><a href="index.html">View shop</a><button class="cartbtn hide" id="out">Log out</button></nav></div></header>
+<header><div class="wrap"><span class="logo">RIJAL admin</span><nav><a href="index.html">View shop</a><button class="cartbtn hide" id="out">Log out</button></nav></div></header>
 
 <div class="login" id="login"><h2 style="font-size:1.5rem">Owner login</h2>
 <form id="lf"><label>Email<input name="e" type="email" autocomplete="username" required></label>
@@ -37,11 +40,12 @@ textarea{width:100%;padding:11px;border:1px solid #bfcac3;border-radius:10px;fon
 <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
 <script>
 // PASTE your Firebase web app config here (Firebase > Project settings > Your apps > Web app)
-const FIREBASE_CONFIG={apiKey:"AIzaSyD7TTqGuqoAsh2A4PDh9n6BxlZc5GlFZR8",authDomain:"rijaltest.firebaseapp.com",projectId:"rijaltest"};
+const FIREBASE_CONFIG={apiKey:"PASTE_API_KEY",authDomain:"PASTE_PROJECT_ID.firebaseapp.com",projectId:"PASTE_PROJECT_ID"};
 
 const LABEL={pending:'Unpaid / abandoned',paid:'New (paid)',packed:'Packed',dispatched:'Dispatched',out_for_delivery:'Out for delivery',delivered:'Delivered',cancelled:'Cancelled',refunded:'Refunded'};
 const $=s=>document.querySelector(s), esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const rs=n=>'₹'+Number(n).toLocaleString('en-IN');
+if(/PASTE/.test(JSON.stringify(FIREBASE_CONFIG)))$('#lerr').textContent='Setup not finished: admin.html still contains PASTE_ words. Replace them with your Firebase details.';
 firebase.initializeApp(FIREBASE_CONFIG);const auth=firebase.auth();
 let ORDERS=[],PRODS=[];
 
@@ -49,12 +53,21 @@ async function api(action,data={}){
   const t=await auth.currentUser.getIdToken();
   const r=await fetch('/.netlify/functions/admin',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+t},body:JSON.stringify({action,...data})});
   const j=await r.json().catch(()=>({}));
-  if(!r.ok)throw new Error(r.status===403?'This login is not the shop owner account.':(j.error||'Something went wrong'));
+  if(!r.ok)throw new Error(j.error||(r.status===403?'This login is not the shop owner account.':'Something went wrong'));
   return j;
 }
 auth.onAuthStateChanged(u=>{$('#login').classList.toggle('hide',!!u);$('#app').classList.toggle('hide',!u);$('#out').classList.toggle('hide',!u);if(u)loadAll()});
 $('#lf').onsubmit=async e=>{e.preventDefault();$('#lerr').textContent='';const f=e.target;
-  try{await auth.signInWithEmailAndPassword(f.e.value,f.p.value)}catch(x){$('#lerr').textContent='Wrong email or password.'}};
+  try{await auth.signInWithEmailAndPassword(f.e.value.trim(),f.p.value)}catch(x){
+    const c=(x&&x.code)||'';
+    const M={'auth/invalid-credential':'Wrong email or password.','auth/wrong-password':'Wrong email or password.','auth/user-not-found':'Wrong email or password. If you are sure it is right, check that this user exists in Firebase > Authentication > Users.',
+      'auth/invalid-email':'That email address is not valid.','auth/user-disabled':'This user is disabled in Firebase.','auth/too-many-requests':'Too many tries. Wait a few minutes and try again.',
+      'auth/operation-not-allowed':'Email/Password login is switched off. In Firebase open Authentication > Sign-in method > Email/Password and turn it on.',
+      'auth/configuration-not-found':'Firebase login is not set up yet. In Firebase open Authentication and click Get started.',
+      'auth/invalid-api-key':'The apiKey in admin.html is wrong. Copy it again from Firebase > Project settings.',
+      'auth/api-key-not-valid.-please-pass-a-valid-api-key.':'The apiKey in admin.html is wrong. Copy it again from Firebase > Project settings.',
+      'auth/network-request-failed':'Could not reach Firebase. Check your internet or the authDomain/projectId in admin.html.'};
+    $('#lerr').textContent=M[c]||('Login problem ('+(c||x.message)+'). Check the Firebase details inside admin.html.')}};
 $('#out').onclick=()=>auth.signOut();
 $('#refresh').onclick=()=>loadAll();
 document.querySelectorAll('[data-t]').forEach(b=>b.onclick=()=>{document.querySelectorAll('[data-t]').forEach(x=>x.classList.toggle('on',x===b));$('#orders').classList.toggle('hide',b.dataset.t!=='orders');$('#products').classList.toggle('hide',b.dataset.t!=='products')});
@@ -76,7 +89,7 @@ function renderOrders(){
   $('#olist').innerHTML=list.map(o=>{const cu=o.customer||{};return `<div class="oc" data-id="${esc(o.id)}">
    <div style="display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap"><strong>${esc(o.id)}</strong><span class="badge ${esc(o.status)}">${esc(LABEL[o.status]||o.status)}</span></div>
    <small>${o.createdAt?new Date(o.createdAt).toLocaleString('en-IN'):''}</small>
-   <p style="margin-top:8px">${(o.items||[]).map(i=>`${esc(i.qty)} × ${esc(i.name)}`).join(', ')} &nbsp;|&nbsp; <strong>${rs(o.total)}</strong> <small>(incl. shipping ${rs(o.shipping||0)})</small></p>
+   <p style="margin-top:8px">${(o.items||[]).map(i=>`${esc(i.qty)} × ${esc(i.name)}`).join(', ')} &nbsp;|&nbsp; <strong>${rs(o.total)}</strong> <small>(incl. shipping ${rs(o.shipping||0)})</small>${o.payment&&o.payment!=='online'?`<br><strong>COD (${o.payment==='cod_extra'?'extra COD fee':'delivery charge'}):</strong> paid online ${rs(o.paidOnline)}, <strong>collect ${rs(o.dueOnDelivery)} on delivery</strong>`:''}${o.coupon?`<br>Coupon <strong>${esc(o.coupon.code)}</strong> (- ${rs(o.coupon.discount)})`:''}${o.emails?`<br><small>Emails: to you ${esc(o.emails.owner||'-')}, to customer ${esc(o.emails.customer||'-')}</small>`:''}</p>
    <p><strong>${esc(cu.name)}</strong> · <a href="tel:${esc(cu.phone)}">${esc(cu.phone)}</a> · <a href="https://wa.me/91${esc(cu.phone)}" target="_blank" rel="noopener">WhatsApp</a> · ${esc(cu.email)}<br>
    ${esc(cu.address)}, ${esc(cu.city)}, ${esc(cu.state)} - ${esc(cu.pincode)}</p>
    <div class="grow"><select class="st">${Object.entries(LABEL).map(([k,v])=>`<option value="${k}"${k===o.status?' selected':''}>${v}</option>`).join('')}</select>
@@ -101,9 +114,20 @@ function pcard(p){return `<div class="pc" data-id="${esc(p.id||'')}">
   <label>Description<textarea class="f-desc" rows="2">${esc(p.desc||'')}</textarea></label>
   <label>Photo links (one per line, the first is the main photo)<textarea class="f-imgs" rows="2">${esc((p.imgs&&p.imgs.length?p.imgs:(p.img?[p.img]:[])).join('\n'))}</textarea></label>
   <label>Stock (leave empty for unlimited)<input class="f-stock" inputmode="numeric" value="${esc(p.stock??'')}"></label>
+  <div class="pdet"><strong>Details shown on the shop card</strong><p class="note" style="margin:2px 0 0">Leave a box empty to hide that part. Only enter real ratings and sales.</p>
+   <div class="two"><label>Size tag (for example 100 ml)<input class="f-size" maxlength="30" value="${esc(p.size||'')}"></label><label>Photo label (for example Best Seller)<input class="f-choice" list="dl-choice" maxlength="30" value="${esc(p.choice||'')}"></label></div>
+   <div class="two"><label>Rating, 0 to 5 (for example 4.4)<input class="f-rating" inputmode="decimal" value="${esc(p.rating||'')}"></label><label>Number of ratings (for example 19)<input class="f-rc" inputmode="numeric" value="${esc(p.ratingCount||'')}"></label></div>
+   <label>"Bought" line (for example 100+ bought in past month)<input class="f-bought" maxlength="60" value="${esc(p.bought||'')}"></label>
+   <div class="two"><label>Red offer tag (for example Rijal's offer)<input class="f-badge" list="dl-badge" maxlength="40" value="${esc(p.badge||'')}"></label><label>MRP, the original price in ₹<input class="f-mrp" inputmode="numeric" value="${esc(p.mrp||'')}"></label></div>
+   <p class="note off-prev"></p></div>
   <label style="display:flex;gap:8px;align-items:center"><input type="checkbox" class="f-act" style="width:auto"${p.active!==false?' checked':''}> Show on shop</label>
   <div style="display:flex;gap:10px;margin-top:10px"><button class="btn ps">${p.id?'Save':'Add product'}</button>${p.id?'<button class="btn ghost pd">Delete</button>':''}</div></div>`}
-function renderProducts(){$('#plist').innerHTML=PRODS.map(pcard).join('')+pcard({})}
+function offPrev(card){
+  const pr=Number(card.querySelector('.f-price').value),mrp=Number(card.querySelector('.f-mrp').value),n=card.querySelector('.off-prev');
+  n.textContent=mrp>pr&&pr>0?'Shop card shows: '+rs(pr)+'  M.R.P '+rs(mrp)+'  ('+Math.round((mrp-pr)/mrp*100)+'% off)':(mrp&&mrp<=pr?'The MRP must be higher than the price to show a discount.':'');
+}
+function renderProducts(){$('#plist').innerHTML=PRODS.map(pcard).join('')+pcard({})+'<datalist id="dl-choice"><option>Best Seller</option><option>New</option><option>Limited</option><option>Sale</option><option>Top Rated</option></datalist><datalist id="dl-badge"><option>Rijal\'s offer</option><option>Limited time offer</option><option>Festival offer</option></datalist>';document.querySelectorAll('#plist .pc').forEach(offPrev)}
+$('#plist').addEventListener('input',e=>{const c=e.target.closest('.pc');if(c)offPrev(c)});
 $('#plist').onclick=async e=>{
   const card=e.target.closest('.pc');if(!card)return;const id=card.dataset.id;
   try{
@@ -111,7 +135,7 @@ $('#plist').onclick=async e=>{
       const price=Number(card.querySelector('.f-price').value);
       if(!card.querySelector('.f-name').value.trim()||!Number.isInteger(price)||price<1)throw new Error('Enter a name and a whole-number price.');
       const old=PRODS.find(p=>p.id===id)||{};
-      await api('saveProduct',{id,name:card.querySelector('.f-name').value.trim(),price,desc:card.querySelector('.f-desc').value,imgs:card.querySelector('.f-imgs').value,stock:card.querySelector('.f-stock').value.trim(),active:card.querySelector('.f-act').checked,order:old.order||(PRODS.length+1)});
+      await api('saveProduct',{id,name:card.querySelector('.f-name').value.trim(),price,desc:card.querySelector('.f-desc').value,imgs:card.querySelector('.f-imgs').value,stock:card.querySelector('.f-stock').value.trim(),size:card.querySelector('.f-size').value.trim(),choice:card.querySelector('.f-choice').value.trim(),rating:card.querySelector('.f-rating').value.trim(),ratingCount:card.querySelector('.f-rc').value.trim(),bought:card.querySelector('.f-bought').value.trim(),badge:card.querySelector('.f-badge').value.trim(),mrp:card.querySelector('.f-mrp').value.trim(),active:card.querySelector('.f-act').checked,order:old.order||(PRODS.length+1)});
       await loadAll();
     }else if(e.target.classList.contains('pd')){
       if(confirm('Delete this product permanently? (Tip: untick "Show on shop" to just hide it.)')){await api('deleteProduct',{id});await loadAll()}

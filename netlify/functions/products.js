@@ -11,8 +11,12 @@ exports.handler = async () => {
       cache = {
         at: Date.now(),
         body: {
-          products: list.map(({ id, name, price, desc, img, imgs, stock }) => ({ id, name, price, desc, img, imgs: Array.isArray(imgs) && imgs.length ? imgs : (img ? [img] : []), stock: typeof stock === 'number' ? stock : null })),
+          products: list.map(({ id, name, price, desc, img, imgs, stock, size, rating, ratingCount, bought, badge, choice, mrp }) => ({
+            id, name, price, desc, img, imgs: Array.isArray(imgs) && imgs.length ? imgs : (img ? [img] : []), stock: typeof stock === 'number' ? stock : null,
+            size: size || '', rating: Number(rating) || 0, ratingCount: Number(ratingCount) || 0, bought: bought || '', badge: badge || '', choice: choice || '', mrp: Number(mrp) || 0,
+          })),
           fee: cfg.shippingFee, freeAbove: cfg.freeAbove,
+          cod: { delivery: cfg.codDelivery, extra: cfg.codExtra },
         },
       };
     }

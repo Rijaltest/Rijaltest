@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>
+/* Google Analytics (G-BGW29WYSYZ). The big Google file loads only after the page has finished loading (or on the first scroll or tap), so it never slows the first view. Open the site once with ?noga=1 to stop counting your own phone or computer (?noga=0 turns it back on). */
+(function(){var off=false;try{if(/[?&]noga=1/.test(location.search))localStorage.setItem('rs_noga','1');if(/[?&]noga=0/.test(location.search))localStorage.removeItem('rs_noga');off=!!localStorage.getItem('rs_noga')}catch(e){}
+window.dataLayer=window.dataLayer||[];window.gtag=off?function(){}:function(){dataLayer.push(arguments)};
+if(off)return;gtag('js',new Date());gtag('config','G-BGW29WYSYZ');
+var done=0;function load(){if(done)return;done=1;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-BGW29WYSYZ';document.head.appendChild(s)}
+['pointerdown','scroll','keydown','touchstart'].forEach(function(e){addEventListener(e,load,{once:true,passive:true})});
+addEventListener('load',function(){setTimeout(load,3000)})})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>RIJAL | Hair Oil, Beard Oil &amp; Comb</title>
 <meta name="description" content="RIJAL: everyday grooming essentials. Hair oil, beard oil and a quality comb. Delivered across India.">
@@ -63,7 +72,7 @@
 
 <section id="products"><div class="wrap">
   <h2>Our products</h2>
-  <p class="sub" id="shipnote">Loading shipping info…</p>
+  <p class="sub" id="shipnote">Free shipping on all prepaid orders.</p>
   <div class="grid" id="grid"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
 </div></section>
 
@@ -146,6 +155,16 @@
 <div class="pn" id="pn" role="status" aria-live="polite" hidden><span class="pn-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></span><div class="pn-t"><b id="pnT"></b><small id="pnS"></small></div><button class="pn-x" id="pnX" type="button" aria-label="Close">&times;</button></div>
 <a class="wa" id="waFloat" href="https://wa.me/919103998116?text=Hi%20RIJAL%2C%20I%20need%20help." target="_blank" rel="noopener" aria-label="Instant order or query on WhatsApp"><span class="wa-t">Instant order/query</span><span class="wa-i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></span></a>
 <button class="totop" id="toTop" aria-label="Back to top"><span><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span></button>
+<div class="pov" id="payOv" role="alertdialog" aria-live="polite" aria-label="Preparing your secure payment" hidden>
+  <div class="pov-card">
+    <div class="pov-ring"><svg class="lg-mark pov-mark" viewBox="602 390 156 146" aria-hidden="true"><use href="#rj-all"/></svg></div>
+    <h3 id="povT">Securing your order</h3><p id="povS">Checking your cart and details</p>
+    <ul class="pov-steps"><li id="ps1">Checking your order</li><li id="ps2">Opening secure payment</li><li id="ps3">Almost there</li></ul>
+    <div class="pov-bar"><i id="povBar"></i></div>
+    <small>Please do not close or refresh this page</small>
+  </div>
+</div>
+<div class="dov" id="doneOv" role="dialog" aria-modal="true" aria-label="Order confirmation" hidden><div class="dov-in" id="doneIn"></div></div>
 <div class="gl" id="gl" role="status" aria-live="polite"><span class="gl-i" id="glI"></span><div class="gl-t"><b id="glN"></b><small id="glS"></small></div><button class="gl-go" id="glGo" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg><span>Checkout</span><svg class="ar" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
 <div class="overlay" id="overlay"></div>
 <aside class="drawer" id="drawer" aria-label="Cart">
@@ -184,20 +203,21 @@ const stepHTML=(id,n)=>`<div class="stp"><button type="button" data-q="${id}:-1"
 const actHTML=p=>p.stock===0?'<button class="btn" disabled>Sold out</button>':`${cart[p.id]?stepHTML(p.id,cart[p.id]):`<button class="btn add" data-add="${p.id}">Add to cart</button>`}<button class="btn buy" data-buy="${p.id}">Buy now</button>`;
 const syncCard=id=>{const p=PRODUCTS.find(x=>x.id===id);document.querySelectorAll(`[data-act="${id}"]`).forEach(el=>{if(p)el.innerHTML=actHTML(p)})};
 const syncAll=()=>PRODUCTS.forEach(p=>syncCard(p.id));
+const metaOf=p=>{const c=PRODUCT_META[p.id]||{};return{size:p.size||c.size||'',rating:p.rating||c.rating||0,count:p.ratingCount||c.count||0,bought:p.bought||c.bought||'',badge:p.badge||c.badge||'',choice:p.choice||c.choice||'',mrp:p.mrp||c.mrp||0}};
 function renderGrid(){
-  const L=PRODUCTS.filter(p=>!isCombo(p)),any=f=>L.some(p=>f(PRODUCT_META[p.id]||{},p)),aS=any(m=>m.size),aR=any(m=>m.rating>0),aB=any(m=>m.bought),aG=any(m=>m.badge),aM=any((m,p)=>m.mrp>p.price),aL=any((m,p)=>typeof p.stock==='number'&&p.stock>0&&p.stock<=5);
+  const L=PRODUCTS.filter(p=>!isCombo(p)),any=f=>L.some(p=>f(metaOf(p),p)),aS=any(m=>m.size),aR=any(m=>m.rating>0),aB=any(m=>m.bought),aG=any(m=>m.badge),aM=any((m,p)=>m.mrp>p.price),aL=any((m,p)=>typeof p.stock==='number'&&p.stock>0&&p.stock<=5);
   $('#grid').innerHTML=L.map(p=>{
-   const m=PRODUCT_META[p.id]||{},off=m.mrp>p.price?Math.round((m.mrp-p.price)/m.mrp*100):0;
+   const m=metaOf(p),off=m.mrp>p.price?Math.round((m.mrp-p.price)/m.mrp*100):0;
    return `<article class="card" data-pid="${p.id}">
  <div class="pic">${m.choice?`<span class="pchoice">${lpEsc(m.choice)}</span>`:''}${p.imgs.length>1?`<div class="sl">${p.imgs.map(u=>`<img src="${thumb(u)}" alt="${p.name}" loading="lazy" decoding="async">`).join('')}</div><button class="arr l" data-sl="-1" aria-label="Previous photo">‹</button><button class="arr r" data-sl="1" aria-label="Next photo">›</button><div class="dots">${p.imgs.map((_,i)=>`<i${i?'':' class="on"'}></i>`).join('')}</div>`:p.imgs.length?`<img src="${thumb(p.imgs[0])}" alt="${p.name}" loading="lazy" decoding="async">`:p.name}</div>
  <div class="body"><h3>${p.name}</h3>${m.size?`<span class="chip">${lpEsc(m.size)}</span>`:(aS?'<span class="sp sz"></span>':'')}<p>${p.desc}</p>
  ${m.rating>0?`<div class="rate"><b>${m.rating}</b>${stars(m.rating)}${m.count?`<span>(${m.count})</span>`:''}</div>`:(aR?'<div class="sp rt"></div>':'')}
  ${m.bought?`<div class="bought">${lpEsc(m.bought)}</div>`:(aB?'<div class="sp bt"></div>':'')}${m.badge?`<span class="fest">${lpEsc(m.badge)}</span>`:(aG?'<span class="sp bg"></span>':'')}
  <div class="pr${aM?' two':''}"><span class="price">${rs(p.price)}</span>${off?`<span class="mrp">M.R.P: <s>${rs(m.mrp)}</s></span><span class="off">(${off}% off)</span>`:''}</div>
- <div class="dl">${SHIP===0?'FREE delivery':'FREE delivery on orders over '+rs(FREE_ABOVE)}</div>
+ <div class="dl">FREE delivery on prepaid orders</div>
  ${typeof p.stock==='number'&&p.stock>0&&p.stock<=5?`<small style="color:#b3261e">Only ${p.stock} left</small>`:(aL?'<small class="sp lw">&nbsp;</small>':'')}
  <div class="act" data-act="${p.id}">${actHTML(p)}</div></div></article>`}).join('')||'<p>Products coming soon.</p>'}
-function apply(l){PRODUCTS=l.products.map(p=>{const m=PRODUCT_META[p.id];return m&&m.imgs&&m.imgs.length?{...p,imgs:m.imgs,img:m.imgs[0]}:p});FREE_ABOVE=l.freeAbove;SHIP=l.fee;tkBuild();$('#shipnote').textContent=SHIP===0?'Free shipping on all orders.':'Free shipping on orders of '+rs(FREE_ABOVE)+' and above. Otherwise a flat '+rs(SHIP)+'.';renderGrid();comboBuild();lpBuild();reveal();updateCount()}
+function apply(l){PRODUCTS=l.products.map(p=>{const m=PRODUCT_META[p.id];return (!p.imgs||!p.imgs.length)&&m&&m.imgs&&m.imgs.length?{...p,imgs:m.imgs,img:m.imgs[0]}:p});FREE_ABOVE=l.freeAbove;SHIP=l.fee;if(l.cod)COD=l.cod;tkBuild();$('#shipnote').textContent='Free shipping on all prepaid orders.';renderGrid();comboBuild();lpBuild();reveal();updateCount()}
 document.addEventListener('DOMContentLoaded',()=>{try{const c=JSON.parse(localStorage.getItem('rs_p')||'null');if(c&&c.products)apply(c)}catch(_){}});
 function load(tries){
   Promise.race([tries?fetch('/.netlify/functions/products').then(r=>{if(!r.ok)throw 0;return r.json()}):window.__p,new Promise((_,no)=>setTimeout(()=>no(0),8000))])
@@ -210,8 +230,41 @@ addEventListener('online',()=>{if(!PRODUCTS.length)load(1)});
 
 const save=()=>sessionStorage.setItem('rs_cart',JSON.stringify(cart));
 const items=()=>Object.entries(cart).map(([id,qty])=>({id,qty,...PRODUCTS.find(p=>p.id===id)})).filter(i=>i.name);
-const totals=()=>{const s=items().reduce((a,i)=>a+i.price*i.qty,0);const sh=s&&s<FREE_ABOVE?SHIP:0;return{s,sh,t:s+sh}};
-const open=v=>{$('#overlay').classList.toggle('open',v);$('#drawer').classList.toggle('open',v);if(v){glHide();renderCart();loadRzp().catch(()=>{})}};
+let PAYM='online',COUPON=null; // PAYM: 'online', 'cod_delivery' or 'cod_extra'. COUPON: what /apply-coupon returned
+let COD={delivery:{enabled:false,fee:80},extra:{enabled:false,fee:50}}; // comes from the server (admin panel > Checkout)
+const okPay=m=>m==='online'||(m==='cod_delivery'&&COD.delivery.enabled)||(m==='cod_extra'&&COD.extra.enabled);
+const couponOff=(c,s)=>{if(!c||s<(c.minSubtotal||0))return 0;let d=c.type==='flat'?c.value:Math.floor(s*c.value/100);if(c.maxDiscount)d=Math.min(d,c.maxDiscount);return Math.max(0,Math.min(d,s))};
+const totals=()=>{
+  const s=items().reduce((a,i)=>a+i.price*i.qty,0),d=couponOff(COUPON,s);let sh=0,cf=0;
+  if(s&&PAYM==='cod_delivery')sh=COD.delivery.fee;
+  if(s&&PAYM==='cod_extra'){sh=s<FREE_ABOVE?SHIP:0;cf=COD.extra.fee}
+  const t=s-d+sh+cf,now=!s?0:PAYM==='cod_delivery'?sh:PAYM==='cod_extra'?cf:t;
+  return{s,d,sh,cf,t,now,due:t-now};
+};
+const ICON_TAG='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12.5V4h8.5L21 13.5 13.5 21z"/><circle cx="7.5" cy="8.5" r="1.3"/></svg>';
+const ICON_OK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>';
+const cpSaveTxt=t=>t.d?'You save '+rs(t.d):(COUPON&&COUPON.minSubtotal?'Add items worth '+rs(COUPON.minSubtotal)+' or more to use this code':'');
+const cpHTML=t=>COUPON
+ ?`<div class="cpx ok"><span class="cpi">${ICON_OK}</span><div class="cpt"><b>${lpEsc(COUPON.code)} applied</b><small id="cpSave">${cpSaveTxt(t)}</small></div><button type="button" class="cpr" id="cpBtn">Remove</button></div>`
+ :`<div class="cpx"><span class="cpi">${ICON_TAG}</span><input id="cpIn" placeholder="Have a coupon code?" autocapitalize="characters" autocomplete="off" aria-label="Coupon code"><button type="button" class="btn" id="cpBtn">Apply</button></div><div class="cpm" id="cpMsg"></div>`;
+const shipTxt=t=>PAYM==='cod_delivery'?rs(t.sh)+' (pay now)':PAYM==='cod_extra'?(t.sh?rs(t.sh)+' (pay on delivery)':'Free'):'Free';
+const payLabel=t=>PAYM==='online'?'Pay '+rs(t.t)+' securely':'Pay '+rs(t.now)+' to confirm COD order';
+const ICON_CARD='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3 10h18M7 15h4"/></svg>';
+const ICON_CASH='<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="6.5" width="19" height="11" rx="2"/><circle cx="12" cy="12" r="2.6"/><path d="M6 10v.01M18 14v.01"/></svg>';
+const payHTML=()=>{
+  const r=(v,ic,t,x)=>`<label><span class="pt"><span class="pi">${ic}</span><b>${t}</b></span><small>${x}</small><input type="radio" name="pm" value="${v}"${PAYM===v?' checked':''}></label>`;
+  return '<div class="pm">'+r('online',ICON_CARD,'Pay online','UPI, card or netbanking. Free shipping.')
+   +(COD.delivery.enabled?r('cod_delivery',ICON_CASH,'Cash on delivery','Pay '+rs(COD.delivery.fee)+' delivery charge now. Pay the order value on delivery.'):'')
+   +(COD.extra.enabled?r('cod_extra',ICON_CASH,'Cash on delivery with COD fee','Pay an extra '+rs(COD.extra.fee)+' COD fee now. Pay the order value'+(SHIP?' and delivery charge ('+rs(SHIP)+', free from '+rs(FREE_ABOVE)+')':'')+' on delivery.'):'')+'</div>';
+};
+function updTot(t){
+  $('#tSub').textContent=rs(t.s);$('#tDisc').textContent='- '+rs(t.d);$('#rDisc').hidden=!t.d;
+  $('#tShip').textContent=shipTxt(t);$('#tFee').textContent=rs(t.cf)+' (pay now)';$('#rFee').hidden=!t.cf;
+  $('#tTot').textContent=rs(t.t);$('#tDue').textContent=rs(t.due);$('#rDue').hidden=!t.due;
+  const cs=$('#cpSave');if(cs)cs.textContent=cpSaveTxt(t);
+  const b=$('#pay');if(b&&!b.disabled)b.textContent=payLabel(t);
+}
+const open=v=>{$('#overlay').classList.toggle('open',v);$('#drawer').classList.toggle('open',v);if(v){glHide();renderCart();loadRzp().catch(()=>{});if(items().length)track('view_cart',{currency:'INR',value:totals().s,items:gaCart()})}};
 $('#openCart').onclick=()=>open(true);$('#closeCart').onclick=()=>open(false);$('#overlay').onclick=()=>open(false);
 document.addEventListener('keydown',e=>{if(e.key==='Escape')open(false)});
 function updateCount(){$('#count').textContent=items().reduce((a,i)=>a+i.qty,0)}
@@ -227,20 +280,24 @@ function recHTML(inCart){
   return `<div class="rec"><p class="rec-t">Customers who ordered these also ordered</p><div class="rec-v"><div class="rec-tr" style="animation-duration:${Math.max(14,one.length*5)}s">${h}${h}</div></div></div>`;
 }
 function renderCart(){
+  if(!okPay(PAYM))PAYM='online';
   const list=items(),t=totals(),key=list.map(i=>i.id).join(',');
   if(list.length&&key===cartKey&&$('#co')){
     list.forEach(i=>{const x=document.querySelector('#cartBody [data-qi="'+i.id+'"]');if(x&&document.activeElement!==x)x.value=i.qty});
-    $('#tSub').textContent=rs(t.s);$('#tShip').textContent=t.sh?rs(t.sh):'Free';$('#tTot').textContent=rs(t.t);
-    const b=$('#pay');if(b&&!b.disabled)b.textContent='Pay '+rs(t.t)+' securely';
+    updTot(t);
     return}
   const keep=$('#co')?Object.fromEntries(new FormData($('#co'))):{};
   cartKey=key;
   if(!list.length){$('#cartBody').innerHTML='<p class="sub" style="margin-top:20px">Your cart is empty. Add a product to get started.</p>'+recHTML([]);return}
   $('#cartBody').innerHTML=list.map(i=>`<div class="row"><div class="ci"><strong>${i.name}</strong><span>${rs(i.price)} each</span><button type="button" class="rmv" data-rm="${i.id}">Remove</button></div>${stepHTML(i.id,i.qty)}</div>`).join('')+
   recHTML(list.map(i=>i.id))+
-  `<div class="tot"><span>Subtotal</span><span id="tSub">${rs(t.s)}</span></div>
-   <div class="tot"><span>Shipping</span><span id="tShip">${t.sh?rs(t.sh):'Free'}</span></div>
+  `${cpHTML(t)}
+   <div class="tot"><span>Subtotal</span><span id="tSub">${rs(t.s)}</span></div>
+   <div class="tot" id="rDisc"${t.d?'':' hidden'}><span>Discount</span><span id="tDisc">- ${rs(t.d)}</span></div>
+   <div class="tot"><span>Shipping</span><span id="tShip">${shipTxt(t)}</span></div>
+   <div class="tot" id="rFee"${t.cf?'':' hidden'}><span>COD fee</span><span id="tFee">${rs(t.cf)} (pay now)</span></div>
    <div class="tot big"><span>Total</span><span id="tTot">${rs(t.t)}</span></div>
+   <div class="tot" id="rDue"${t.due?'':' hidden'}><span>Pay on delivery</span><span id="tDue">${rs(t.due)}</span></div>
    <form id="co" novalidate>
     <label>Full name<input name="name" autocomplete="name" required></label>
     <div class="two"><label>Phone (10 digits)<input name="phone" inputmode="numeric" maxlength="10" autocomplete="tel-national" required></label>
@@ -249,38 +306,170 @@ function renderCart(){
     <div class="two"><label>City<input name="city" required></label><label>State<input name="state" required></label></div>
     <label>Pincode<input name="pincode" inputmode="numeric" maxlength="6" autocomplete="postal-code" required></label>
     <div class="err" id="err" role="alert"></div>
-    <button class="btn" id="pay" style="width:100%;margin-top:8px">Pay ${rs(t.t)} securely</button>
+    ${payHTML()}
+    <button class="btn" id="pay" style="width:100%;margin-top:8px">${payLabel(t)}</button>
     <p class="note">By paying you agree to our <a href="policies.html#terms">Terms</a> and <a href="policies.html#refund">Refund Policy</a>.</p>
    </form>`;
   const f=$('#co');Object.entries(keep).forEach(([k,v])=>{if(f[k]&&typeof v==='string')f[k].value=v});
   f.onsubmit=pay;
 }
 
+/* ---------- Payment waiting popup + confirmation page ---------- */
+const SUPPORT={email:'rijalstore1212@gmail.com',phone:'+91 91039 98116'};
+function payStep(n){
+  ['ps1','ps2','ps3'].forEach((id,k)=>{$('#'+id).className=k+1<n?'ok':k+1===n?'on':''});
+  $('#povT').textContent=['','Securing your order','Opening secure payment','Almost there'][n];
+  $('#povS').textContent=['','Checking your cart and details','Connecting to Razorpay','Your payment window is opening'][n];
+  $('#povBar').style.width=(n*33)+'%';
+}
+function payShow(){$('#payOv').hidden=false;document.body.classList.add('lock');payStep(1)}
+function payHide(){$('#payOv').hidden=true;if($('#doneOv').hidden)document.body.classList.remove('lock')}
+
 async function pay(e){
   e.preventDefault();
   const f=Object.fromEntries(new FormData(e.target)), btn=$('#pay'), err=$('#err');
   err.textContent='';
   if(!f.name.trim()||!/^[6-9]\d{9}$/.test(f.phone)||!/^\S+@\S+\.\S+$/.test(f.email)||!f.address.trim()||!f.city.trim()||!f.state.trim()||!/^\d{6}$/.test(f.pincode)){
-    err.textContent='Check your details: use a 10-digit mobile number, a valid email and a 6-digit pincode.';return}
-  btn.disabled=true;btn.textContent='Starting payment…';
+    err.textContent='Check your details: use a 10-digit mobile number, a valid email and a 6-digit pincode.';err.scrollIntoView({block:'center',behavior:'smooth'});return}
+  btn.disabled=true;btn.textContent='Starting payment…';payShow();
+  track('begin_checkout',{currency:'INR',value:totals().t,payment_type:PAYM,coupon:COUPON?COUPON.code:undefined,items:gaCart()});
   try{
     const r=await fetch('/.netlify/functions/create-order',{method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({items:items().map(({id,qty})=>({id,qty})),customer:f})});
-    const d=await r.json(); if(!r.ok) throw new Error(d.error||'Could not start payment');
+      body:JSON.stringify({items:items().map(({id,qty})=>({id,qty})),customer:f,payment:PAYM,coupon:COUPON&&COUPON.code})});
+    let d={};try{d=await r.json()}catch(_){}
+    if(!r.ok||!d.orderId){console.error('create-order failed',r.status,d);throw new Error(d.error||(r.status>=500?'Our payment server could not start the payment. Please try again in a moment, or order on WhatsApp.':'Could not start payment. Please try again.'))}
+    payStep(2);
     await loadRzp();
+    payStep(3);
     const rzp=new Razorpay({key:d.keyId,amount:d.amount,currency:'INR',order_id:d.orderId,name:'RIJAL',description:'Order payment',
       prefill:{name:f.name,email:f.email,contact:f.phone},theme:{color:'#16110E'},
-      modal:{ondismiss:()=>{btn.disabled=false;btn.textContent='Pay '+rs(totals().t)+' securely'}},
-      handler:async res=>{
-        try{const v=await fetch('/.netlify/functions/verify-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(res)});if(!v.ok)throw 0}catch(_){}
-        cart={};save();updateCount();cartKey='';syncAll();
-        $('#cartBody').innerHTML=`<div class="done"><h2>Thank you!</h2><p>Your payment was received.<br>Order ID: <strong>${d.orderId}</strong></p><p class="note">Keep your Order ID for any queries.</p></div>`;
+      modal:{ondismiss:()=>{payHide();btn.disabled=false;btn.textContent=payLabel(totals())}},
+      handler:res=>{
+        payHide();
+        // the confirmation shows at once; the server check runs in the background (the webhook is the safety net)
+        fetch('/.netlify/functions/verify-payment',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(res),keepalive:true}).catch(()=>{});
+        const S={d,at:new Date(),f:{name:f.name.trim(),email:f.email.trim(),phone:f.phone,address:f.address.trim(),city:f.city.trim(),state:f.state.trim(),pincode:f.pincode},t:totals(),
+          items:items().map(i=>({name:i.name,qty:i.qty,price:i.price})),coupon:COUPON&&COUPON.code};
+        track('purchase',{transaction_id:d.orderId,currency:'INR',value:S.t.t,shipping:S.t.sh+S.t.cf,payment_type:d.payment,coupon:S.coupon||undefined,items:S.items.map(i=>({item_name:i.name,price:i.price,quantity:i.qty}))});
+        cart={};save();updateCount();cartKey='';syncAll();COUPON=null;PAYM='online';
+        open(false);showDone(S);
       }});
-    rzp.on('payment.failed',()=>{err.textContent='Payment failed. No money was taken, or it will be refunded. Please try again.';btn.disabled=false;btn.textContent='Pay '+rs(totals().t)+' securely'});
+    rzp.on('payment.failed',()=>{track('payment_failed',{payment_type:PAYM});payHide();err.textContent='Payment failed. No money was taken, or it will be refunded. Please try again.';btn.disabled=false;btn.textContent=payLabel(totals())});
+    track('add_payment_info',{currency:'INR',value:totals().t,payment_type:PAYM});
     rzp.open();
-  }catch(ex){err.textContent=ex.message;btn.disabled=false;btn.textContent='Pay '+rs(totals().t)+' securely'}
+    setTimeout(payHide,1100);
+  }catch(ex){payHide();console.error(ex);err.textContent=ex.message||'Could not start payment. Please try again.';err.scrollIntoView({block:'center',behavior:'smooth'});btn.disabled=false;btn.textContent=payLabel(totals())}
 }
 
+function showDone(S){
+  const dt=S.at,dateS=dt.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}),timeS=dt.toLocaleTimeString('en-IN',{hour:'numeric',minute:'2-digit',hour12:true});
+  const t=S.t,d=S.d,cod=d.payment&&d.payment!=='online';
+  const row=(a,b,cls)=>`<div class="dv-row${cls?' '+cls:''}"><span>${a}</span><b>${b}</b></div>`;
+  const lines=[row('Subtotal',rs(t.s))];
+  if(t.d)lines.push(row('Discount'+(S.coupon?' ('+lpEsc(S.coupon)+')':''),'- '+rs(t.d)));
+  if(PAYM_LABEL(d.payment)==='extra'){lines.push(row('Delivery charge',t.sh?rs(t.sh)+' on delivery':'Free'));lines.push(row('COD fee',rs(t.cf)))}
+  else if(cod)lines.push(row('Delivery charge',rs(t.sh)));
+  else lines.push(row('Shipping','Free'));
+  lines.push(row('Total',rs(t.t),'dv-total'));
+  lines.push(row(cod?'Paid online now':'Paid online',rs(t.now)));
+  $('#doneIn').innerHTML=`
+   <div class="dv-top"><svg class="lg-mark" viewBox="602 390 156 146" aria-hidden="true"><use href="#rj-all"/></svg><svg class="lg-word" viewBox="499 561 376 79" role="img" aria-label="RIJAL"><use href="#rj-all"/></svg></div>
+   <div class="dv-check"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 25l9 9 16-19"/></svg></div>
+   <h2 class="dv-h">Thank You!</h2>
+   <p class="dv-sub">Your order is confirmed</p>
+   <div class="dv-card">
+     ${row('Order ID',lpEsc(d.orderId))}${row('Ordered by',lpEsc(S.f.name))}${row('Date',dateS)}${row('Time',timeS)}
+     <hr class="dv-hr">
+     ${S.items.map(i=>row(i.qty+' &times; '+lpEsc(i.name),rs(i.price*i.qty))).join('')}
+     <hr class="dv-hr">${lines.join('')}
+     ${cod?`<div class="dv-cod">Please keep ${rs(t.due)} ready to pay on delivery.</div>`:''}
+     <hr class="dv-hr"><div class="dv-to"><span>Delivering to</span><b>${lpEsc(S.f.name)}</b>${lpEsc(S.f.address)}, ${lpEsc(S.f.city)}, ${lpEsc(S.f.state)} - ${lpEsc(S.f.pincode)}</div>
+   </div>
+   <div class="dv-shot"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13.5" r="3.5"/></svg><span>Please take a screenshot of this page for your reference.</span></div>
+   <div class="dv-act"><button class="btn" id="dvDl" type="button">Download receipt</button><button class="btn ghost" id="dvClose" type="button">Continue shopping</button></div>
+   ${d.mail?`<p class="dv-mail">A confirmation email is on its way to ${lpEsc(S.f.email)}.</p>`:''}
+   <p class="dv-fine">Track your parcel at <a href="https://rehbarpost.com/track" target="_blank" rel="noopener">rehbarpost.com/track</a><br>Questions? ${SUPPORT.phone} &middot; ${SUPPORT.email}</p>
+   <p class="dv-brand">RIJAL</p>`;
+  $('#dvDl').onclick=()=>dvPng(S);
+  $('#dvClose').onclick=()=>{$('#doneOv').hidden=true;document.body.classList.remove('lock');scrollTo({top:0,behavior:'instant'})};
+  $('#doneOv').hidden=false;document.body.classList.add('lock');$('#doneOv').scrollTop=0;
+  dvConfetti();
+}
+const PAYM_LABEL=p=>p==='cod_extra'?'extra':p&&p!=='online'?'cod':'online';
+
+function dvConfetti(){
+  if(calm)return;
+  const box=document.createElement('div');box.setAttribute('aria-hidden','true');
+  const cols=['#D9961F','#F8D98A','#B0121F','#F6EFE3','#7D0E1D'];
+  for(let k=0;k<64;k++){const e=document.createElement('i');e.className='cf';
+    e.style.cssText='--x:'+(Math.random()*100)+'%;--s:'+(6+Math.random()*7)+'px;--c:'+cols[k%cols.length]+';--d:'+(2.6+Math.random()*2.6)+'s;--l:'+(Math.random()*1.2)+'s;--r:'+(240+Math.random()*540)+'deg';box.appendChild(e)}
+  $('#doneOv').appendChild(box);setTimeout(()=>box.remove(),7500);
+}
+
+/* the downloadable receipt: drawn on a canvas and saved as a picture */
+function logoImg(color){
+  const defs=document.querySelector('svg[width="0"][aria-hidden="true"] defs');
+  if(!defs)return Promise.resolve(null);
+  const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="499 388 376 254" style="color:'+color+'"><defs>'+defs.innerHTML+'</defs><use href="#rj-all"/></svg>';
+  return new Promise(ok=>{const im=new Image();im.onload=()=>ok(im);im.onerror=()=>ok(null);im.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)});
+}
+async function dvPng(S){
+  const btn=$('#dvDl');btn.disabled=true;
+  try{
+    try{await document.fonts.load('700 40px "Playfair Display"');await document.fonts.load('600 30px "Bricolage Grotesque"')}catch(_){}
+    const logo=await logoImg('#F5EEE2'),W=1080,P=70,SER='"Playfair Display",Georgia,serif',SAN='"Bricolage Grotesque",system-ui,Arial,sans-serif';
+    const dt=S.at,dateS=dt.toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'}),timeS=dt.toLocaleTimeString('en-IN',{hour:'numeric',minute:'2-digit',hour12:true});
+    const t=S.t,d=S.d,cod=d.payment&&d.payment!=='online';
+    const paint=(ctx,H,card)=>{
+      const rr=(x,y,w,h,r)=>{ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath()};
+      const wrap=(txt,font,maxW)=>{ctx.font=font;const out=[];let line='';String(txt).split(' ').forEach(w=>{const tt=line?line+' '+w:w;if(ctx.measureText(tt).width>maxW&&line){out.push(line);line=w}else line=tt});out.push(line);return out};
+      ctx.fillStyle='#F6EFE3';ctx.fillRect(0,0,W,H);
+      const g=ctx.createLinearGradient(0,0,0,340);g.addColorStop(0,'#241a15');g.addColorStop(1,'#120d0a');ctx.fillStyle=g;ctx.fillRect(0,0,W,340);
+      ctx.fillStyle='#D9961F';ctx.fillRect(0,340,W,6);
+      if(logo)ctx.drawImage(logo,(W-380)/2,34,380,257);
+      ctx.beginPath();ctx.arc(W/2,346,56,0,7);ctx.fillStyle='#F6EFE3';ctx.fill();ctx.beginPath();ctx.arc(W/2,346,46,0,7);ctx.fillStyle='#D9961F';ctx.fill();
+      ctx.strokeStyle='#2A1A14';ctx.lineWidth=8;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();ctx.moveTo(W/2-18,346);ctx.lineTo(W/2-4,360);ctx.lineTo(W/2+20,332);ctx.stroke();
+      ctx.textAlign='center';ctx.fillStyle='#2A1A14';ctx.font='700 78px '+SER;ctx.fillText('Thank You!',W/2,490);
+      ctx.fillStyle='#7A6657';ctx.font='500 34px '+SAN;ctx.fillText('Your order is confirmed',W/2,540);
+      let y=590;const x0=P,x1=W-P,cardTop=y;
+      const startY=y;
+      if(card){ctx.save();ctx.shadowColor='rgba(40,20,10,.25)';ctx.shadowBlur=36;ctx.shadowOffsetY=14;ctx.fillStyle='#FFFDF9';rr(P,startY,W-2*P,card,34);ctx.fill();ctx.restore()}
+      y+=44;
+      const row=(a,b,o={})=>{ctx.textAlign='left';ctx.fillStyle=o.dim?'#7A6657':'#7A6657';ctx.font='500 30px '+SAN;ctx.fillText(a,x0+36,y);
+        ctx.textAlign='right';ctx.fillStyle=o.color||'#2A1A14';ctx.font=(o.bold?'800 ':'700 ')+(o.big?'36px ':'31px ')+SAN;
+        let v=String(b);while(ctx.measureText(v).width>560&&v.length>4)v=v.slice(0,-2);if(v!==String(b))v=v.trimEnd()+'…';ctx.fillText(v,x1-36,y);y+=58};
+      const sep=()=>{ctx.strokeStyle='#E0CFB0';ctx.lineWidth=3;ctx.setLineDash([12,10]);ctx.beginPath();ctx.moveTo(x0+30,y-18);ctx.lineTo(x1-30,y-18);ctx.stroke();ctx.setLineDash([]);y+=14};
+      row('Order ID',d.orderId);row('Ordered by',S.f.name);row('Date',dateS);row('Time',timeS);sep();
+      S.items.forEach(i=>{const ls=wrap(i.qty+' x '+i.name,'600 30px '+SAN,560);ls.forEach((l,k)=>{ctx.textAlign='left';ctx.fillStyle='#2A1A14';ctx.font='600 30px '+SAN;ctx.fillText(l,x0+36,y);if(k===0){ctx.textAlign='right';ctx.fillText(rs(i.price*i.qty),x1-36,y)}y+=(k<ls.length-1?40:58)})});sep();
+      row('Subtotal',rs(t.s));if(t.d)row('Discount'+(S.coupon?' ('+S.coupon+')':''),'- '+rs(t.d),{color:'#7D0E1D'});
+      if(d.payment==='cod_extra'){row('Delivery charge',t.sh?rs(t.sh)+' on delivery':'Free');row('COD fee',rs(t.cf))}else if(cod)row('Delivery charge',rs(t.sh));else row('Shipping','Free');
+      row('Total',rs(t.t),{bold:1,big:1});row(cod?'Paid online now':'Paid online',rs(t.now));
+      if(cod){y+=6;rr(x0+30,y-34,W-2*P-60,74,16);ctx.fillStyle='#FDECEB';ctx.fill();ctx.strokeStyle='#F0B6B3';ctx.lineWidth=3;ctx.stroke();ctx.textAlign='center';ctx.fillStyle='#7D0E1D';ctx.font='800 31px '+SAN;ctx.fillText('Please keep '+rs(t.due)+' ready to pay on delivery',W/2,y+12);y+=84}
+      sep();ctx.textAlign='left';ctx.fillStyle='#7A6657';ctx.font='500 28px '+SAN;ctx.fillText('Delivering to',x0+36,y);y+=44;
+      wrap(S.f.name+', '+S.f.address+', '+S.f.city+', '+S.f.state+' - '+S.f.pincode,'600 30px '+SAN,W-2*P-72).forEach(l=>{ctx.fillStyle='#2A1A14';ctx.font='600 30px '+SAN;ctx.fillText(l,x0+36,y);y+=42});
+      y+=26;const cardH=y-startY;
+      return {cardTop:startY,cardH,y};
+    };
+    // pass 1 measures the height, pass 2 draws everything (card first, then the text on it)
+    const m=document.createElement('canvas');m.width=W;m.height=4000;const mm=paint(m.getContext('2d'),4000,0);
+    const bottom=mm.y+360,c=document.createElement('canvas');c.width=W;c.height=bottom;const ctx=c.getContext('2d');
+    paint(ctx,bottom,mm.cardH);
+    // footer
+    let fy=mm.y+70;ctx.textAlign='center';
+    ctx.strokeStyle='#D9961F';ctx.lineWidth=3;ctx.setLineDash([14,10]);ctx.beginPath();ctx.roundRect?ctx.roundRect(P,fy-46,W-2*P,92,22):ctx.rect(P,fy-46,W-2*P,92);ctx.stroke();ctx.setLineDash([]);
+    ctx.fillStyle='#7D0E1D';ctx.font='700 29px '+SAN;ctx.fillText('Please take a screenshot of this page for your reference.',W/2,fy+10);
+    fy+=120;ctx.fillStyle='#B8780F';ctx.font='700 46px '+SER;ctx.fillText('R I J A L',W/2,fy);
+    fy+=52;ctx.fillStyle='#7A6657';ctx.font='500 26px '+SAN;ctx.fillText(SUPPORT.email+'  |  '+SUPPORT.phone,W/2,fy);
+    fy+=42;ctx.fillText('Track your parcel: rehbarpost.com/track',W/2,fy);
+    c.toBlob(b=>{const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='RIJAL-order-'+d.orderId+'.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000)},'image/png');
+  }catch(x){console.error(x)}
+  btn.disabled=false;
+}
+
+/* ---------- Analytics events (Google Analytics). Safe: does nothing if analytics is off or blocked ---------- */
+const track=(n,p)=>{try{gtag('event',n,p||{})}catch(_){}};
+const gaItem=(p,q)=>({item_id:p.id,item_name:p.name,price:p.price,quantity:q||1});
+const gaCart=()=>items().map(i=>gaItem(i,i.qty));
 const glPos=()=>{const h=document.querySelector('header').getBoundingClientRect();$('#gl').style.top=(Math.max(h.bottom,0)+8)+'px'};
 addEventListener('scroll',()=>{if($('#gl').classList.contains('show'))glPos()},{passive:true});addEventListener('resize',()=>{if($('#gl').classList.contains('show'))glPos()});
 const clampQ=(id,n)=>Math.min(Math.max(n,0),maxQ(id));
@@ -296,6 +485,8 @@ function glShow(id){
 }
 function setQty(id,n,toast){
   n=clampQ(id,Math.floor(+n)||0);
+  const prev=cart[id]||0,pp=PRODUCTS.find(x=>x.id===id);
+  if(pp&&n!==prev)track(n>prev?'add_to_cart':'remove_from_cart',{currency:'INR',value:pp.price*Math.abs(n-prev),items:[gaItem(pp,Math.abs(n-prev))]});
   if(n>0)cart[id]=n;else delete cart[id];
   save();updateCount();syncCard(id);
   if($('#drawer').classList.contains('open'))renderCart();else if(toast)glShow(id);
@@ -339,7 +530,7 @@ function lpBuild(){
   if(!list.length)list=PRODUCTS.map(p=>({u:'',p}));
   list=list.slice(0,7);
   const key=list.map(x=>x.u+x.p.id+x.p.price).join('|');
-  const rib=['Hair oil','Beard oil','Wooden comb',SHIP===0?'Free shipping':'Free shipping above '+rs(FREE_ABOVE),'Secure UPI & cards','Made with care'].map(t=>'<span>'+lpEsc(t)+'</span>').join('');
+  const rib=['Hair oil','Beard oil','Wooden comb','Free shipping on prepaid orders','Secure UPI & cards','Made with care'].map(t=>'<span>'+lpEsc(t)+'</span>').join('');
   $('#lpRib').innerHTML=rib+rib;
   if(!list.length||key===lpKey)return;
   lpKey=key;lpList=list;car.classList.remove('load');
@@ -476,7 +667,7 @@ function comboBuild(){
     if(m.length>1&&!calm)tm=setInterval(()=>{t.classList.add('out');setTimeout(()=>{i=(i+1)%m.length;t.textContent=m[i];t.classList.remove('out')},300)},4500);
   }
   $('#annX').onclick=()=>{bar.hidden=true;try{sessionStorage.setItem('rs_ax',bar.dataset.k||'')}catch(_){}};
-  const trustSet=a=>{if(a&&a.trustLine)$('#trustLine').textContent=a.trustLine;if(a&&a.ticker&&a.ticker.length)tkBuild(a.ticker)};
+  const trustSet=a=>{if(a&&Array.isArray(a.videos)){REVIEW_VIDEOS.length=0;a.videos.forEach(v=>{if(v&&v.src)REVIEW_VIDEOS.push(v)});vrBuild()}if(a&&a.trustLine)$('#trustLine').textContent=a.trustLine;if(a&&a.ticker&&a.ticker.length)tkBuild(a.ticker)};
   try{const c=JSON.parse(localStorage.getItem('rs_ann')||'null');trustSet(c);show(c)}catch(_){}
   fetch('/.netlify/functions/announcement').then(r=>r.ok?r.json():null).then(a=>{if(!a)return;try{localStorage.setItem('rs_ann',JSON.stringify(a))}catch(_){}trustSet(a);show(a)}).catch(()=>{});
 })();
@@ -505,7 +696,7 @@ function comboBuild(){
     try{
       const r=await fetch('/.netlify/functions/reviews',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'submit',name:d.name,city:d.city,phone:d.phone,text:d.text,stars,website:d.website})});
       const j=await r.json().catch(()=>({}));if(!r.ok)throw new Error(j.error||'Could not send your review. Please try again.');
-      f.hidden=true;$('#rvOk').hidden=false;
+      f.hidden=true;$('#rvOk').hidden=false;track('submit_review',{rating:stars});
     }catch(x){err.textContent=x.message;btn.disabled=false;btn.textContent='Submit'}
   };
 })();
@@ -543,13 +734,45 @@ let tkItems=null;
 function tkBuild(items){
   if(items&&items.length)tkItems=items;
   const tr=$('#tkTr');if(!tr)return;
-  const L=(tkItems||TK_DEFAULT).map(t=>t==='{ship}'?(SHIP===0?'Free shipping on all orders':'Free shipping on orders above '+rs(FREE_ABOVE)):t);
+  const L=(tkItems||TK_DEFAULT).map(t=>t==='{ship}'?'Free shipping on all prepaid orders':t);
   const half=L.map(t=>'<span>'+lpEsc(t)+'</span><i>✦</i>').join('');
   let reps=1;tr.innerHTML=half+half;
   while(reps<8&&tr.scrollWidth/2<innerWidth+80){reps++;tr.innerHTML=half.repeat(reps)+half.repeat(reps)}
   tr.style.animationDuration=Math.max(22,Math.round(tr.scrollWidth/2/60))+'s';
 }
 tkBuild();
+
+/* ---------- Cash on delivery choice + coupon code ---------- */
+document.addEventListener('change',e=>{if(e.target.name==='pm'){PAYM=e.target.value;updTot(totals())}});
+document.addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.id==='cpIn'){e.preventDefault();$('#cpBtn').click()}});
+document.addEventListener('click',async e=>{
+  if(!e.target.closest('#cpBtn'))return;
+  if(COUPON){COUPON=null;cartKey='';renderCart();return}
+  const code=$('#cpIn').value.trim(),m=$('#cpMsg');if(!code)return;
+  m.textContent='Checking…';
+  try{
+    const r=await fetch('/.netlify/functions/apply-coupon',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code,items:items().map(({id,qty})=>({id,qty}))})}).then(x=>x.json());
+    track('apply_coupon',{coupon:code.toUpperCase(),success:!!r.ok});
+    if(r.ok){COUPON=r;cartKey='';renderCart()}else m.textContent=r.message||'This code is not valid';
+  }catch(_){m.textContent='Could not check the code. Please try again.'}
+});
+
+/* ---------- Analytics: clicks and sections seen ---------- */
+document.addEventListener('click',e=>{
+  const a=e.target.closest('a,button');if(!a)return;
+  if(a.matches('.wa'))track('click_whatsapp',{place:'floating_button'});
+  else if(a.matches('.ct-bulk,.bulk-badge:not(.trk)'))track('click_bulk_order');
+  else if(a.matches('.trk'))track('click_track_order');
+  else if(a.matches('.vr-card'))track('play_review_video',{video_number:(+a.dataset.vr||0)+1});
+  else if(a.matches('.ct'))track('click_contact',{method:/^mailto/.test(a.href)?'email':/^tel/.test(a.href)?'phone':'social'});
+  else if(a.id==='dvDl')track('download_receipt');
+},true);
+if('IntersectionObserver' in window){
+  const seen={};const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting&&!seen[x.target.id]){seen[x.target.id]=1;io.unobserve(x.target);
+    if(x.target.id==='products')track('view_item_list',{item_list_name:'Products',items:PRODUCTS.filter(p=>!isCombo(p)).map(p=>gaItem(p))});
+    else track('view_section',{section:x.target.id})}}),{threshold:.3});
+  ['products','combos','trust','reviews','contact'].forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el)});
+}
 
 /* ---------- Scroll reveal ---------- */
 const srIO=(!calm&&'IntersectionObserver' in window)?new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){const el=x.target;el.classList.add('in');srIO.unobserve(el);setTimeout(()=>{el.style.transitionDelay=''},1000)}}),{threshold:.12,rootMargin:'0px 0px -6% 0px'}):null;

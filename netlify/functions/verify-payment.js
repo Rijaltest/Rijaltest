@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const { markPaid, json } = require('./_lib');
+const { sendOrderEmails } = require('./_mail');
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') return json(405, { error: 'Method not allowed' });
@@ -14,6 +15,7 @@ exports.handler = async (event) => {
 
     const r = await markPaid(razorpay_order_id, razorpay_payment_id);
     if (!r.found) return json(404, { error: 'Order not found' });
+    if (!r.already) await sendOrderEmails(razorpay_order_id, r.order); // first time only: emails to the customer and to you
     return json(200, { ok: true, orderId: razorpay_order_id });
   } catch (e) {
     console.error(e);

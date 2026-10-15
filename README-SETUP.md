@@ -84,16 +84,58 @@ Keep this exact folder layout. Do not rename anything.
 3. Netlify: **Domain management** to connect your own domain.
 4. Trigger a deploy after changing keys.
 
+## Order emails with Brevo (customer confirmation + new-order email to you)
+Without this the shop works the same, just without emails. Free Brevo plan is enough to start.
+1. Go to brevo.com and create an account.
+2. **Senders, Domains & Dedicated IPs**, then **Senders**, then **Add a sender**. Use the email you want customers to see (for example `orders@yourdomain.com`). Brevo emails you a link to verify it. A Gmail address can work for testing but often lands in spam; a domain email is better.
+3. **SMTP & API**, then **API keys**, then **Generate a new API key**. Copy it.
+4. In Netlify, **Site configuration**, **Environment variables**, add:
+
+| Name | Value |
+|---|---|
+| `BREVO_API_KEY` | the key from step 3 |
+| `BREVO_SENDER_EMAIL` | the sender you verified in step 2 |
+| `BREVO_SENDER_NAME` | optional, for example `RIJAL` |
+| `OWNER_EMAIL` | optional, where YOU get the new-order email (if empty, your `ADMIN_EMAIL` is used) |
+
+5. **Deploys**, **Trigger deploy**.
+6. Place a test order. The customer gets "Your RIJAL order is confirmed" and you get "New order ...". In the admin panel each order shows `Emails: to you sent, to customer sent`. If it says `failed`, check the API key and the sender, and look at Brevo, **Transactional**, **Logs**.
+
+## Visitor and funnel tracking (Google Analytics)
+The site already contains your Google Analytics tag (`G-BGW29WYSYZ`) in `public/index.html` and `public/blog.html`. To switch tracking off, delete the first `<script>` block in the `<head>` of those two files.
+- It loads late (after the page has finished loading or on the first scroll or tap), so it does not slow the first view.
+- **Exclude your own phone/computer:** open your site once with `?noga=1` at the end of the address (for example `https://yoursite.netlify.app/?noga=1`). Use `?noga=0` to switch it back on.
+- **See it working:** open your site on your phone, then in analytics.google.com open **Reports, Realtime**.
+- **Funnel (landing, cart, left):** **Explore, Funnel exploration**. Steps, in order: `page_view` (visited), `view_item_list` (saw the products), `add_to_cart`, `view_cart`, `begin_checkout`, `add_payment_info`, `purchase`. Break the funnel down by Device category, Region, or Session source.
+- **Mark purchases as a key event:** Admin, **Events**, switch on **Mark as key event** next to `purchase` once it appears.
+- **See online vs COD:** Admin, **Custom definitions**, **Create custom dimension**, scope **Event**, event parameter `payment_type`.
+- Other events recorded: `remove_from_cart`, `apply_coupon`, `payment_failed`, `click_whatsapp`, `click_bulk_order`, `click_track_order`, `play_review_video`, `click_contact`, `submit_review`, `download_receipt`, `view_section`.
+- Most reports fill in after 24 to 48 hours. Ad blockers hide some visitors, so numbers are close, not exact.
+
 ## Everyday changes
 - **Prices, descriptions, photos, stock:** admin panel, **Products** tab. Photo links: one per line, the first is the main photo. Stock empty means unlimited.
 - **Combos:** add a product with the word `Combo` or `Bundle` in its name, and write the product names inside the description.
-- **Ratings, tags, original price (MRP):** `PRODUCT_META` inside `public/index.html`.
-- **Customer videos and written reviews:** `REVIEW_VIDEOS` and `REVIEWS` inside `public/index.html`.
+- **Product card details (size, rating, number of ratings, "bought" line, red offer tag, photo label such as Best Seller, MRP):** admin panel, **Products** tab, in the box "Details shown on the shop card". Leave a box empty to hide it. (`PRODUCT_META` inside `public/index.html` is only a backup.)
+- **Review videos:** admin panel, **Videos** tab. Paste Instagram reel, YouTube or YouTube Shorts links (or direct video links), add a label and an optional cover picture, reorder, remove, and Save.
+- **Written reviews:** `REVIEWS` inside `public/index.html`, plus the reviews customers send (approve them in the admin **Reviews** tab).
 - **India map numbers:** `TM` inside `public/index.html` (real numbers only).
 - **Order notification states:** `LIST` inside `public/index.html` (only states you really delivered to).
 - **Blog articles:** `POSTS` inside `public/blog.html`.
-- **Shipping fee and free-shipping limit:** default is 49 and 599. To change, create in Firestore a collection `settings` with a document `shop` and fields `shippingFee` and `freeAbove` (numbers). Also update the text in your products section if needed.
+- **Cash on delivery, delivery charge, free shipping:** admin panel, **Checkout** tab. Prepaid orders always ship free. There you switch each Cash on Delivery option on or off and set the amount the customer pays online now:
+  - *Delivery charge now*: the customer pays this amount now (it is the whole delivery charge) and the order value on delivery.
+  - *Extra COD fee now*: the customer pays this extra fee now, on top of the order value; the order value and the normal delivery charge are paid on delivery.
+- **Coupon codes:** admin panel, **Coupons** tab. Make a code, choose *Percent off* (with an optional maximum, for example 20% up to Rs 200) or *Flat amount off*, and optionally set a minimum order, how many times it can be used, an expiry date, and turn it on or off.
 - **Theme:** Noir & Gold is on. For another look change `<html lang="en">` in `public/index.html` to `<html lang="en" data-theme="green">` or `data-theme="cream"`.
+
+## If payment does not start (do this first)
+1. Open this address in your browser (put your own site name): `https://YOUR-SITE.netlify.app/.netlify/functions/health`
+2. You will see a short list. Every line should say `true` or `OK`. Read the line that says `PROBLEM` or `false`:
+   - a setting is `false`: add it again in Netlify, Site configuration, Environment variables, then press Deploy again
+   - Firebase key file problem: paste the whole key file again (from the first `{` to the last `}`)
+   - database problem: make sure you created Firestore in Firebase (Step 2.2)
+   - Razorpay problem: copy the Key Id and Key Secret again; both must be test keys, or both live keys
+3. After any change press **Deploy**, wait for **Published**, then press Ctrl+F5 on your site.
+4. When payments work you can delete `netlify/functions/health.js`.
 
 ## If something goes wrong
 - Site shows old content: press Ctrl+F5, or open it in a private window.

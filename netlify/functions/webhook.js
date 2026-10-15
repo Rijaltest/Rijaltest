@@ -3,6 +3,7 @@
 // Events: payment.captured, order.paid
 const crypto = require('crypto');
 const { markPaid, json } = require('./_lib');
+const { sendOrderEmails } = require('./_mail');
 
 exports.handler = async (event) => {
   if (event.httpMethod !== 'POST') return json(405, { error: 'Method not allowed' });
@@ -16,7 +17,8 @@ exports.handler = async (event) => {
     const body = JSON.parse(raw);
     const pay = body.payload && body.payload.payment && body.payload.payment.entity;
     if ((body.event === 'payment.captured' || body.event === 'order.paid') && pay) {
-      await markPaid(pay.order_id, pay.id);
+      const r = await markPaid(pay.order_id, pay.id);
+      if (r.found && !r.already) await sendOrderEmails(pay.order_id, r.order);
     }
     return json(200, { ok: true });
   } catch (e) {
