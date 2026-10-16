@@ -7,7 +7,7 @@
   const $ = (s) => document.querySelector(s);
   const esc = (v) => String(v == null ? '' : v).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const st = document.createElement('style');
-  st.textContent = '#annPanel label{display:block;font-weight:600;font-size:.88rem;margin:12px 0 4px}#annPanel input[type=text],#annPanel textarea{width:100%;padding:11px;border:1px solid #bfcac3;border-radius:10px;font:inherit}#annPanel .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}#annPanel h3{font-size:1.1rem;margin-bottom:4px}#coPanel label,#cpPanel label{display:block;font-weight:600;font-size:.88rem;margin:12px 0 4px}#coPanel input[type=text],#cpPanel input[type=text]{width:100%;padding:11px;border:1px solid #bfcac3;border-radius:10px;font:inherit}#coPanel .two,#cpPanel .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}#coPanel h3,#cpPanel h3{font-size:1.1rem;margin-bottom:4px}.co-opt{border:1px solid #e3e8e2;border-radius:12px;padding:12px;margin-top:12px}.co-opt .co-t{display:flex;gap:8px;align-items:center;font-weight:700;margin:0}.cpl{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.cpl .btn{padding:8px 16px;font-size:.9rem}@media(max-width:600px){#coPanel .two,#cpPanel .two{grid-template-columns:1fr}}.vdr{border:1px solid #e3e8e2;border-radius:12px;padding:12px;margin-bottom:10px}.vdr input{width:100%;padding:10px;border:1px solid #bfcac3;border-radius:10px;font:inherit;margin-top:6px}.vdr .two{display:grid;grid-template-columns:2fr 1fr;gap:10px}@media(max-width:600px){.vdr .two{grid-template-columns:1fr}}.rvb{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.rvb .btn{padding:8px 16px;font-size:.9rem}.rvt{white-space:pre-wrap;margin:8px 0}@media(max-width:600px){#annPanel .two{grid-template-columns:1fr}}';
+  st.textContent = '#annPanel label{display:block;font-weight:600;font-size:.88rem;margin:12px 0 4px}#annPanel input[type=text],#annPanel textarea{width:100%;padding:11px;border:1px solid #bfcac3;border-radius:10px;font:inherit}#annPanel .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}#annPanel h3{font-size:1.1rem;margin-bottom:4px}#ppPanel label,#coPanel label,#cpPanel label{display:block;font-weight:600;font-size:.88rem;margin:12px 0 4px}#ppPanel input[type=text],#coPanel input[type=text],#cpPanel input[type=text]{width:100%;padding:11px;border:1px solid #bfcac3;border-radius:10px;font:inherit}#ppPanel .two,#coPanel .two,#cpPanel .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}#ppPanel h3,#coPanel h3,#cpPanel h3{font-size:1.1rem;margin-bottom:4px}.co-opt{border:1px solid #e3e8e2;border-radius:12px;padding:12px;margin-top:12px}.co-opt .co-t{display:flex;gap:8px;align-items:center;font-weight:700;margin:0}.cpl{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.cpl .btn{padding:8px 16px;font-size:.9rem}@media(max-width:600px){#ppPanel .two,#coPanel .two,#cpPanel .two{grid-template-columns:1fr}}.vdr{border:1px solid #e3e8e2;border-radius:12px;padding:12px;margin-bottom:10px}.vdr input{width:100%;padding:10px;border:1px solid #bfcac3;border-radius:10px;font:inherit;margin-top:6px}.vdr .two{display:grid;grid-template-columns:2fr 1fr;gap:10px}@media(max-width:600px){.vdr .two{grid-template-columns:1fr}}.rvb{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.rvb .btn{padding:8px 16px;font-size:.9rem}.rvt{white-space:pre-wrap;margin:8px 0}@media(max-width:600px){#annPanel .two{grid-template-columns:1fr}}';
   document.head.appendChild(st);
 
   const tab = document.createElement('button'); tab.className = 'tab'; tab.textContent = 'Site text';
@@ -15,7 +15,8 @@
   const coTab = document.createElement('button'); coTab.className = 'tab'; coTab.textContent = 'Checkout';
   const cpTab = document.createElement('button'); cpTab.className = 'tab'; cpTab.textContent = 'Coupons';
   const vdTab = document.createElement('button'); vdTab.className = 'tab'; vdTab.textContent = 'Videos';
-  [tab, revTab, coTab, cpTab, vdTab].forEach((b) => bar.insertBefore(b, $('#refresh')));
+  const ppTab = document.createElement('button'); ppTab.className = 'tab'; ppTab.textContent = 'Popup';
+  [tab, revTab, coTab, cpTab, vdTab, ppTab].forEach((b) => bar.insertBefore(b, $('#refresh')));
 
   const panel = document.createElement('div'); panel.id = 'annPanel'; panel.className = 'hide';
   panel.innerHTML =
@@ -66,7 +67,20 @@
   vdPanel.innerHTML = '<div class="pc"><h3>Review videos</h3><p class="sub" style="margin:0">The videos in the sliding "Loved by our customers" row. Paste an <b>Instagram reel</b> link, a <b>YouTube or YouTube Shorts</b> link, or a direct video link (.mp4 or Cloudinary). Customers tap a card to watch it. Instagram gives no cover picture, so you can paste your own cover picture link (optional). Changes appear within about a minute.</p>' +
     '<div id="vd-rows"></div><button class="btn ghost" id="vd-add" style="margin-top:6px">+ Add a video</button>' +
     '<div class="err" id="vd-err" role="alert"></div><div style="display:flex;gap:12px;align-items:center;margin-top:12px"><button class="btn" id="vd-save">Save videos</button><span class="note" id="vd-ok"></span></div></div>';
-  app.insertBefore(coPanel, $('#gerr')); app.insertBefore(cpPanel, $('#gerr')); app.insertBefore(vdPanel, $('#gerr'));
+const ppPanel = document.createElement('div'); ppPanel.id = 'ppPanel'; ppPanel.className = 'hide';
+  ppPanel.innerHTML = '<div class="pc"><h3>Popup poster</h3><p class="sub" style="margin:0">A poster that pops up in front of your landing page, for example for Eid or a sale. Paste the link of your poster picture (Cloudinary etc.). Changes appear within about a minute.</p>' +
+    '<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" id="pp-on" style="width:auto"> Show the poster on the website</label>' +
+    '<label>Poster picture link (https://...)</label><input type="text" id="pp-img" placeholder="https://res.cloudinary.com/.../eid-poster.jpg"><div id="pp-prev" style="margin-top:8px"></div>' +
+    '<label>Title (only for you and screen readers), for example Eid offer</label><input type="text" id="pp-title" maxlength="60">' +
+    '<label>When a customer taps the poster</label><select id="pp-act" style="width:100%;padding:11px;border:1px solid #bfcac3;border-radius:10px;font:inherit"><option value="none">Nothing (it is just an announcement)</option><option value="products">Go to all products</option><option value="combos">Go to the combo deals</option><option value="product">Go to one product</option><option value="link">Open a link</option></select>' +
+    '<div id="pp-prodbox" style="display:none"><label>Which product</label><select id="pp-prod" style="width:100%;padding:11px;border:1px solid #bfcac3;border-radius:10px;font:inherit"></select></div>' +
+    '<div id="pp-linkbox" style="display:none"><label>Link (https://... or #products)</label><input type="text" id="pp-link" placeholder="https://..."></div>' +
+    '<label>Button under the poster (optional), for example Shop Eid offers</label><input type="text" id="pp-btn" maxlength="30">' +
+    '<div class="two"><div><label>Show from (optional)</label><input type="date" id="pp-from" style="width:100%;padding:10px;border:1px solid #bfcac3;border-radius:10px;font:inherit"></div><div><label>Show until, including this day (optional)</label><input type="date" id="pp-to" style="width:100%;padding:10px;border:1px solid #bfcac3;border-radius:10px;font:inherit"></div></div>' +
+    '<label>How often a visitor sees it</label><select id="pp-freq" style="width:100%;padding:11px;border:1px solid #bfcac3;border-radius:10px;font:inherit"><option value="session">Once per visit</option><option value="day">Once a day</option><option value="always">Every time the page opens</option></select>' +
+    '<p class="note">Every time you press Save, visitors who already saw the old poster will see the new one again. Dates use India time.</p>' +
+    '<div class="err" id="pp-err" role="alert"></div><div style="display:flex;gap:12px;align-items:center;margin-top:10px"><button class="btn" id="pp-save">Save popup</button><span class="note" id="pp-ok"></span></div></div>';
+  app.insertBefore(coPanel, $('#gerr')); app.insertBefore(cpPanel, $('#gerr')); app.insertBefore(vdPanel, $('#gerr')); app.insertBefore(ppPanel, $('#gerr'));
 
   async function post(url, body) {
     const t = await auth.currentUser.getIdToken();
@@ -78,11 +92,11 @@
   const call = (b) => post('/.netlify/functions/announcement', b);
   const rcall = (b) => post('/.netlify/functions/reviews', b);
 
-  const tabs = { ann: [tab, panel], rev: [revTab, revPanel], co: [coTab, coPanel], cp: [cpTab, cpPanel], vd: [vdTab, vdPanel] };
+  const tabs = { ann: [tab, panel], rev: [revTab, revPanel], co: [coTab, coPanel], cp: [cpTab, cpPanel], vd: [vdTab, vdPanel], pp: [ppTab, ppPanel] };
   function show(which) {
     Object.entries(tabs).forEach(([k, [t, p]]) => { t.classList.toggle('on', k === which); p.classList.toggle('hide', k !== which); });
     ['#orders', '#products'].forEach((s) => { const e = $(s); if (e) e.classList.add('hide'); });
-    ({ ann: load, rev: loadRev, co: loadCo, cp: loadCp, vd: loadVd })[which]();
+    ({ ann: load, rev: loadRev, co: loadCo, cp: loadCp, vd: loadVd, pp: loadPp })[which]();
   }
   Object.entries(tabs).forEach(([k, [t]]) => { t.onclick = () => show(k); });
   document.querySelectorAll('[data-t]').forEach((b) => b.addEventListener('click', () => { Object.values(tabs).forEach(([t, p]) => { t.classList.remove('on'); p.classList.add('hide'); }); }));
@@ -227,5 +241,30 @@
     const btn = e.target; $('#vd-err').textContent = ''; $('#vd-ok').textContent = ''; btn.disabled = true; btn.textContent = 'Saving…';
     try { vids = vdRead().filter((v) => v.src); await call({ action: 'saveVideos', videos: vids }); vdDraw(); $('#vd-ok').textContent = 'Saved ✓'; } catch (x) { $('#vd-err').textContent = x.message; }
     btn.disabled = false; btn.textContent = 'Save videos';
+  };
+
+  // ---- popup poster ----
+  const ppFields = () => { const act = $('#pp-act').value; $('#pp-prodbox').style.display = act === 'product' ? '' : 'none'; $('#pp-linkbox').style.display = act === 'link' ? '' : 'none'; };
+  const ppPrev = () => { const u = $('#pp-img').value.trim(); $('#pp-prev').innerHTML = /^https:\/\//i.test(u) ? '<img src="' + esc(u) + '" alt="Poster preview" style="max-width:240px;max-height:300px;border-radius:12px;border:1px solid #e3e8e2">' : ''; };
+  $('#pp-act').onchange = ppFields; $('#pp-img').oninput = ppPrev;
+  async function loadPp() {
+    ['#pp-err', '#pp-ok'].forEach((s) => { $(s).textContent = ''; });
+    try {
+      const [c, prods] = await Promise.all([adm({ action: 'get' }), adm({ action: 'products' })]);
+      $('#pp-prod').innerHTML = (prods || []).map((p) => '<option value="' + esc(p.id) + '">' + esc(p.name) + '</option>').join('');
+      const p = c.popup || {};
+      $('#pp-on').checked = !!p.enabled; $('#pp-img').value = p.image || ''; $('#pp-title').value = p.title || ''; $('#pp-act').value = p.action || 'none';
+      if (p.productId) $('#pp-prod').value = p.productId; $('#pp-link').value = p.link || ''; $('#pp-btn').value = p.buttonText || '';
+      $('#pp-from').value = p.startsAt || ''; $('#pp-to').value = p.endsAt || ''; $('#pp-freq').value = p.frequency || 'session';
+      ppFields(); ppPrev();
+    } catch (x) { $('#pp-err').textContent = x.message; }
+  }
+  $('#pp-save').onclick = async (e) => {
+    const btn = e.target; $('#pp-err').textContent = ''; $('#pp-ok').textContent = ''; btn.disabled = true; btn.textContent = 'Saving…';
+    try {
+      await call({ action: 'savePopup', popup: { enabled: $('#pp-on').checked, image: $('#pp-img').value.trim(), title: $('#pp-title').value.trim(), action: $('#pp-act').value, productId: $('#pp-act').value === 'product' ? $('#pp-prod').value : '', link: $('#pp-link').value.trim(), buttonText: $('#pp-btn').value.trim(), startsAt: $('#pp-from').value, endsAt: $('#pp-to').value, frequency: $('#pp-freq').value } });
+      $('#pp-ok').textContent = 'Saved ✓';
+    } catch (x) { $('#pp-err').textContent = x.message; }
+    btn.disabled = false; btn.textContent = 'Save popup';
   };
 })();

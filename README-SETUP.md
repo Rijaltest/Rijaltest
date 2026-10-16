@@ -125,6 +125,8 @@ The site already contains your Google Analytics tag (`G-BGW29WYSYZ`) in `public/
   - *Delivery charge now*: the customer pays this amount now (it is the whole delivery charge) and the order value on delivery.
   - *Extra COD fee now*: the customer pays this extra fee now, on top of the order value; the order value and the normal delivery charge are paid on delivery.
 - **Coupon codes:** admin panel, **Coupons** tab. Make a code, choose *Percent off* (with an optional maximum, for example 20% up to Rs 200) or *Flat amount off*, and optionally set a minimum order, how many times it can be used, an expiry date, and turn it on or off.
+- **Popup poster for special days (Eid, sales):** admin panel, **Popup** tab. Paste your poster picture link, choose what happens when a customer taps it (nothing, all products, combo deals, one product, or a link), optionally add a button, start and end dates, and how often a visitor sees it. Press Save.
+- **Intro screen:** the RIJAL logo and the line "Inspired by Sunnah · Backed by Science" show for about 3 seconds once per visit while the shop loads. To change the line, edit the words inside `class="spl-tag"` in `public/index.html`. Add `?nosplash` to the web address to skip it while testing.
 - **Theme:** Noir & Gold is on. For another look change `<html lang="en">` in `public/index.html` to `<html lang="en" data-theme="green">` or `data-theme="cream"`.
 
 ## If payment does not start (do this first)

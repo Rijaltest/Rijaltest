@@ -25,10 +25,31 @@ addEventListener('load',function(){setTimeout(load,3000)})})();
 <meta name="theme-color" content="#16110E">
 <link rel="stylesheet" href="shop.css">
 <script>if("IntersectionObserver" in window&&!matchMedia("(prefers-reduced-motion:reduce)").matches)document.documentElement.classList.add("js-sr")</script>
+<script>try{if(sessionStorage.getItem('rs_spl')||/[?&]nosplash/.test(location.search))document.documentElement.className+=' spl-skip'}catch(e){}</script>
 <script>window.__p=fetch('/.netlify/functions/products').then(function(r){if(!r.ok)throw 0;return r.json()});window.__p.catch(function(){});</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><g><g id="rj-glyph-0-0"><path d="M 34.54 -37.65 C 36.68 -38.84 40.62 -41.29 44.90 -41.29 C 57.90 -41.29 54.28 -23.85 54.28 -12.20 C 54.28 -3.42 57.40 0 67.43 0 L 77.31 0 C 78.29 0 78.62 -0.32 78.62 -0.85 C 78.62 -2.46 69.40 -3.31 69.40 -12.95 C 69.40 -29.64 68.09 -42.90 47.04 -42.90 C 61.51 -46.54 74.18 -48.04 74.18 -60.03 C 74.18 -70.29 66.78 -74.90 47.70 -74.90 L 8.06 -74.90 C 6.42 -74.90 5.75 -74.57 5.75 -74.04 C 5.75 -71.57 10.53 -74.15 10.53 -66.34 L 10.53 -8.56 C 10.53 -0.75 5.75 -3.31 5.75 -0.85 C 5.75 -0.32 6.25 0 7.73 0 L 28.29 0 C 29.43 0 29.93 -0.32 29.93 -0.85 C 29.93 -3.31 25.32 -0.75 25.32 -8.56 L 25.32 -26 C 25.32 -30.17 29.43 -34.45 34.54 -37.65 Z M 25.32 -73.29 L 41.45 -73.29 C 51.15 -73.29 58.89 -69.54 58.89 -59.59 C 58.89 -50.5 49.18 -46.76 38.81 -42.26 C 31.75 -39.26 25.82 -34.78 25.32 -31.45 Z M 25.32 -73.29 "/></g><g id="rj-glyph-0-1"><path d="M 10.53 -8.56 C 10.53 -0.75 5.75 -3.31 5.75 -0.85 C 5.75 -0.32 6.25 0 7.56 0 L 28.12 0 C 29.43 0 29.93 -0.32 29.93 -0.85 C 29.93 -3.31 25.32 -0.75 25.32 -8.56 L 25.32 -66.34 C 25.32 -74.15 29.93 -71.57 29.93 -74.04 C 29.93 -74.57 29.43 -74.90 28.12 -74.90 L 7.56 -74.90 C 6.25 -74.90 5.75 -74.57 5.75 -74.04 C 5.75 -71.57 10.53 -74.15 10.53 -66.34 Z M 10.53 -8.56 "/></g><g id="rj-glyph-0-2"><path d="M 20.56 -27.92 C 20.56 -39.15 23.18 -48.90 30.92 -48.90 C 38.48 -48.90 35.03 -37.34 35.03 -27.92 C 35.03 -26.32 35.20 -21.71 39.64 -21.71 C 44.57 -21.71 45.89 -27.07 45.89 -33.17 C 45.89 -44.40 40.95 -50.5 27.64 -50.5 C 10.53 -50.5 5.75 -40.87 5.75 -27.39 C 5.75 -15.09 9.70 0.53 39.31 0.53 C 68.09 0.53 73.20 -14.34 73.20 -21.29 L 73.20 -66.87 C 73.35 -74.04 77.79 -71.68 77.79 -74.04 C 77.79 -74.57 77.31 -74.90 75.98 -74.90 L 20.06 -74.90 C 18.09 -74.90 16.45 -74.04 15.95 -72.76 L 12.17 -59.06 C 11.84 -58.09 11.84 -57.67 12.82 -57.67 C 13.81 -57.67 13.81 -58.31 15.95 -60.45 C 21.39 -66.12 32.56 -73.29 45.06 -73.29 L 56.75 -73.29 L 56.75 -20.65 C 56.75 -7.39 49.67 -1.28 38.48 -1.28 C 23.68 -1.28 20.56 -16.15 20.56 -27.92 Z M 20.56 -27.92 "/></g><g id="rj-glyph-0-3"><path d="M 13.48 -14.34 C 10.03 -3.53 4.28 -2.78 4.28 -0.85 C 4.28 -0.53 4.60 0 5.75 0 L 20.06 0 C 21.87 0 22.20 -0.53 22.20 -1.06 C 22.20 -2.67 12.82 -4.92 15.95 -14.34 L 17.10 -17.65 C 18.42 -20.65 23.03 -24.82 33.56 -24.82 C 43.92 -24.82 48.51 -20.65 49.67 -17.65 L 52.64 -8.56 C 55.10 -0.75 50.5 -3.10 50.5 -1.06 C 50.5 -0.53 50.65 0 52.46 0 L 73.68 0 C 74.84 0 75.17 -0.53 75.17 -0.85 C 75.17 -3.10 70.23 -1.60 68.09 -8.56 L 49.51 -66.34 C 47.04 -74.15 51.64 -72.01 51.64 -73.82 C 51.64 -74.35 51.48 -74.90 49.67 -74.90 L 28.45 -74.90 C 27.79 -74.90 27.46 -74.79 27.29 -74.57 C 27.14 -74.46 26.96 -74.35 26.96 -74.04 C 26.96 -73.71 27.14 -73.40 27.29 -73.29 C 28.62 -72.21 31.90 -71.68 30.26 -66.34 Z M 32.89 -65.70 L 34.21 -65.70 L 46.54 -27.39 C 45.39 -30.39 40.79 -32.84 33.56 -32.84 C 25.98 -32.84 21.21 -30.28 20.23 -27.07 Z M 32.89 -65.70 "/></g><g id="rj-glyph-0-4"><path d="M 70.40 -19.04 C 70.73 -20.01 70.56 -20.43 69.57 -20.43 C 68.42 -20.43 68.59 -19.90 67.76 -18.93 C 60.03 -9.62 52.46 -1.60 37.67 -1.60 L 25.32 -1.60 L 25.32 -66.45 C 25.32 -74.04 29.93 -71.68 29.93 -74.04 C 29.93 -74.57 29.43 -74.90 28.12 -74.90 L 7.56 -74.90 C 6.25 -74.90 5.75 -74.57 5.75 -74.04 C 5.75 -71.57 10.53 -74.15 10.53 -66.45 L 10.53 -8.56 C 10.53 -0.75 5.75 -3.31 5.75 -0.85 C 5.75 -0.32 6.25 0 7.56 0 L 62.5 0 C 64.48 0 66.12 -0.85 66.45 -2.14 Z M 70.40 -19.04 "/></g></g><mask id="rj-m" maskUnits="userSpaceOnUse" x="0" y="0" width="1320" height="1080"><rect width="1320" height="1080" fill="#fff"/><path fill="#000" d="M 672.72 452.93 C 671.91 452.05 671.10 451.17 670.28 450.28 C 671.15 449.07 672.26 447.49 673.40 445.94 C 681.76 434.60 690.12 423.25 698.48 411.91 C 700.25 409.52 700.95 409.51 703.02 411.81 C 709.08 418.51 715.15 425.20 721.76 432.50 C 725.01 429.14 728.07 425.98 731.12 422.82 C 732.02 421.89 732.93 421.20 734.12 422.44 C 738.08 426.55 742.04 430.67 745.68 435.12 C 742.76 432.58 739.83 430.06 736.92 427.52 C 734.26 425.21 734.27 425.20 731.34 427.85 C 733.03 429.63 734.73 431.42 736.66 433.47 C 734.71 434.16 732.98 434.77 730.77 435.54 C 732.73 436.87 734.41 438.03 736.10 439.18 C 736.05 439.36 735.99 439.54 735.94 439.71 L 728.33 439.71 C 730.73 442.14 732.66 444.10 734.59 446.06 C 734.51 446.14 734.43 446.22 734.34 446.30 C 723.46 436.43 712.57 426.57 701.35 416.41 C 699.80 419.40 698.32 422.11 697.01 424.89 C 696.83 425.27 697.36 426.16 697.80 426.57 C 699.36 428.02 701 429.39 702.65 430.73 C 703.84 431.71 703.94 432.51 702.65 433.52 C 701.16 434.67 699.79 435.96 697.98 437.53 C 705.67 442.73 713.07 447.74 720.46 452.75 C 720.42 452.91 720.37 453.06 720.32 453.21 L 691.26 453.21 "/></mask><g id="rj-all"><g mask="url(#rj-m)"><path fill-rule="nonzero" fill="currentColor" d="M 755.91 447.19 C 755.91 455.48 754.05 463.32 750.72 470.31 C 750.66 470.32 750.67 470.31 750.60 470.32 L 699.99 394.08 C 699.96 394.04 699.99 394 700.03 394 L 703.61 394 C 732.49 394 755.91 417.82 755.91 447.19 "/><path fill="none" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke="currentColor" stroke-miterlimit="10" d="M -0.00 -0.00 C -0.00 -8.28 -1.85 -16.12 -5.18 -23.11 C -5.25 -23.12 -5.23 -23.11 -5.30 -23.12 L -55.91 53.11 C -55.94 53.15 -55.91 53.19 -55.87 53.19 L -52.29 53.19 C -23.41 53.19 -0.00 29.37 -0.00 -0.00 Z M -0.00 -0.00 " transform="matrix(1, 0, 0, -1, 755.91, 447.19)"/><path fill-rule="nonzero" fill="currentColor" d="M 751.00 469.75 C 748.67 474.67 745.59 479.17 741.93 483.10 C 738.16 487.16 733.75 490.62 728.88 493.31 C 722.97 496.58 715.60 495.5 710.82 490.72 L 653.30 433.20 C 653.29 433.23 653.29 433.25 653.28 433.28 L 613.04 393.04 C 612.74 392.73 612.95 392.21 613.38 392.22 C 623.89 392.41 700.90 393.84 700.62 393.87 C 700.33 393.89 751.00 469.75 751.00 469.75 "/><path fill="none" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke="currentColor" stroke-miterlimit="10" d="M -0.00 -0.00 C -2.32 -4.91 -5.41 -9.41 -9.07 -13.34 C -12.84 -17.41 -17.24 -20.86 -22.12 -23.56 C -28.03 -26.83 -35.40 -25.74 -40.17 -20.97 L -97.70 36.54 C -97.70 36.52 -97.70 36.49 -97.72 36.47 L -137.95 76.70 C -138.26 77.01 -138.04 77.53 -137.61 77.52 C -127.11 77.33 -50.10 75.90 -50.38 75.88 C -50.67 75.86 -0.00 -0.00 -0.00 -0.00 Z M -0.00 -0.00 " transform="matrix(1, 0, 0, -1, 751.00, 469.75)"/><path fill-rule="nonzero" fill="currentColor" d="M 646.16 465.73 L 638.47 465.67 C 636.26 465.65 635.14 468.32 636.70 469.89 L 697.45 530.64 C 698.57 531.76 697.77 533.66 696.19 533.66 L 673.78 533.57 C 670.31 533.56 666.99 532.18 664.53 529.73 L 629.59 494.78 C 628.56 493.75 627.17 493.17 625.72 493.16 L 616.16 493.07 C 614.57 493.05 613.77 494.96 614.89 496.08 L 649.27 530.46 C 650.39 531.58 649.59 533.48 648.01 533.48 L 606.12 533.32 C 605.14 533.32 604.35 532.53 604.35 531.55 L 604.35 397.12 C 604.35 394.32 607.73 392.92 609.71 394.90 L 643.12 428.30 L 667.76 452.96 L 680.85 466.05 L 697.89 483.08 L 708.69 493.89 L 745.03 530.23 C 746.37 531.57 745.41 533.85 743.52 533.85 L 721.57 533.76 C 718.35 533.75 715.27 532.47 712.99 530.19 L 650.25 467.45 C 649.16 466.36 647.69 465.75 646.16 465.73 "/><path fill="none" stroke-width="0.5" stroke-linecap="butt" stroke-linejoin="miter" stroke="currentColor" stroke-miterlimit="10" d="M -0.00 0.00 L -7.68 0.06 C -9.90 0.08 -11.02 -2.58 -9.45 -4.15 L 51.29 -64.90 C 52.40 -66.02 51.61 -67.92 50.03 -67.92 L 27.61 -67.83 C 24.15 -67.82 20.82 -66.44 18.37 -63.99 L -16.57 -29.04 C -17.59 -28.01 -18.99 -27.43 -20.44 -27.42 L -30.00 -27.33 C -31.58 -27.31 -32.38 -29.23 -31.26 -30.34 L 3.11 -64.72 C 4.22 -65.84 3.43 -67.74 1.85 -67.74 L -40.04 -67.58 C -41.01 -67.58 -41.80 -66.79 -41.80 -65.81 L -41.80 68.61 C -41.80 71.41 -38.42 72.80 -36.45 70.83 L -3.04 37.43 L 21.60 12.77 L 34.68 -0.31 L 51.72 -17.35 L 62.53 -28.15 L 98.86 -64.49 C 100.20 -65.83 99.25 -68.12 97.35 -68.11 L 75.40 -68.03 C 72.18 -68.01 69.10 -66.73 66.83 -64.45 L 4.08 -1.71 C 3.00 -0.62 1.53 -0.01 -0.00 0.00 Z M -0.00 0.00 " transform="matrix(1, 0, 0, -1, 646.16, 465.73)"/></g><g fill="currentColor"><use href="#rj-glyph-0-0" x="495.75" y="638.05"/></g><g fill="currentColor"><use href="#rj-glyph-0-1" x="586.39" y="638.05"/></g><g fill="currentColor"><use href="#rj-glyph-0-2" x="629.98" y="638.05"/><use href="#rj-glyph-0-3" x="715.68" y="638.05"/></g><g fill="currentColor"><use href="#rj-glyph-0-4" x="803.85" y="638.05"/></g></g></defs></svg>
+<div class="spl" id="spl" aria-hidden="true"><div class="spl-in">
+  <svg class="spl-mark" viewBox="602 390 156 146"><use href="#rj-all"/></svg>
+  <svg class="spl-word" viewBox="499 561 376 79"><use href="#rj-all"/></svg>
+  <i class="spl-line"></i>
+  <p class="spl-tag"><span style="--i:0">Inspired</span><span style="--i:1">by</span><span style="--i:2">Sunnah</span><b style="--i:3">&middot;</b><span style="--i:4">Backed</span><span style="--i:5">by</span><span style="--i:6">Science</span></p>
+  <div class="spl-bar"><i></i></div>
+</div></div>
+<script>
+/* Intro screen: shows for about 3 seconds and waits (up to 5.5 s) for the shop to load in the background. Tap it to skip. */
+(function(){var s=document.getElementById('spl');if(!s)return;
+ if(document.documentElement.className.indexOf('spl-skip')>-1){s.remove();return}
+ try{sessionStorage.setItem('rs_spl','1')}catch(e){}
+ document.body.classList.add('lock');
+ var calm=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches,fin=0;
+ function end(){if(fin)return;fin=1;s.classList.add('out');document.body.classList.remove('lock');setTimeout(function(){s.remove();window.dispatchEvent(new Event('splashdone'))},750)}
+ var ready=new Promise(function(r){var p=window.__p;if(p&&p.then)p.then(r,r);else r()});
+ Promise.all([ready,new Promise(function(r){setTimeout(r,calm?1200:3300)})]).then(end);
+ setTimeout(end,5500);s.addEventListener('click',end)})();
+</script>
+<div class="pst" id="pst" role="dialog" aria-modal="true" aria-label="Announcement" hidden><div class="pst-box"><button class="pst-x" id="pstX" type="button" aria-label="Close">&times;</button><img id="pstImg" alt=""><button class="btn pst-cta" id="pstCta" type="button" hidden></button></div></div>
 <div class="bulk"><div class="wrap"><a class="bulk-badge trk" href="https://rehbarpost.com/track" target="_blank" rel="noopener" aria-label="Track your order"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 6.5h11v9h-11z"/><path d="M13.5 9.5h4l3.5 3.5v2.5h-7.5"/><circle cx="7" cy="17.8" r="1.7"/><circle cx="17" cy="17.8" r="1.7"/></svg></span><span><b>Track</b> your order</span></a><a class="bulk-badge" href="https://wa.me/919103998116?text=Hi%20RIJAL%2C%20I%20want%20to%20place%20a%20bulk%20order." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.4-4.3A8.5 8.5 0 1 1 8 19.3z"/><path d="M9.2 8.6c-.3.9.2 2.300 1.600 3.700s2.800 1.900 3.700 1.600l.9-1.200-1.800-1-.8.700c-.8-.3-1.600-1.100-1.900-1.900l.7-.8-1-1.800z"/></svg><span><b>Bulk order</b></span></a></div></div>
 <div class="ann" id="ann" hidden role="region" aria-label="Announcement"><div class="ann-in"><span id="annTxt"></span><a id="annLink" href="#" hidden></a><button id="annX" aria-label="Dismiss announcement">&times;</button></div></div>
 <header><div class="wrap">
@@ -644,7 +665,7 @@ function comboBuild(){
     const own=(c.imgs&&c.imgs[0])||c.img;
     const pics=own?[own]:inc.map(p=>(p.imgs&&p.imgs[0])||p.img).filter(Boolean).slice(0,3);
     const pic=pics.length>1?`<div class="cb-col n${pics.length}">${pics.map(u=>`<img src="${thumb(u)}" alt="" loading="lazy" decoding="async">`).join('')}</div>`:pics.length?`<img src="${thumb(pics[0])}" alt="${lpEsc(c.name)}" loading="lazy" decoding="async">`:`<div class="cb-ph">${lpEsc(c.name)}</div>`;
-    return `<article class="cb-card sr"><div class="cb-pic"><span class="cb-badge">${save?'Save '+rs(save):'Combo deal'}</span>${pic}</div>
+    return `<article class="cb-card sr" data-pid="${lpEsc(c.id)}"><div class="cb-pic"><span class="cb-badge">${save?'Save '+rs(save):'Combo deal'}</span>${pic}</div>
      <div class="cb-body"><h3>${lpEsc(c.name)}</h3><p>${lpEsc(c.desc||'')}</p>
      ${inc.length?`<ul class="cb-inc">${inc.map(p=>`<li>${lpEsc(p.name)}</li>`).join('')}</ul>`:''}
      <div class="cb-foot"><div class="cb-price"><b>${rs(c.price)}</b>${save?`<s>${rs(worth)}</s>`:''}</div>
@@ -667,7 +688,48 @@ function comboBuild(){
     if(m.length>1&&!calm)tm=setInterval(()=>{t.classList.add('out');setTimeout(()=>{i=(i+1)%m.length;t.textContent=m[i];t.classList.remove('out')},300)},4500);
   }
   $('#annX').onclick=()=>{bar.hidden=true;try{sessionStorage.setItem('rs_ax',bar.dataset.k||'')}catch(_){}};
-  const trustSet=a=>{if(a&&Array.isArray(a.videos)){REVIEW_VIDEOS.length=0;a.videos.forEach(v=>{if(v&&v.src)REVIEW_VIDEOS.push(v)});vrBuild()}if(a&&a.trustLine)$('#trustLine').textContent=a.trustLine;if(a&&a.ticker&&a.ticker.length)tkBuild(a.ticker)};
+  /* ---------- Popup poster (admin panel, Popup tab) ---------- */
+let POSTER=null,posterShown=false,splashDone=false;
+const pKey=p=>'rs_pst_'+(p.version||0);
+function posterOK(p){
+  try{if(p.frequency==='session'&&sessionStorage.getItem(pKey(p)))return false;if(p.frequency==='day'&&localStorage.getItem(pKey(p))===new Date().toDateString())return false}catch(_){}
+  return true;
+}
+function posterTry(){
+  if(posterShown||!splashDone||!POSTER||!POSTER.image||!posterOK(POSTER))return;
+  const p=POSTER;posterShown=true;
+  const im=new Image();
+  im.onload=()=>{
+    $('#pstImg').src=p.image;$('#pstImg').alt=p.title||'Announcement';
+    $('#pst').classList.toggle('go',p.action&&p.action!=='none');
+    const c=$('#pstCta');c.hidden=!(p.buttonText&&p.action&&p.action!=='none');c.textContent=p.buttonText||'';
+    $('#pst').hidden=false;document.body.classList.add('lock');requestAnimationFrame(()=>$('#pst').classList.add('show'));
+    try{if(p.frequency==='session')sessionStorage.setItem(pKey(p),'1');if(p.frequency==='day')localStorage.setItem(pKey(p),new Date().toDateString())}catch(_){}
+    track('view_promotion',{promotion_name:p.title||'poster'});
+  };
+  im.onerror=()=>{posterShown=false};
+  im.src=p.image;
+}
+function posterClose(){const b=$('#pst');b.classList.remove('show');setTimeout(()=>{b.hidden=true;document.body.classList.remove('lock')},300)}
+function posterGo(){
+  const p=POSTER;if(!p||!p.action||p.action==='none')return;
+  posterClose();track('select_promotion',{promotion_name:p.title||'poster',action:p.action});
+  const go=(el,pos)=>el&&el.scrollIntoView({behavior:calm?'auto':'smooth',block:pos||'start'});
+  setTimeout(()=>{
+    if(p.action==='products')go($('#products'));
+    else if(p.action==='combos'){const c=$('#combos');go(c&&!c.hidden?c:$('#products'))}
+    else if(p.action==='product'){const c=document.querySelector('[data-pid="'+String(p.productId).replace(/"/g,'')+'"]');if(c){go(c,'center');c.classList.add('hl');setTimeout(()=>c.classList.remove('hl'),3500)}else go($('#products'))}
+    else if(p.action==='link'&&p.link){if(/^https?:/i.test(p.link))window.open(p.link,'_blank','noopener');else location.href=p.link}
+  },330);
+}
+$('#pstX').onclick=posterClose;$('#pstCta').onclick=posterGo;
+$('#pstImg').onclick=()=>{if($('#pst').classList.contains('go'))posterGo()};
+$('#pst').addEventListener('click',e=>{if(e.target.id==='pst')posterClose()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!$('#pst').hidden)posterClose()});
+addEventListener('splashdone',()=>{splashDone=true;setTimeout(posterTry,500)});
+if(!$('#spl'))setTimeout(()=>{splashDone=true;posterTry()},1200);
+window.showPoster=p=>{POSTER=p;posterShown=false;splashDone=true;posterTry()}; // for testing a poster by hand
+const trustSet=a=>{if(a&&'popup' in a){POSTER=a.popup||null;posterTry()}if(a&&Array.isArray(a.videos)){REVIEW_VIDEOS.length=0;a.videos.forEach(v=>{if(v&&v.src)REVIEW_VIDEOS.push(v)});vrBuild()}if(a&&a.trustLine)$('#trustLine').textContent=a.trustLine;if(a&&a.ticker&&a.ticker.length)tkBuild(a.ticker)};
   try{const c=JSON.parse(localStorage.getItem('rs_ann')||'null');trustSet(c);show(c)}catch(_){}
   fetch('/.netlify/functions/announcement').then(r=>r.ok?r.json():null).then(a=>{if(!a)return;try{localStorage.setItem('rs_ann',JSON.stringify(a))}catch(_){}trustSet(a);show(a)}).catch(()=>{});
 })();
