@@ -15,7 +15,7 @@ addEventListener('load',function(){setTimeout(load,3000)})})();
 <title>RIJAL | Hair Oil, Beard Oil &amp; Comb</title>
 <meta name="description" content="RIJAL: everyday grooming essentials. Hair oil, beard oil and a quality comb. Delivered across India.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"><noscript><link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,700&display=swap" rel="stylesheet"></noscript>
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="hero.css">
@@ -24,7 +24,7 @@ addEventListener('load',function(){setTimeout(load,3000)})})();
 <link rel="stylesheet" href="theme.css">
 <meta name="theme-color" content="#ffffff">
 <link rel="stylesheet" href="shop.css">
-<link rel="stylesheet" href="allnatural.css">
+<link rel="stylesheet" href="minimal.css">
 <script>if("IntersectionObserver" in window&&!matchMedia("(prefers-reduced-motion:reduce)").matches)document.documentElement.classList.add("js-sr")</script>
 <script>try{if(sessionStorage.getItem('rs_spl')||/[?&]nosplash/.test(location.search))document.documentElement.className+=' spl-skip'}catch(e){}</script>
 <script>window.__p=fetch('/.netlify/functions/products').then(function(r){if(!r.ok)throw 0;return r.json()});window.__p.catch(function(){});</script>
@@ -51,25 +51,37 @@ addEventListener('load',function(){setTimeout(load,3000)})})();
  setTimeout(end,5500);s.addEventListener('click',end)})();
 </script>
 <div class="pst" id="pst" role="dialog" aria-modal="true" aria-label="Announcement" hidden><div class="pst-box"><button class="pst-x" id="pstX" type="button" aria-label="Close">&times;</button><img id="pstImg" alt=""><button class="btn pst-cta" id="pstCta" type="button" hidden></button></div></div>
-<div class="bulk"><div class="wrap"><a class="bulk-badge trk" href="https://rehbarpost.com/track" target="_blank" rel="noopener" aria-label="Track your order"><span class="ti"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2.5 6.5h11v9h-11z"/><path d="M13.5 9.5h4l3.5 3.5v2.5h-7.5"/><circle cx="7" cy="17.8" r="1.7"/><circle cx="17" cy="17.8" r="1.7"/></svg></span><span><b>Track</b> your order</span></a><a class="bulk-badge" href="https://wa.me/919103998116?text=Hi%20RIJAL%2C%20I%20want%20to%20place%20a%20bulk%20order." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 20.5l1.4-4.3A8.5 8.5 0 1 1 8 19.3z"/><path d="M9.2 8.6c-.3.9.2 2.300 1.600 3.700s2.800 1.900 3.700 1.600l.9-1.200-1.800-1-.8.700c-.8-.3-1.600-1.100-1.900-1.900l.7-.8-1-1.800z"/></svg><span><b>Bulk order</b></span></a></div></div>
 <div class="ann" id="ann" hidden role="region" aria-label="Announcement"><div class="ann-in"><span id="annTxt"></span><a id="annLink" href="#" hidden></a><button id="annX" aria-label="Dismiss announcement">&times;</button></div></div>
-<header class="anh"><div class="anh-in">
-  <button class="anh-t" id="menuBtn" type="button" aria-expanded="false" aria-controls="anm">Menu</button>
+<header><div class="wrap">
+  <button class="hmenu" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuPanel">Menu</button>
   <a class="logo" href="#top" aria-label="RIJAL"><svg class="lg-mark" viewBox="602 390 156 146" aria-hidden="true"><use href="#rj-all"/></svg><svg class="lg-word" viewBox="499 561 376 79" role="img" aria-label="RIJAL"><use href="#rj-all"/></svg></a>
-  <div class="anh-r"><button class="anh-t cartbtn" id="openCart" type="button">Bag (<span id="count">0</span>)</button></div>
-</div></header>
-<div class="anm" id="anm" aria-hidden="true"><button class="anm-x" id="menuX" type="button">Close</button>
-<div class="anm-l"><a href="#products">Shop</a><a href="#combos" id="navCombo" hidden>Combos</a><a href="#reviews" id="navRev">Reviews</a><a href="#why">Why Rijal</a><a href="blog.html">Blog</a><a href="#contact">Contact</a></div></div>
+  <div class="hr"><a class="hs" href="#products" aria-label="Shop all products"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></a><button class="cartbtn" id="openCart" type="button">Bag (<span id="count">0</span>)</button></div>
+</div>
+<nav id="menuPanel" aria-label="Main menu" hidden><a href="#products">Shop</a><a href="#combos" id="navCombo" hidden>Combos</a><a href="#reviews" id="navRev">Reviews</a><a href="blog.html">Blog</a><a href="#contact">Contact</a></nav>
+</header>
 
 <main id="top">
-<section class="an-hero" aria-label="Featured products">
- <h1 class="an-vh">RIJAL: hair oil, beard oil and comb</h1>
- <div class="an-car" id="lpCar" role="region" aria-roledescription="carousel" aria-label="Featured products">
-  <div id="lpSlides"></div>
-  <div class="an-bars" id="lpBars"></div>
-  <button class="an-arr l" id="lpPrev" aria-label="Previous">&lsaquo;</button><button class="an-arr r" id="lpNext" aria-label="Next">&rsaquo;</button>
+<section class="lp" aria-label="RIJAL introduction">
+ <div class="wrap">
+  <div class="lp-txt">
+   <span class="lp-eyebrow"><i></i>Inspired by Sunnah &middot; Backed by Science</span>
+   <h1>Grooming that keeps it <em>simple.</em></h1>
+   <p class="lp-lead">Hair oil, beard oil and a comb you will actually use every day. Lightweight, non-greasy and made with care, delivered to your door.</p>
+   <div class="lp-cta"><a class="btn" href="#products">Shop the range</a><a class="btn ghost" href="#why">Why Rijal</a></div>
+   <ul class="lp-trust">
+    <li><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Secure Razorpay payments</li>
+    <li><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg>Delivery across India</li>
+   </ul>
+  </div>
+  <div class="lp-stage">
+   <div class="lp-car load" id="lpCar" role="region" aria-roledescription="carousel" aria-label="Featured products">
+    <div class="lp-bars" id="lpBars"></div>
+    <div id="lpSlides"></div>
+    <button class="lp-arr l" id="lpPrev" aria-label="Previous">&lsaquo;</button><button class="lp-arr r" id="lpNext" aria-label="Next">&rsaquo;</button>
+   </div>
+  </div>
  </div>
- <div id="lpRib" hidden></div>
+ <div class="lp-ribbon" aria-hidden="true"><div id="lpRib"></div></div>
 </section>
 
 <div class="feat sr"><ul>
@@ -82,15 +94,24 @@ addEventListener('load',function(){setTimeout(load,3000)})})();
 <div class="tk" id="tk" aria-label="RIJAL highlights"><div class="tk-tr" id="tkTr"></div></div>
 
 <section id="products"><div class="wrap">
-  <h2>Trending</h2>
+  <h2 class="vh">Our products</h2>
+  <div class="tabs"><div role="tablist" aria-label="Product groups"><button type="button" class="on" data-tab="all" role="tab">Trending</button><button type="button" data-tab="best" role="tab">Bestsellers</button><button type="button" data-tab="kits" role="tab">Kits</button></div><a href="#products" id="shopAll">Shop all</a></div>
   <p class="sub" id="shipnote">Free shipping on all prepaid orders.</p>
   <div class="grid" id="grid"><div class="sk"></div><div class="sk"></div><div class="sk"></div></div>
+</div></section>
+
+<section class="ft" id="featured" hidden><div class="wrap">
+  <div class="tabs"><h2>Featured</h2><a href="#products">View all</a></div>
+  <div class="ft-tr" id="ftTr"></div>
 </div></section>
 
 <section class="cb" id="combos" hidden><div class="wrap">
   <div class="sr"><h2>Combo deals</h2><p class="sub">Get the full routine together and save more.</p></div>
   <div class="cb-grid" id="cbGrid"></div>
 </div></section>
+
+<!-- GENERAL IMAGE: save your picture as general.jpg next to index.html (or change src). If the file is missing this block hides itself. -->
+<section class="gen" id="gen"><div class="wrap"><img src="general.jpg" alt="" loading="lazy" onerror="this.closest('section').hidden=true"></div></section>
 
 <section class="tm" id="trust"><div class="tm-top"><div class="wrap">
   <div class="sr"><h2>Trusted <em>across India</em></h2>
@@ -205,30 +226,32 @@ const $=s=>document.querySelector(s), rs=n=>'₹'+n.toLocaleString('en-IN');
    Example: 'beard-oil':{size:'30 ml',rating:4.4,count:19,bought:'100+ bought in past month',badge:"Rijal's offer",choice:'Best Seller',mrp:499}
    The keys ('hair-oil', 'comb', 'beard-oil') are the product ids from your admin panel. */
 const PRODUCT_META={
-  'hair-oil':{size:'',rating:0,count:0,bought:'',badge:'',choice:'',mrp:0,imgs:['https://res.cloudinary.com/vmhiri2g/image/upload/v1791789657/beard-oil-packk.webp']},
-  'comb':{size:'',rating:0,count:0,bought:'',badge:'',choice:'',mrp:0,imgs:['https://res.cloudinary.com/vmhiri2g/image/upload/v1791789660/comb-with-pouchh.webp']},
-  'beard-oil':{size:'30 ml',rating:0,count:0,bought:'',badge:'',choice:'',mrp:0,imgs:['https://res.cloudinary.com/vmhiri2g/image/upload/v1791789657/beard-oil-handd.webp']},
+  'hair-oil':{size:'',rating:0,count:0,bought:'',badge:'',choice:'',mrp:0,imgs:['https://res.cloudinary.com/vmhiri2g/image/upload/v1792232550/eTEAX7NhPuOS8oAhyQRBALCmM.jpg','https://res.cloudinary.com/vmhiri2g/image/upload/v1792232551/nj5DNJNLOnoIq8FNkxlta4XszU.jpg']},
+  'comb':{size:'',rating:0,count:0,bought:'',badge:'',choice:'',mrp:0,imgs:['https://res.cloudinary.com/vmhiri2g/image/upload/v1792232550/p3kXAmCNCtTfFI3BesN7vrsMfI.jpg','https://res.cloudinary.com/vmhiri2g/image/upload/v1792232550/zB0Ts7BL4hxFi0AeunemofUC03w_1.jpg']},
+  'beard-oil':{size:'30 ml',rating:0,count:0,bought:'',badge:'',choice:'',mrp:0,imgs:['https://res.cloudinary.com/vmhiri2g/image/upload/v1792232552/Rijal_Beard_Oil_Premium_Product_Set.png','https://res.cloudinary.com/vmhiri2g/image/upload/v1792222091/aerQsSvfElzxOaXK8m9gq635gU.jpg']},
 };
+let TAB='all';
+function featBuild(){const L=PRODUCTS.filter(p=>!isCombo(p)),tr=$('#ftTr');if(!tr)return;$('#featured').hidden=!L.length;
+  tr.innerHTML=L.slice().reverse().map(p=>{const u=(p.imgs&&p.imgs[0])||p.img||'';return `<article class="card ft-c"><div class="pic">${u?`<img src="${thumb(u)}" alt="${lpEsc(p.name)}" loading="lazy" decoding="async">`:lpEsc(p.name)}</div><div class="body"><div class="tt"><h3>${lpEsc(p.name)}</h3><span class="price">${rs(p.price)}</span></div><div class="act" data-act="${p.id}">${actHTML(p)}</div></div></article>`}).join('')}
 const stars=r=>`<span class="stars" style="--f:${Math.min(100,Math.round(r*2)/2/5*100)}%" role="img" aria-label="${r} out of 5 stars"></span>`;
 const stepHTML=(id,n)=>`<div class="stp"><button type="button" data-q="${id}:-1" aria-label="Decrease quantity">&minus;</button><input data-qi="${id}" value="${n}" inputmode="numeric" autocomplete="off" aria-label="Quantity"><button type="button" data-q="${id}:1" aria-label="Increase quantity">+</button></div>`;
-const actHTML=p=>p.stock===0?'<button class="btn" disabled>Sold out</button>':`${cart[p.id]?stepHTML(p.id,cart[p.id]):`<button class="btn add" data-add="${p.id}">Add to cart</button>`}<button class="btn buy" data-buy="${p.id}">Buy now</button>`;
+const actHTML=p=>p.stock===0?'<button class="btn" disabled>Sold out</button>':`${cart[p.id]?stepHTML(p.id,cart[p.id]):`<button class="btn add" data-add="${p.id}">Add to Cart</button>`}<button class="btn buy" data-buy="${p.id}">Buy Now</button>`;
 const syncCard=id=>{const p=PRODUCTS.find(x=>x.id===id);document.querySelectorAll(`[data-act="${id}"]`).forEach(el=>{if(p)el.innerHTML=actHTML(p)})};
 const syncAll=()=>PRODUCTS.forEach(p=>syncCard(p.id));
 const metaOf=p=>{const c=PRODUCT_META[p.id]||{};return{size:p.size||c.size||'',rating:p.rating||c.rating||0,count:p.ratingCount||c.count||0,bought:p.bought||c.bought||'',badge:p.badge||c.badge||'',choice:p.choice||c.choice||'',mrp:p.mrp||c.mrp||0}};
 function renderGrid(){
-  const L=PRODUCTS.filter(p=>!isCombo(p)),any=f=>L.some(p=>f(metaOf(p),p)),aS=any(m=>m.size),aR=any(m=>m.rating>0),aB=any(m=>m.bought),aG=any(m=>m.badge),aM=any((m,p)=>m.mrp>p.price),aL=any((m,p)=>typeof p.stock==='number'&&p.stock>0&&p.stock<=5);
+  let L=PRODUCTS.filter(p=>!isCombo(p));if(TAB==='best'){const b=L.filter(p=>{const m=metaOf(p);return m.choice||m.bought});if(b.length)L=b}const any=f=>L.some(p=>f(metaOf(p),p)),aS=any(m=>m.size),aR=any(m=>m.rating>0),aB=any(m=>m.bought),aG=any(m=>m.badge),aM=any((m,p)=>m.mrp>p.price),aL=any((m,p)=>typeof p.stock==='number'&&p.stock>0&&p.stock<=5);
   $('#grid').innerHTML=L.map(p=>{
    const m=metaOf(p),off=m.mrp>p.price?Math.round((m.mrp-p.price)/m.mrp*100):0;
    return `<article class="card" data-pid="${p.id}">
- <div class="pic">${m.choice?`<span class="pchoice">${lpEsc(m.choice)}</span>`:''}${p.imgs.length>1?`<div class="sl">${p.imgs.map(u=>`<img src="${thumb(u)}" alt="${p.name}" loading="lazy" decoding="async">`).join('')}</div><button class="arr l" data-sl="-1" aria-label="Previous photo">‹</button><button class="arr r" data-sl="1" aria-label="Next photo">›</button><div class="dots">${p.imgs.map((_,i)=>`<i${i?'':' class="on"'}></i>`).join('')}</div>`:p.imgs.length?`<img src="${thumb(p.imgs[0])}" alt="${p.name}" loading="lazy" decoding="async">`:p.name}</div>
- <div class="body"><h3>${p.name}</h3>${m.size?`<span class="chip">${lpEsc(m.size)}</span>`:(aS?'<span class="sp sz"></span>':'')}<p>${p.desc}</p>
- ${m.rating>0?`<div class="rate"><b>${m.rating}</b>${stars(m.rating)}${m.count?`<span>(${m.count})</span>`:''}</div>`:(aR?'<div class="sp rt"></div>':'')}
- ${m.bought?`<div class="bought">${lpEsc(m.bought)}</div>`:(aB?'<div class="sp bt"></div>':'')}${m.badge?`<span class="fest">${lpEsc(m.badge)}</span>`:(aG?'<span class="sp bg"></span>':'')}
- <div class="pr${aM?' two':''}"><span class="price">${rs(p.price)}</span>${off?`<span class="mrp">M.R.P: <s>${rs(m.mrp)}</s></span><span class="off">(${off}% off)</span>`:''}</div>
- <div class="dl">FREE delivery on prepaid orders</div>
- ${typeof p.stock==='number'&&p.stock>0&&p.stock<=5?`<small style="color:#b3261e">Only ${p.stock} left</small>`:(aL?'<small class="sp lw">&nbsp;</small>':'')}
+ <div class="pic">${m.choice?`<span class="pchoice">${lpEsc(m.choice)}</span>`:''}${p.imgs.length>1?`<div class="sl">${p.imgs.map(u=>`<img src="${thumb(u)}" alt="${p.name}" loading="lazy" decoding="async">`).join('')}</div><button class="arr l" data-sl="-1" aria-label="Previous photo">‹</button><button class="arr r" data-sl="1" aria-label="Next photo">›</button><div class="dots">${p.imgs.map((_,i)=>`<i${i?'':' class="on"'}></i>`).join('')}</div>`:p.imgs.length?`<img src="${thumb(p.imgs[0])}" alt="${p.name}" loading="lazy" decoding="async">`:p.name}<button class="heart" type="button" aria-label="Save to wishlist" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-9-9.2C1.600 7.400 3.600 4 7 4c2 0 3.600 1.200 5 3 1.400-1.800 3-3 5-3 3.400 0 5.400 3.400 4 6.800C19 15.600 12 20 12 20z"/></svg></button></div>
+ <div class="body"><div class="tt"><h3>${p.name}</h3><span class="price">${rs(p.price)}</span></div><p class="sb">${p.desc}</p>
+ ${m.rating>0?`<div class="rate"><span class="st">★</span><b>${m.rating}</b>${m.count?`<span>(${m.count})</span>`:''}</div>`:''}
+ ${m.bought?`<div class="bought">${lpEsc(m.bought)}</div>`:''}
+ ${off?`<div class="mrp"><s>${rs(m.mrp)}</s> <span class="off">${off}% off</span></div>`:''}
+ ${typeof p.stock==='number'&&p.stock>0&&p.stock<=5?`<small class="low">Only ${p.stock} left</small>`:''}
  <div class="act" data-act="${p.id}">${actHTML(p)}</div></div></article>`}).join('')||'<p>Products coming soon.</p>'}
-function apply(l){PRODUCTS=l.products.map(p=>{const m=PRODUCT_META[p.id];return (!p.imgs||!p.imgs.length)&&m&&m.imgs&&m.imgs.length?{...p,imgs:m.imgs,img:m.imgs[0]}:p});FREE_ABOVE=l.freeAbove;SHIP=l.fee;if(l.cod)COD=l.cod;tkBuild();$('#shipnote').textContent='Free shipping on all prepaid orders.';renderGrid();comboBuild();lpBuild();reveal();updateCount()}
+function apply(l){PRODUCTS=l.products.map(p=>{const m=PRODUCT_META[p.id];return m&&m.imgs&&m.imgs.length?{...p,imgs:m.imgs,img:m.imgs[0]}:p});FREE_ABOVE=l.freeAbove;SHIP=l.fee;if(l.cod)COD=l.cod;tkBuild();$('#shipnote').textContent='Free shipping on all prepaid orders.';renderGrid();featBuild();comboBuild();lpBuild();reveal();updateCount()}
 document.addEventListener('DOMContentLoaded',()=>{try{const c=JSON.parse(localStorage.getItem('rs_p')||'null');if(c&&c.products)apply(c)}catch(_){}});
 function load(tries){
   Promise.race([tries?fetch('/.netlify/functions/products').then(r=>{if(!r.ok)throw 0;return r.json()}):window.__p,new Promise((_,no)=>setTimeout(()=>no(0),8000))])
@@ -537,24 +560,25 @@ const lpEsc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':
 const LP_DUR=5000;let lpN=0,lpT=null,lpList=[],lpHold=false,lpKey='';
 function lpBuild(){
   const car=$('#lpCar');
-  let base=PRODUCTS.filter(p=>!isCombo(p));if(!base.length)base=PRODUCTS;
-  let list=base.slice(0,3).map(p=>({u:(p.imgs&&p.imgs[0])||p.img||'',p}));
+  let list=[];PRODUCTS.forEach(p=>(p.imgs||[]).slice(0,1).forEach(u=>list.push({u,p})));
+  if(!list.length)list=PRODUCTS.map(p=>({u:'',p}));
+  list=list.slice(0,3);
   const key=list.map(x=>x.u+x.p.id+x.p.price).join('|');
   const rib=['Hair oil','Beard oil','Wooden comb','Free shipping on prepaid orders','Secure UPI & cards','Made with care'].map(t=>'<span>'+lpEsc(t)+'</span>').join('');
   $('#lpRib').innerHTML=rib+rib;
   if(!list.length||key===lpKey)return;
   lpKey=key;lpList=list;car.classList.remove('load');
-  $('#lpSlides').innerHTML=list.map((x,i)=>`<div class="an-s" role="group" aria-roledescription="slide" aria-label="${i+1} of ${list.length}">
-   ${x.u?`<img src="${lpImg(x.u)}" alt="${lpEsc(x.p.name)}" ${i?'loading="lazy"':'fetchpriority="high"'} decoding="async">`:`<div class="ph"></div>`}
-   <div class="an-cap"><small>${rs(x.p.price)}</small><h2>Introducing the new<br>${lpEsc(x.p.name)}</h2><a class="an-shop" href="#products">Shop now</a></div></div>`).join('');
+  $('#lpSlides').innerHTML=list.map((x,i)=>`<div class="lp-s" role="group" aria-roledescription="slide" aria-label="${i+1} of ${list.length}">
+   ${x.u?`<img src="${lpImg(x.u)}" alt="${lpEsc(x.p.name)}" ${i?'loading="lazy"':'fetchpriority="high"'} decoding="async">`:`<div class="ph">${lpEsc(x.p.name)}</div>`}
+   <div class="lp-cap"><span class="lp-k">${rs(x.p.price)}</span><b>${lpEsc(x.p.name)}</b><a class="btn" href="#products">Shop now</a></div></div>`).join('');
   $('#lpBars').innerHTML=list.map((_,i)=>`<button aria-label="Go to slide ${i+1}" data-lp="${i}"><i></i></button>`).join('');
   car.style.setProperty('--dur',LP_DUR+'ms');
   lpGo(0);
 }
 function lpGo(n){
   clearTimeout(lpT);if(!lpList.length)return;
-  const pv=lpN;lpN=(n+lpList.length)%lpList.length;
-  document.querySelectorAll('.an-s').forEach((e,i)=>{e.classList.toggle('on',i===lpN);e.classList.toggle('out',i===pv&&i!==lpN)});
+  lpN=(n+lpList.length)%lpList.length;
+  document.querySelectorAll('.lp-s').forEach((e,i)=>e.classList.toggle('on',i===lpN));
   document.querySelectorAll('#lpBars button').forEach((b,i)=>{b.classList.toggle('done',i<lpN);b.classList.remove('cur');if(i===lpN){void b.offsetWidth;b.classList.add('cur')}});
   if(!calm&&lpList.length>1)lpT=setTimeout(()=>lpGo(lpN+1),LP_DUR);
 }
@@ -863,8 +887,19 @@ const TM=[
   if(calm||!('IntersectionObserver' in window))go();
   else new IntersectionObserver((es,o)=>{if(es[0].isIntersecting){go();o.disconnect()}},{threshold:.2}).observe(box);
 })();
+/* ---------- Minimal UI: menu, tabs, wishlist hearts ---------- */
+(function(){
+  const b=$('#menuBtn'),p=$('#menuPanel'),set=v=>{p.hidden=!v;b.setAttribute('aria-expanded',v);b.textContent=v?'Close':'Menu'};
+  b.onclick=()=>set(p.hidden);p.addEventListener('click',e=>{if(e.target.closest('a'))set(false)});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')set(false)});
+  const on=k=>document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('on',x.dataset.tab===k));
+  document.addEventListener('click',e=>{
+    const h=e.target.closest('.heart');if(h){h.setAttribute('aria-pressed',h.getAttribute('aria-pressed')!=='true');return}
+    const t=e.target.closest('[data-tab]');
+    if(t){if(t.dataset.tab==='kits'){const c=$('#combos');if(c&&!c.hidden){c.scrollIntoView({behavior:calm?'auto':'smooth'});return}}TAB=t.dataset.tab==='best'?'best':'all';on(t.dataset.tab==='kits'?'all':TAB);renderGrid();return}
+    if(e.target.closest('#shopAll')){TAB='all';on('all');renderGrid()}
+  });
+})();
 </script>
-<script>(function(){var m=document.getElementById('anm'),b=document.getElementById('menuBtn');function t(o){m.classList.toggle('open',o);m.setAttribute('aria-hidden',!o);b.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''}
-b.onclick=function(){t(true)};document.getElementById('menuX').onclick=function(){t(false)};m.addEventListener('click',function(e){if(e.target.closest('a'))t(false)});addEventListener('keydown',function(e){if(e.key==='Escape')t(false)})})();</script>
 </body>
 </html>
