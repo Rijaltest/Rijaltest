@@ -634,7 +634,7 @@ function vrOpen(i){
 function vrClose(){$('#vrModal').classList.remove('open');$('#vrBox').innerHTML='';vrHold.modal=false;vrAcc=$('#vrTrack').scrollLeft}
 function vrWrit(list){
   const h=$('#vrH3');if(h)h.hidden=!list.length;
-  const cards=list.map(r=>`<article class="vr-rev">${r.stars?`<div class="vr-stars" aria-label="${+r.stars} out of 5 stars">${'★'.repeat(+r.stars)}<s>${'★'.repeat(5-(+r.stars))}</s></div>`:''}<p>${lpEsc(r.text)}</p><div class="vr-who"><span class="vr-av">${lpEsc((r.name||'?').trim().charAt(0).toUpperCase())}</span><div><b>${lpEsc(r.name)}</b><small>${lpEsc(r.city||'')}</small></div>${r.product?`<span class="vr-tag">${lpEsc(r.product)}</span>`:''}</div></article>`).join(''),reps=Math.max(1,Math.ceil(1700/(Math.max(list.length,1)*306))),one=cards.repeat(reps);
+  const cards=list.map(r=>`<article class="vr-rev"><h4>${lpEsc(r.name)}${r.city?`<small>${lpEsc(r.city)}</small>`:''}</h4>${r.stars?`<div class="vr-stars" aria-label="${+r.stars} out of 5 stars">${'★'.repeat(+r.stars)}<s>${'★'.repeat(5-(+r.stars))}</s></div>`:''}<p>“${lpEsc(r.text)}”</p>${r.product?(()=>{const pm=(typeof PRODUCTS!=='undefined'?PRODUCTS:[]).find(p=>p.name===r.product),pu=pm&&pm.imgs&&pm.imgs[0];return `<a class="vr-prod" href="#products"><span class="vr-th">${pu?`<img src="${typeof thumb==='function'?thumb(pu):pu}" alt="" loading="lazy">`:''}</span><span><b>${lpEsc(r.product)}</b><small>View product</small></span></a>`})():''}</article>`).join(''),reps=Math.max(1,Math.ceil(1700/(Math.max(list.length,1)*306))),one=cards.repeat(reps);
   $('#vrGrid').innerHTML=list.length?`<div class="vr-mq"><div class="vr-mqt" style="animation-duration:${Math.max(30,list.length*reps*8)}s">${one}${one}</div></div>`:'';
 }
 function vrBuild(){
