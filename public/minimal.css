@@ -260,3 +260,46 @@ footer .flogo{color:#111}
 .pov-ring::before{border-top-color:#111}
 .pov-steps li{color:rgba(0,0,0,.4)}.pov-steps li.on{color:#111}.pov-steps li.ok{color:#111}
 .pov-bar{background:rgba(0,0,0,.1)}.pov-bar i{background:#16110E}
+
+/* ===== v3: blood red + cream buttons, equal-height cards, square sections, new review cards ===== */
+:root{--blood:#9E0B1D}
+.btn,.ct-go{background:var(--blood);color:var(--cream)}
+.btn.ghost{background:none;color:var(--blood);border:1px solid var(--blood)}
+.act .btn,.cb-btns .btn:not(.buy){background:var(--blood);color:var(--cream);border:1px solid var(--blood)}
+.act .btn.buy,.cb-btns .btn.buy{background:var(--cream);color:var(--blood);border:1px solid var(--blood)}
+.stp{border-color:var(--blood)}.stp button,.stp input{color:var(--blood)}
+.gl-go{background:var(--blood);color:var(--cream)}.gl-go svg{stroke:var(--cream)}
+.dv-check{background:var(--blood)}.dv-check svg{stroke:var(--cream)}
+.dov .btn{background:var(--blood);color:var(--cream)}.dov .btn.ghost{background:none;color:var(--blood);border-color:var(--blood)}
+.pov-bar i{background:var(--blood)}
+
+/* simple product type + equal heights */
+.card h3,.price,.card .body p.sb,.rate,.bought,.mrp{font-weight:400}
+#grid.grid,.ft-tr{align-items:stretch}
+.card{height:100%}
+.card .body{flex:1}
+.card .body p.sb{min-height:1.4em}
+.act{margin-top:auto;padding-top:12px}
+
+/* How to use / Why RIJAL / Contact: square, hairline, clean */
+.ht{background:#fff}
+.ht-step{background:none;border:0;border-top:1px solid #111;border-radius:0;padding:22px 0 0}
+.ht-n{position:static;width:auto;height:auto;border-radius:0;background:none;color:var(--mute);box-shadow:none;display:block;margin-bottom:18px;font-weight:400;font-size:.9rem}
+.ht-step svg{stroke:#111}
+.why .why-box li{background:none;border:0;border-top:1px solid #111;border-radius:0;padding:22px 0 0}
+.why .why-box .wb-i{background:none;border-radius:0;width:auto;height:auto;margin-bottom:14px;box-shadow:none}
+.why .why-box .wb-i svg{stroke:#111}
+.ct,.ct-bulk{background:none;border:0;border-top:1px solid #111;border-radius:0;padding:20px 0}
+.ct-i,.ct-bulk .ct-i{background:none;border-radius:0;width:auto;height:auto}
+.ct-i svg,.ct-bulk .ct-i svg{stroke:#111}
+.ct-go{border-radius:0}
+
+/* reviews: name, big quote, product row (white, scrolling) */
+.vr .vr-rev{flex:none;width:min(84vw,380px);background:#fff;color:#111;border:0;border-top:1px solid #111;border-radius:0;padding:22px 0 0;gap:14px}
+.vr-rev h4{font-size:1.5rem;font-weight:400;letter-spacing:-.03em;line-height:1.1}
+.vr-rev h4 small{display:block;font-size:.85rem;color:var(--mute);margin-top:4px;letter-spacing:0}
+.vr-rev p{font-size:1.2rem;line-height:1.45;letter-spacing:-.015em;font-weight:400}
+.vr-prod{display:flex;align-items:center;gap:14px;text-decoration:none;margin-top:6px}
+.vr-th{width:56px;height:62px;background:var(--gray);border-radius:0;flex:none;overflow:hidden}
+.vr-th img{width:100%;height:100%;object-fit:cover}
+.vr-prod b{display:block;font-weight:400}.vr-prod small{color:var(--mute)}
