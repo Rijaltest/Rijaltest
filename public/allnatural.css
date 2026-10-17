@@ -1,0 +1,283 @@
+/* ===== allnatural.css — overrides everything to match the All Natural template ===== */
+:root{
+  --bg:#F6F3EC;            /* page cream */
+  --panel:#FFFFFF;         /* card white */
+  --ink:#111111;           /* near-black text */
+  --mute:#6B6B6B;
+  --line:#E7E1D4;          /* hairline */
+  --accent:#111111;        /* "accent" is just black on this template */
+  --radius:14px;
+  --radius-lg:28px;
+  --pad-section:120px;
+  --font-sans:'Inter','Helvetica Neue',Arial,system-ui,sans-serif;
+  --font-display:'Inter','Helvetica Neue',Arial,system-ui,sans-serif;
+
+  /* kill the old gold/velvet tokens so nothing amber leaks through */
+  --forest:#111;
+  --leaf:#111;
+  --sage:var(--bg);
+  --amber:#111;
+  --gold:#111;
+  --maroon:#111;
+  --white:#fff;
+  --hero-bg:var(--bg);
+  --hero-fg:var(--ink);
+  --hero-mute:var(--mute);
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--font-sans);
+  font-weight:400;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.price{
+  font-family:var(--font-display)!important;
+  font-weight:500!important;
+  letter-spacing:-0.02em;
+  color:var(--ink);
+}
+h1{font-size:clamp(2.6rem,6vw,5rem);line-height:1.02}
+h2{font-size:clamp(1.8rem,3.2vw,2.8rem);line-height:1.08}
+h3{font-size:1.05rem}
+p,.sub,.card p,.vr-rev p{color:var(--mute)}
+
+/* ---- layout ---- */
+.wrap{max-width:1240px;padding:0 32px}
+section{padding:var(--pad-section) 0}
+@media(max-width:800px){section{padding:72px 0}.wrap{padding:0 20px}}
+
+/* ---- header: minimal, transparent, black text ---- */
+header{
+  background:var(--bg)!important;
+  color:var(--ink)!important;
+  border-bottom:1px solid var(--line)!important;
+  box-shadow:none!important;
+  backdrop-filter:none!important;
+}
+header .wrap{height:76px}
+nav a{color:var(--ink);font-weight:500;font-size:.95rem}
+nav a:not(.cartbtn)::after{background:var(--ink)!important}
+.cartbtn{
+  background:var(--ink)!important;
+  color:var(--bg)!important;
+  border-radius:999px!important;
+  padding:10px 20px!important;
+}
+.bulk{background:var(--bg)!important;color:var(--mute)!important;border-bottom:1px solid var(--line)}
+.bulk-badge{border-color:var(--line)!important;background:transparent!important;color:var(--ink)!important}
+.bulk-badge b{color:var(--ink)!important}
+
+/* ---- hero: no gradient, no glow, no side card frame ---- */
+.lp{
+  background:var(--bg)!important;
+  color:var(--ink)!important;
+  padding:80px 0 40px!important;
+}
+.lp::before,.lp::after{display:none!important}
+.lp .wrap{
+  display:grid!important;
+  grid-template-columns:1.05fr .95fr!important;
+  gap:64px!important;
+  align-items:center;
+}
+.lp-eyebrow{
+  color:var(--mute)!important;
+  background:transparent!important;
+  border:1px solid var(--line)!important;
+  text-transform:none!important;
+  letter-spacing:0!important;
+  font-size:.9rem!important;
+}
+.lp-eyebrow i{background:var(--ink)!important;box-shadow:none!important}
+.lp h1{color:var(--ink)!important;max-width:14em}
+.lp h1 em{font-style:italic;color:var(--ink)!important}
+.lp-lead{color:var(--mute)!important;font-size:1.1rem!important}
+.lp .btn{
+  background:var(--ink)!important;color:var(--bg)!important;
+  border-radius:999px!important;padding:16px 28px!important;
+  border:0!important;font-weight:500!important;
+}
+.lp .btn.ghost{
+  background:transparent!important;color:var(--ink)!important;
+  border:1px solid var(--ink)!important;
+}
+.lp-trust{color:var(--mute)!important}
+.lp-trust svg{stroke:var(--ink)!important}
+.lp-stage::before{display:none!important}
+.lp-car{
+  border-radius:var(--radius-lg)!important;
+  box-shadow:none!important;
+  background:#EDE7DA!important;
+}
+.lp-cap b{color:#fff!important}
+.lp-cap span{color:#fff!important}
+.lp-bars button::before{background:rgba(255,255,255,.5)!important}
+.lp-bars button.done::before,.lp-bars button.cur i{background:#fff!important}
+.lp-ribbon{display:none!important}            /* template has no ribbon */
+
+/* ---- feature strip: flat, no shadow card ---- */
+.feat{margin-top:0!important;padding:0!important}
+.feat ul{
+  max-width:1240px!important;
+  background:transparent!important;
+  border:0!important;border-top:1px solid var(--line)!important;
+  border-bottom:1px solid var(--line)!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  padding:24px 0!important;
+}
+.feat li+li{border-left:0!important}
+.feat .fi{background:transparent!important;border:0!important;width:auto!important;height:auto!important}
+.feat .fi svg{stroke:var(--ink)!important}
+.feat b{font-family:var(--font-sans)!important;font-weight:600!important;font-size:.95rem!important}
+.feat small{color:var(--mute)!important}
+
+/* ---- product cards: square, thin border, white, no shadow ---- */
+.grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))!important;gap:32px!important}
+.card{
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.card:hover{box-shadow:none!important;transform:none!important}
+.card .pic{
+  background:#EDE7DA!important;
+  border-radius:var(--radius)!important;
+  aspect-ratio:4/5!important;
+}
+.card .body{padding:16px 0 0!important;gap:6px!important}
+.card h3{font-family:var(--font-sans)!important;font-weight:500!important;font-size:1.02rem!important}
+.chip,.fest,.pchoice{
+  background:transparent!important;color:var(--mute)!important;
+  border:1px solid var(--line)!important;border-radius:999px!important;
+  font-weight:500!important;font-size:.78rem!important;
+}
+.pchoice{background:rgba(255,255,255,.9)!important;color:var(--ink)!important;border:0!important}
+.rate b{font-weight:500!important}
+.off{color:var(--mute)!important;font-weight:400!important}
+.price{font-size:1.05rem!important;font-weight:500!important}
+.btn.buy{background:transparent!important;color:var(--ink)!important;border:1px solid var(--ink)!important}
+.act .btn{background:var(--ink)!important;color:var(--bg)!important;border-radius:999px!important;font-weight:500!important}
+.act .btn.buy{background:transparent!important;color:var(--ink)!important}
+.stp{background:transparent!important;border:1px solid var(--ink)!important;box-shadow:none!important}
+.stp button{background:transparent!important;color:var(--ink)!important}
+
+/* ---- dark bands → light bands ---- */
+.cb,.tm,.vr,.tk,.why{
+  background:var(--bg)!important;
+  color:var(--ink)!important;
+}
+.cb h2,.tm h2,.vr h2,.why h2{color:var(--ink)!important}
+.tm h2 em,.vr h2 em,.cb h2 em{color:var(--ink)!important;font-style:italic}
+.cb-card,.why li,.ct,.rv-form{
+  background:var(--panel)!important;
+  border:1px solid var(--line)!important;
+  border-radius:var(--radius-lg)!important;
+  box-shadow:none!important;
+}
+.cb-pic{background:#EDE7DA!important}
+.cb-badge{background:var(--ink)!important;color:var(--bg)!important}
+.cb-inc li{background:transparent!important;border:1px solid var(--line)!important}
+.cb-inc li::before{color:var(--ink)!important}
+.why .why-box .wb-i,.ct-i,.pn-i,.cpx .cpi{
+  background:var(--ink)!important;box-shadow:none!important;
+}
+.why .why-box .wb-i svg,.ct-i svg,.pn-i svg,.cpx .cpi svg{stroke:var(--bg)!important}
+.ct-go{background:var(--ink)!important;color:var(--bg)!important}
+.ct-bulk{background:var(--panel)!important;border:1px solid var(--line)!important}
+
+/* ---- reviews ---- */
+.vr-track{gap:24px!important}
+.vr-card{border-radius:var(--radius)!important;box-shadow:none!important;background:#EDE7DA!important}
+.vr-play{background:var(--bg)!important;box-shadow:0 0 0 6px rgba(255,255,255,.35)!important}
+.vr-play svg{fill:var(--ink)!important}
+.vr-arr{background:var(--bg)!important;color:var(--ink)!important;border:1px solid var(--line)!important}
+.vr-rev{background:var(--panel)!important;border:1px solid var(--line)!important;border-radius:var(--radius-lg)!important}
+.vr-rev:hover{transform:none!important}
+.vr-stars{color:var(--ink)!important}
+.vr-stars s{color:#CFC7B7!important}
+.vr-av{background:var(--ink)!important;color:var(--bg)!important}
+.vr-tag{background:#EFEBE1!important;color:var(--ink)!important}
+.vr-who{border-top-color:var(--line)!important}
+.vr-videos::before{background:linear-gradient(to right,var(--bg),transparent)!important}
+.vr-videos::after{background:linear-gradient(to left,var(--bg),transparent)!important}
+
+/* ---- India map: light, neutral ---- */
+.tm-t{background:var(--bg)!important;box-shadow:inset 0 0 0 1px var(--line)!important;color:var(--ink)!important}
+.tm-t.nd{background:#EFEBE1!important}
+.tm-t.on{box-shadow:0 0 0 2px var(--ink)!important}
+.tm-info{background:var(--panel)!important;border:1px solid var(--line)!important;border-radius:var(--radius-lg)!important;color:var(--ink)!important}
+.tm-line{color:var(--mute)!important}
+.tm-line svg{fill:var(--ink)!important}
+.tm-n,.tm-r{color:var(--ink)!important}
+.tm-r div{background:#EFEBE1!important}
+.tm-r i{background:var(--ink)!important}
+
+/* ---- tagline strip ---- */
+.tk{background:transparent!important;border-top:1px solid var(--line)!important;border-bottom:1px solid var(--line)!important;box-shadow:none!important}
+.tk-tr span{color:var(--ink)!important;font-family:var(--font-sans)!important;font-style:normal!important;font-weight:500!important;letter-spacing:.08em!important;text-transform:uppercase!important;font-size:.78rem!important}
+.tk-tr i{color:var(--mute)!important}
+
+/* ---- footer ---- */
+footer{background:var(--bg)!important;color:var(--ink)!important;border-top:1px solid var(--line)!important}
+footer a{color:var(--mute)!important;font-size:.9rem}
+footer a:hover{color:var(--ink)!important}
+footer .flogo{color:var(--ink)!important}
+.soc a{border-color:var(--line)!important;color:var(--ink)!important}
+.soc a:hover{background:var(--ink)!important;color:var(--bg)!important;border-color:var(--ink)!important}
+
+/* ---- cart drawer, notices, buttons ---- */
+.drawer{background:var(--bg)!important}
+.row{border-bottom-color:var(--line)!important}
+.tot.big{border-top-color:var(--ink)!important}
+form input,form select{border-color:var(--line)!important;background:var(--panel)!important;border-radius:10px!important}
+.cpx{border-color:var(--line)!important;background:var(--panel)!important}
+.cpx .cpi{background:var(--ink)!important}
+.cpx.ok{border-color:#2E9E5B!important}
+.pm label{border-color:var(--line)!important;background:var(--panel)!important;border-radius:12px!important}
+.pm label:has(input:checked){border-color:var(--ink)!important;background:#EFEBE1!important}
+.pm label:has(input:checked)::before{border-color:var(--ink)!important;background:radial-gradient(circle,var(--ink) 45%,#fff 50%)!important}
+.pm .pi{background:var(--ink)!important}
+.pm .pi svg{stroke:var(--bg)!important}
+.gl{
+  background:var(--ink)!important;
+  border:0!important;
+  color:var(--bg)!important;
+}
+.gl-go{
+  background:var(--bg)!important;color:var(--ink)!important;
+  animation:none!important;box-shadow:none!important;
+}
+.gl-go svg{stroke:var(--ink)!important}
+.pn{background:var(--panel)!important;border:1px solid var(--line)!important;border-left:1px solid var(--line)!important;box-shadow:0 12px 30px -18px rgba(0,0,0,.25)!important}
+.pn-i{background:var(--ink)!important}
+.pn-i svg{stroke:var(--bg)!important}
+.wa-i{
+  background:var(--ink)!important;box-shadow:none!important;
+}
+.wa-i::before{border-color:var(--ink)!important;display:none!important}
+.wa-t{background:var(--ink)!important;color:var(--bg)!important;box-shadow:none!important}
+.totop span{background:var(--ink)!important}
+.totop svg{stroke:var(--bg)!important}
+.totop{background:conic-gradient(var(--ink) calc(var(--p,0)*1%),#D9D2C2 0)!important;box-shadow:none!important}
+
+/* ---- misc tokens ---- */
+::selection{background:var(--ink);color:var(--bg)!important}
+.rv-st button.on{color:var(--ink)!important}
+.dv-card,.pov-card{border-radius:var(--radius-lg)!important}
+.pov-card{background:var(--ink)!important;color:var(--bg)!important;border:0!important}
+.dov{background:var(--bg)!important;color:var(--ink)!important}
+.dov::before{display:none!important}
+.dv-h,.dv-sub{color:var(--ink)!important}
+.dv-check{background:var(--ink)!important;box-shadow:none!important}
+.dv-check svg{stroke:var(--bg)!important}
+.dv-card{background:var(--panel)!important;box-shadow:0 12px 30px -18px rgba(0,0,0,.2)!important;border:1px solid var(--line)!important}
+.dv-shot{background:var(--panel)!important;color:var(--ink)!important;border:1px solid var(--line)!important}
+.dv-act .btn.ghost{border-color:var(--ink)!important;color:var(--ink)!important}
+.dv-brand{color:var(--ink)!important}
+.cf{display:none!important} /* no confetti in this aesthetic */
